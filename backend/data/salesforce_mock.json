@@ -1,0 +1,2933 @@
+{
+  "accounts": [
+    {
+      "Id": "ACC001",
+      "Name": "Sunrise Industries Pvt Ltd",
+      "Dealer_ID__c": "DLR001",
+      "RecordType": "Dealer",
+      "Credit_Limit__c": 5000000,
+      "Outstanding_Amount__c": 1016000,
+      "Status__c": "Active",
+      "City__c": "Mumbai",
+      "State__c": "Maharashtra",
+      "Email__c": "dealer@sunrise.com",
+      "Phone": "9876543210",
+      "Tier__c": "Gold",
+      "Join_Date__c": "2022-01-15"
+    },
+    {
+      "Id": "ACC002",
+      "Name": "TechMech Solutions",
+      "Dealer_ID__c": "DLR002",
+      "RecordType": "Dealer",
+      "Credit_Limit__c": 3000000,
+      "Outstanding_Amount__c": 890000,
+      "Status__c": "Active",
+      "City__c": "Pune",
+      "State__c": "Maharashtra",
+      "Email__c": "dealer@techmech.com",
+      "Phone": "9876543211",
+      "Tier__c": "Silver",
+      "Join_Date__c": "2022-06-20"
+    },
+    {
+      "Id": "ACCEC9D5",
+      "Name": "Amit And Company",
+      "Dealer_ID__c": "DLR43090",
+      "RecordType": "Dealer",
+      "Credit_Limit__c": 1000000,
+      "Outstanding_Amount__c": 0,
+      "Status__c": "Pending Approval",
+      "City__c": "Ajmer",
+      "State__c": "Rjasthan",
+      "Email__c": "harwaniamit2@gmail.com",
+      "Phone": "9261672482",
+      "Tier__c": "Bronze",
+      "Join_Date__c": "2026-05-27"
+    },
+    {
+      "Id": "ACC30551",
+      "Name": "Amit LTD.",
+      "Dealer_ID__c": "DLR66F94",
+      "RecordType": "Dealer",
+      "Credit_Limit__c": 1000000,
+      "Outstanding_Amount__c": 0,
+      "Status__c": "Pending Approval",
+      "City__c": "Rajasthan",
+      "State__c": "Ajmer",
+      "Email__c": "a.harwani@cloudcertitude.com",
+      "Phone": "1234567890",
+      "Tier__c": "Bronze",
+      "Join_Date__c": "2026-05-28"
+    },
+    {
+      "Id": "ACC33757",
+      "Name": "Test Dealer Pvt Ltd",
+      "Dealer_ID__c": "DLRB0C37",
+      "RecordType": "Dealer",
+      "Credit_Limit__c": 1000000,
+      "Outstanding_Amount__c": 0,
+      "Status__c": "Pending Approval",
+      "City__c": "Mumbai",
+      "State__c": "Maharashtra",
+      "Email__c": "testdealer@example.com",
+      "Phone": "9876543210",
+      "Tier__c": "Bronze",
+      "Join_Date__c": "2026-05-28"
+    },
+    {
+      "Id": "ACCF605E",
+      "Name": "Shah Motors Pvt Ltd",
+      "Dealer_ID__c": "DLRF2506",
+      "RecordType": "Dealer",
+      "Credit_Limit__c": 1000000,
+      "Outstanding_Amount__c": 0,
+      "Status__c": "Pending Approval",
+      "City__c": "Ahmedabad",
+      "State__c": "Gujarat",
+      "Email__c": "arjun.shah.dealer@gmail.com",
+      "Phone": "9898123456",
+      "Tier__c": "Bronze",
+      "Join_Date__c": "2026-05-28"
+    },
+    {
+      "Id": "ACC98DFA",
+      "Name": "Test PVVT",
+      "Dealer_ID__c": "DLRBFCEC",
+      "RecordType": "Dealer",
+      "Credit_Limit__c": 1000000,
+      "Outstanding_Amount__c": 0,
+      "Status__c": "Pending Approval",
+      "City__c": "Test",
+      "State__c": "Test",
+      "Email__c": "TestUser@gmail.com",
+      "Phone": "1234567890",
+      "Tier__c": "Bronze",
+      "Join_Date__c": "2026-05-28"
+    },
+    {
+      "Id": "ACC7682B",
+      "Name": "Testtt",
+      "Dealer_ID__c": "DLRED623",
+      "RecordType": "Dealer",
+      "Credit_Limit__c": 1000000,
+      "Outstanding_Amount__c": 0,
+      "Status__c": "Pending Approval",
+      "City__c": "Testt",
+      "State__c": "Testt",
+      "Email__c": "Test2@gmail.com",
+      "Phone": "1234567890",
+      "Tier__c": "Bronze",
+      "Join_Date__c": "2026-05-28"
+    },
+    {
+      "Id": "ACC309C9",
+      "Name": "Test Industry",
+      "Dealer_ID__c": "DLR2A39E",
+      "RecordType": "Dealer",
+      "Credit_Limit__c": 1000000,
+      "Outstanding_Amount__c": 0,
+      "Status__c": "Pending Approval",
+      "City__c": "Ajmer",
+      "State__c": "Rajashtan",
+      "Email__c": "testAmit@gmail.com",
+      "Phone": "1234567890",
+      "Tier__c": "Bronze",
+      "Join_Date__c": "2026-05-28"
+    },
+    {
+      "Id": "ACCEC97E",
+      "Name": "Ttttt",
+      "Dealer_ID__c": "DLR2A663",
+      "RecordType": "Dealer",
+      "Credit_Limit__c": 1000000,
+      "Outstanding_Amount__c": 0,
+      "Status__c": "Pending Approval",
+      "City__c": "Ajmer",
+      "State__c": "Rajasthan",
+      "Email__c": "tttt@gmail.com",
+      "Phone": "1234567890",
+      "Tier__c": "Bronze",
+      "Join_Date__c": "2026-05-28"
+    },
+    {
+      "Id": "ACCCEAFE",
+      "Name": "Test Last",
+      "Dealer_ID__c": "DLR5BA48",
+      "RecordType": "Dealer",
+      "Credit_Limit__c": 1000000,
+      "Outstanding_Amount__c": 0,
+      "Status__c": "Pending Approval",
+      "City__c": "Ajmer",
+      "State__c": "Rajasthan",
+      "Email__c": "Last@gmail.com",
+      "Phone": "1234567890",
+      "Tier__c": "Bronze",
+      "Join_Date__c": "2026-05-28"
+    },
+    {
+      "Id": "001gK000015uvpsQAA",
+      "Name": "Testtt",
+      "Dealer_ID__c": "DLRA47EB",
+      "RecordType": "Dealer",
+      "Credit_Limit__c": 1000000,
+      "Outstanding_Amount__c": 0,
+      "Status__c": "Pending Approval",
+      "City__c": "Ajmer",
+      "State__c": "Rajashtan",
+      "Email__c": "Test@gmail.com",
+      "Phone": "1234567890",
+      "Tier__c": "Bronze",
+      "Join_Date__c": "2026-05-28"
+    },
+    {
+      "Id": "001gK000015w9abQAA",
+      "Name": "Testttt",
+      "Dealer_ID__c": "DLR-BQAA",
+      "RecordType": "Dealer",
+      "Credit_Limit__c": 1000000,
+      "Outstanding_Amount__c": 0,
+      "Status__c": "Active",
+      "City__c": "Ajmer",
+      "State__c": "Rajasthan",
+      "Email__c": "",
+      "Phone": "1234567890",
+      "Tier__c": "Bronze",
+      "Join_Date__c": "2026-05-29",
+      "UserId__c": "USR7A1F4"
+    }
+  ],
+  "opportunities": [
+    {
+      "Id": "OPP001",
+      "Name": "Large Industrial Project - Phase 1",
+      "Dealer__c": "ACC001",
+      "StageName": "Proposal/Price Quote",
+      "Amount": 1500000,
+      "CloseDate": "2024-04-30",
+      "Probability": 60,
+      "Description": "Bulk order for new plant setup"
+    },
+    {
+      "Id": "OPP002",
+      "Name": "Government Tender - Water Plant",
+      "Dealer__c": "ACC001",
+      "StageName": "Negotiation/Review",
+      "Amount": 3200000,
+      "CloseDate": "2024-05-15",
+      "Probability": 40,
+      "Description": "State government water treatment plant"
+    }
+  ],
+  "orders": [
+    {
+      "Id": "ORD001",
+      "AccountId": "ACC001",
+      "OrderNumber": "ORD-2024-001",
+      "Status": "Delivered",
+      "TotalAmount": 135000,
+      "EffectiveDate": "2024-01-10",
+      "DeliveryDate__c": "2024-01-20",
+      "Tracking_Number__c": "TRK123456",
+      "ShippingCity": "Mumbai"
+    },
+    {
+      "Id": "ORD002",
+      "AccountId": "ACC001",
+      "OrderNumber": "ORD-2024-002",
+      "Status": "Processing",
+      "TotalAmount": 234000,
+      "EffectiveDate": "2024-02-15",
+      "DeliveryDate__c": "2024-03-01",
+      "Tracking_Number__c": "TRK789012",
+      "ShippingCity": "Mumbai"
+    },
+    {
+      "Id": "ORD003",
+      "AccountId": "ACC001",
+      "OrderNumber": "ORD-2024-003",
+      "Status": "Shipped",
+      "TotalAmount": 78000,
+      "EffectiveDate": "2024-02-20",
+      "DeliveryDate__c": "2024-03-05",
+      "Tracking_Number__c": "TRK345678",
+      "ShippingCity": "Mumbai"
+    },
+    {
+      "Id": "ORD004",
+      "AccountId": "ACC001",
+      "OrderNumber": "ORD-2024-004",
+      "Status": "Pending",
+      "TotalAmount": 456000,
+      "EffectiveDate": "2024-03-01",
+      "DeliveryDate__c": null,
+      "Tracking_Number__c": null,
+      "ShippingCity": "Mumbai"
+    }
+  ],
+  "orderItems": [
+    {
+      "Id": "OI001",
+      "OrderId": "ORD001",
+      "Product2Id": "P001",
+      "Quantity": 2,
+      "UnitPrice": 45000,
+      "TotalPrice": 90000
+    },
+    {
+      "Id": "OI002",
+      "OrderId": "ORD001",
+      "Product2Id": "P003",
+      "Quantity": 3,
+      "UnitPrice": 12000,
+      "TotalPrice": 36000
+    },
+    {
+      "Id": "OI003",
+      "OrderId": "ORD002",
+      "Product2Id": "P002",
+      "Quantity": 3,
+      "UnitPrice": 78000,
+      "TotalPrice": 234000
+    },
+    {
+      "Id": "OI004",
+      "OrderId": "ORD003",
+      "Product2Id": "P004",
+      "Quantity": 22,
+      "UnitPrice": 3500,
+      "TotalPrice": 77000
+    },
+    {
+      "Id": "OI005",
+      "OrderId": "ORD004",
+      "Product2Id": "P006",
+      "Quantity": 3,
+      "UnitPrice": 125000,
+      "TotalPrice": 375000
+    },
+    {
+      "Id": "OI006",
+      "OrderId": "ORD004",
+      "Product2Id": "P005",
+      "Quantity": 3,
+      "UnitPrice": 28000,
+      "TotalPrice": 84000
+    }
+  ],
+  "products": [
+    {
+      "Id": "P001",
+      "Name": "Industrial Pump X200",
+      "ProductCode": "IPX200",
+      "Family": "Pumps",
+      "Description": "High-performance industrial pump",
+      "IsActive": true,
+      "StockKeepingUnit": "IPX200-001"
+    },
+    {
+      "Id": "P002",
+      "Name": "Hydraulic Motor HM500",
+      "ProductCode": "HM500",
+      "Family": "Motors",
+      "Description": "Heavy-duty hydraulic motor",
+      "IsActive": true,
+      "StockKeepingUnit": "HM500-001"
+    },
+    {
+      "Id": "P003",
+      "Name": "Control Valve CV100",
+      "ProductCode": "CV100",
+      "Family": "Valves",
+      "Description": "Precision control valve",
+      "IsActive": true,
+      "StockKeepingUnit": "CV100-001"
+    },
+    {
+      "Id": "P004",
+      "Name": "Pressure Gauge PG50",
+      "ProductCode": "PG50",
+      "Family": "Gauges",
+      "Description": "Digital pressure gauge",
+      "IsActive": true,
+      "StockKeepingUnit": "PG50-001"
+    },
+    {
+      "Id": "P005",
+      "Name": "Filtration Unit FU300",
+      "ProductCode": "FU300",
+      "Family": "Filters",
+      "Description": "Industrial filtration unit",
+      "IsActive": true,
+      "StockKeepingUnit": "FU300-001"
+    },
+    {
+      "Id": "P006",
+      "Name": "Compressor CP750",
+      "ProductCode": "CP750",
+      "Family": "Compressors",
+      "Description": "High-capacity air compressor",
+      "IsActive": true,
+      "StockKeepingUnit": "CP750-001"
+    }
+  ],
+  "pricebooks": [
+    {
+      "Id": "PBE001",
+      "Product2Id": "P001",
+      "UnitPrice": 45000,
+      "ListPrice": 50000,
+      "IsActive": true,
+      "Forecasted_Demand__c": 120,
+      "Restock_Recommendation__c": 50
+    },
+    {
+      "Id": "PBE002",
+      "Product2Id": "P002",
+      "UnitPrice": 78000,
+      "ListPrice": 85000,
+      "IsActive": true,
+      "Forecasted_Demand__c": 80,
+      "Restock_Recommendation__c": 30
+    },
+    {
+      "Id": "PBE003",
+      "Product2Id": "P003",
+      "UnitPrice": 12000,
+      "ListPrice": 14000,
+      "IsActive": true,
+      "Forecasted_Demand__c": 200,
+      "Restock_Recommendation__c": 80
+    },
+    {
+      "Id": "PBE004",
+      "Product2Id": "P004",
+      "UnitPrice": 3500,
+      "ListPrice": 4000,
+      "IsActive": true,
+      "Forecasted_Demand__c": 350,
+      "Restock_Recommendation__c": 150
+    },
+    {
+      "Id": "PBE005",
+      "Product2Id": "P005",
+      "UnitPrice": 28000,
+      "ListPrice": 32000,
+      "IsActive": true,
+      "Forecasted_Demand__c": 90,
+      "Restock_Recommendation__c": 40
+    },
+    {
+      "Id": "PBE006",
+      "Product2Id": "P006",
+      "UnitPrice": 125000,
+      "ListPrice": 140000,
+      "IsActive": true,
+      "Forecasted_Demand__c": 45,
+      "Restock_Recommendation__c": 20
+    }
+  ],
+  "dealerInventory": [
+    {
+      "Id": "INV001",
+      "Dealer__c": "ACC001",
+      "Product2Id": "P001",
+      "Product_Name__c": "Industrial Pump X200",
+      "Stock_On_Hand__c": 15,
+      "Min_Stock_Level__c": 10,
+      "Last_Audit_Date__c": "2024-02-28",
+      "Location__c": "Warehouse A"
+    },
+    {
+      "Id": "INV002",
+      "Dealer__c": "ACC001",
+      "Product2Id": "P002",
+      "Product_Name__c": "Hydraulic Motor HM500",
+      "Stock_On_Hand__c": 8,
+      "Min_Stock_Level__c": 5,
+      "Last_Audit_Date__c": "2024-02-28",
+      "Location__c": "Warehouse A"
+    },
+    {
+      "Id": "INV003",
+      "Dealer__c": "ACC001",
+      "Product2Id": "P003",
+      "Product_Name__c": "Control Valve CV100",
+      "Stock_On_Hand__c": 35,
+      "Min_Stock_Level__c": 20,
+      "Last_Audit_Date__c": "2026-05-27",
+      "Location__c": "Warehouse B"
+    },
+    {
+      "Id": "INV004",
+      "Dealer__c": "ACC001",
+      "Product2Id": "P004",
+      "Product_Name__c": "Pressure Gauge PG50",
+      "Stock_On_Hand__c": 4,
+      "Min_Stock_Level__c": 15,
+      "Last_Audit_Date__c": "2024-02-28",
+      "Location__c": "Warehouse B"
+    },
+    {
+      "Id": "INV005",
+      "Dealer__c": "ACC001",
+      "Product2Id": "P005",
+      "Product_Name__c": "Filtration Unit FU300",
+      "Stock_On_Hand__c": 11,
+      "Min_Stock_Level__c": 8,
+      "Last_Audit_Date__c": "2024-02-28",
+      "Location__c": "Warehouse A"
+    },
+    {
+      "Id": "INV006",
+      "Dealer__c": "ACC001",
+      "Product2Id": "P006",
+      "Product_Name__c": "Compressor CP750",
+      "Stock_On_Hand__c": 3,
+      "Min_Stock_Level__c": 5,
+      "Last_Audit_Date__c": "2024-02-28",
+      "Location__c": "Warehouse C"
+    }
+  ],
+  "warrantyRegs": [
+    {
+      "Id": "WR001",
+      "Dealer__c": "ACC001",
+      "Customer_Name__c": "Ravi Kumar",
+      "Product2Id": "P001",
+      "Product_Name__c": "Industrial Pump X200",
+      "Serial_Number__c": "SN-IPX200-001",
+      "Purchase_Date__c": "2023-11-15",
+      "Warranty_Expiry__c": "2025-11-15",
+      "Status__c": "Active",
+      "Claim_Date__c": null,
+      "Claim_Description__c": null
+    },
+    {
+      "Id": "WR002",
+      "Dealer__c": "ACC001",
+      "Customer_Name__c": "Priya Sharma",
+      "Product2Id": "P002",
+      "Product_Name__c": "Hydraulic Motor HM500",
+      "Serial_Number__c": "SN-HM500-002",
+      "Purchase_Date__c": "2023-12-01",
+      "Warranty_Expiry__c": "2025-12-01",
+      "Status__c": "Claim Raised",
+      "Claim_Date__c": "2024-02-10",
+      "Claim_Description__c": "Motor overheating issue"
+    },
+    {
+      "Id": "WR003",
+      "Dealer__c": "ACC001",
+      "Customer_Name__c": "Arjun Mehta",
+      "Product2Id": "P003",
+      "Product_Name__c": "Control Valve CV100",
+      "Serial_Number__c": "SN-CV100-003",
+      "Purchase_Date__c": "2024-01-05",
+      "Warranty_Expiry__c": "2026-01-05",
+      "Status__c": "Active",
+      "Claim_Date__c": null,
+      "Claim_Description__c": null
+    }
+  ],
+  "dealerSchemes": [
+    {
+      "Id": "a0IgK000002tE9FUAU",
+      "Scheme_Name__c": "Q2 Super Pump Bonus",
+      "Discount_Percentage__c": 8,
+      "Min_Order_Value__c": 200000,
+      "Max_Order_Value__c": 10000000,
+      "IsActive__c": true,
+      "End_Date__c": null,
+      "Start_Date__c": "2026-05-29"
+    },
+    {
+      "Id": "a0IgK000002tEArUAM",
+      "Scheme_Name__c": "Mega Factory Restock",
+      "Discount_Percentage__c": 12,
+      "Min_Order_Value__c": 500000,
+      "Max_Order_Value__c": 10000000,
+      "IsActive__c": true,
+      "End_Date__c": null,
+      "Start_Date__c": "2026-05-29"
+    }
+  ],
+  "dealerPayments": [
+    {
+      "Id": "PAY001",
+      "Dealer__c": "ACC001",
+      "Invoice_Number__c": "INV-2024-001",
+      "Amount__c": 135000,
+      "Due_Date__c": "2024-02-10",
+      "Payment_Date__c": "2024-02-08",
+      "Payment_Status__c": "Paid",
+      "OrderId__c": "ORD001",
+      "Type__c": "Invoice"
+    },
+    {
+      "Id": "PAY002",
+      "Dealer__c": "ACC001",
+      "Invoice_Number__c": "INV-2024-002",
+      "Amount__c": 234000,
+      "Due_Date__c": "2024-03-15",
+      "Payment_Date__c": "2026-05-28",
+      "Payment_Status__c": "Paid",
+      "OrderId__c": "ORD002",
+      "Type__c": "Invoice"
+    },
+    {
+      "Id": "PAY003",
+      "Dealer__c": "ACC001",
+      "Invoice_Number__c": "INV-2024-003",
+      "Amount__c": 78000,
+      "Due_Date__c": "2024-03-20",
+      "Payment_Date__c": null,
+      "Payment_Status__c": "Overdue",
+      "OrderId__c": "ORD003",
+      "Type__c": "Invoice"
+    },
+    {
+      "Id": "PAY004",
+      "Dealer__c": "ACC001",
+      "Invoice_Number__c": "CN-2024-001",
+      "Amount__c": -15000,
+      "Due_Date__c": "2024-02-28",
+      "Payment_Date__c": "2024-02-28",
+      "Payment_Status__c": "Paid",
+      "OrderId__c": null,
+      "Type__c": "Credit Note"
+    },
+    {
+      "Id": "PAY9016D7",
+      "Dealer__c": "001gK000015w9abQAA",
+      "Invoice_Number__c": "INV-2026-005",
+      "Amount__c": 120000,
+      "Due_Date__c": "2026-06-27",
+      "Payment_Date__c": null,
+      "Payment_Status__c": "Cancelled",
+      "OrderId__c": "6a189935a840909c8a73bc66",
+      "Type__c": "Invoice"
+    },
+    {
+      "Id": "PAY5CF6C0",
+      "Dealer__c": "001gK000015w9abQAA",
+      "Invoice_Number__c": "INV-2026-006",
+      "Amount__c": 5000,
+      "Due_Date__c": "2026-06-27",
+      "Payment_Date__c": null,
+      "Payment_Status__c": "Cancelled",
+      "OrderId__c": "6a1899f03c1c47877308e51b",
+      "Type__c": "Invoice"
+    },
+    {
+      "Id": "PAY1F0B32",
+      "Dealer__c": "001gK000015w9abQAA",
+      "Invoice_Number__c": "INV-2026-007",
+      "Amount__c": 255000,
+      "Due_Date__c": "2026-06-27",
+      "Payment_Date__c": "2026-05-28",
+      "Payment_Status__c": "Paid",
+      "OrderId__c": "a0HgK000000wxEDUAY",
+      "Type__c": "Invoice"
+    },
+    {
+      "Id": "PAY837807",
+      "Dealer__c": "001gK000015w9abQAA",
+      "Invoice_Number__c": "INV-2026-008",
+      "Amount__c": 440000,
+      "Due_Date__c": "2026-06-27",
+      "Payment_Date__c": "2026-05-28",
+      "Payment_Status__c": "Paid",
+      "OrderId__c": "a0HgK000000wxqvUAA",
+      "Type__c": "Invoice"
+    },
+    {
+      "Id": "PAYB73D0B",
+      "Dealer__c": "001gK000015w9abQAA",
+      "Invoice_Number__c": "INV-2026-009",
+      "Amount__c": 200000,
+      "Due_Date__c": "2026-06-27",
+      "Payment_Date__c": null,
+      "Payment_Status__c": "Cancelled",
+      "OrderId__c": "a0HgK000000wyobUAA",
+      "Type__c": "Invoice"
+    },
+    {
+      "Id": "PAY6234B7",
+      "Dealer__c": "001gK000015w9abQAA",
+      "Invoice_Number__c": "INV-2026-010",
+      "Amount__c": 25000,
+      "Due_Date__c": "2026-06-28",
+      "Payment_Date__c": null,
+      "Payment_Status__c": "Pending",
+      "OrderId__c": "a0HgK000000x5enUAA",
+      "Type__c": "Invoice"
+    }
+  ],
+  "cases": [
+    {
+      "Id": "CASE001",
+      "AccountId": "ACC001",
+      "CaseNumber": "CS-2024-001",
+      "Subject": "Delivery delay for ORD002",
+      "Status": "In Progress",
+      "Priority": "High",
+      "Description": "Order placed on Feb 15 but tracking not updated",
+      "CreatedDate": "2024-02-25",
+      "LastModifiedDate": "2024-02-26",
+      "Resolution__c": null
+    },
+    {
+      "Id": "CASE002",
+      "AccountId": "ACC001",
+      "CaseNumber": "CS-2024-002",
+      "Subject": "Wrong product delivered in ORD001",
+      "Status": "Closed",
+      "Priority": "Medium",
+      "Description": "Received CV100 instead of CV200",
+      "CreatedDate": "2024-01-22",
+      "LastModifiedDate": "2024-02-01",
+      "Resolution__c": "Replacement shipped on Feb 1"
+    },
+    {
+      "Id": "CASE003",
+      "AccountId": "ACC001",
+      "CaseNumber": "CS-2024-003",
+      "Subject": "Invoice discrepancy for INV-2024-002",
+      "Status": "Open",
+      "Priority": "Low",
+      "Description": "Scheme discount not applied on invoice",
+      "CreatedDate": "2024-03-01",
+      "LastModifiedDate": "2024-03-01",
+      "Resolution__c": null
+    },
+    {
+      "Id": "CASE249383",
+      "AccountId": "001gK000015w9abQAA",
+      "CaseNumber": "CS-2026-2371",
+      "Subject": "My First Test case",
+      "Status": "Open",
+      "Priority": "Medium",
+      "Description": "Hellooo Testtt",
+      "CreatedDate": "2026-05-28",
+      "LastModifiedDate": "2026-05-28",
+      "Resolution__c": null
+    }
+  ],
+  "syncLog": [
+    {
+      "id": "SYNC-1",
+      "timestamp": "2026-05-27T10:38:03.095Z",
+      "changes": 23,
+      "status": "success",
+      "log": [
+        "[SYNC #1] Starting sync at 2026-05-27T10:38:03.095Z",
+        "  ✓ Synced 6 products",
+        "  ✓ Synced 4 orders",
+        "  ✓ Synced 6 inventory records",
+        "  ✓ Synced 4 payment records",
+        "  ✓ Synced 3 warranty records",
+        "  ⚠ Low stock notification created for 2 items"
+      ]
+    },
+    {
+      "id": "SYNC-2",
+      "timestamp": "2026-05-27T10:40:00.164Z",
+      "changes": 23,
+      "status": "success",
+      "log": [
+        "[SYNC #2] Starting sync at 2026-05-27T10:40:00.164Z",
+        "  ✓ Synced 6 products",
+        "  ✓ Synced 4 orders",
+        "  ✓ Synced 6 inventory records",
+        "  ✓ Synced 4 payment records",
+        "  ✓ Synced 3 warranty records"
+      ]
+    },
+    {
+      "id": "SYNC-3",
+      "timestamp": "2026-05-27T10:42:00.093Z",
+      "changes": 23,
+      "status": "success",
+      "log": [
+        "[SYNC #3] Starting sync at 2026-05-27T10:42:00.093Z",
+        "  ✓ Synced 6 products",
+        "  ✓ Synced 4 orders",
+        "  ✓ Synced 6 inventory records",
+        "  ✓ Synced 4 payment records",
+        "  ✓ Synced 3 warranty records"
+      ]
+    },
+    {
+      "id": "SYNC-4",
+      "timestamp": "2026-05-27T10:44:00.980Z",
+      "changes": 23,
+      "status": "success",
+      "log": [
+        "[SYNC #4] Starting sync at 2026-05-27T10:44:00.980Z",
+        "  ✓ Synced 6 products",
+        "  ✓ Synced 4 orders",
+        "  ✓ Synced 6 inventory records",
+        "  ✓ Synced 4 payment records",
+        "  ✓ Synced 3 warranty records"
+      ]
+    },
+    {
+      "id": "SYNC-5",
+      "timestamp": "2026-05-27T10:46:00.847Z",
+      "changes": 23,
+      "status": "success",
+      "log": [
+        "[SYNC #5] Starting sync at 2026-05-27T10:46:00.847Z",
+        "  ✓ Synced 6 products",
+        "  ✓ Synced 4 orders",
+        "  ✓ Synced 6 inventory records",
+        "  ✓ Synced 4 payment records",
+        "  ✓ Synced 3 warranty records"
+      ]
+    },
+    {
+      "id": "SYNC-6",
+      "timestamp": "2026-05-27T10:46:14.826Z",
+      "changes": 23,
+      "status": "success",
+      "log": [
+        "[SYNC #6] Starting sync at 2026-05-27T10:46:14.826Z",
+        "  ✓ Synced 6 products",
+        "  ✓ Synced 4 orders",
+        "  ✓ Synced 6 inventory records",
+        "  ✓ Synced 4 payment records",
+        "  ✓ Synced 3 warranty records"
+      ]
+    },
+    {
+      "id": "SYNC-7",
+      "timestamp": "2026-05-27T10:48:00.747Z",
+      "changes": 23,
+      "status": "success",
+      "log": [
+        "[SYNC #7] Starting sync at 2026-05-27T10:48:00.747Z",
+        "  ✓ Synced 6 products",
+        "  ✓ Synced 4 orders",
+        "  ✓ Synced 6 inventory records",
+        "  ✓ Synced 4 payment records",
+        "  ✓ Synced 3 warranty records"
+      ]
+    },
+    {
+      "id": "SYNC-8",
+      "timestamp": "2026-05-27T10:50:00.644Z",
+      "changes": 23,
+      "status": "success",
+      "log": [
+        "[SYNC #8] Starting sync at 2026-05-27T10:50:00.644Z",
+        "  ✓ Synced 6 products",
+        "  ✓ Synced 4 orders",
+        "  ✓ Synced 6 inventory records",
+        "  ✓ Synced 4 payment records",
+        "  ✓ Synced 3 warranty records",
+        "  ⚠ Low stock notification created for 2 items"
+      ]
+    },
+    {
+      "id": "SYNC-9",
+      "timestamp": "2026-05-27T10:52:00.562Z",
+      "changes": 23,
+      "status": "success",
+      "log": [
+        "[SYNC #9] Starting sync at 2026-05-27T10:52:00.562Z",
+        "  ✓ Synced 6 products",
+        "  ✓ Synced 4 orders",
+        "  ✓ Synced 6 inventory records",
+        "  ✓ Synced 4 payment records",
+        "  ✓ Synced 3 warranty records"
+      ]
+    },
+    {
+      "id": "SYNC-10",
+      "timestamp": "2026-05-27T10:52:46.386Z",
+      "changes": 23,
+      "status": "success",
+      "log": [
+        "[SYNC #10] Starting sync at 2026-05-27T10:52:46.386Z",
+        "  ✓ Synced 6 products",
+        "  ✓ Synced 4 orders",
+        "  ✓ Synced 6 inventory records",
+        "  ✓ Synced 4 payment records",
+        "  ✓ Synced 3 warranty records"
+      ]
+    },
+    {
+      "id": "SYNC-11",
+      "timestamp": "2026-05-27T10:54:00.520Z",
+      "changes": 23,
+      "status": "success",
+      "log": [
+        "[SYNC #11] Starting sync at 2026-05-27T10:54:00.520Z",
+        "  ✓ Synced 6 products",
+        "  ✓ Synced 4 orders",
+        "  ✓ Synced 6 inventory records",
+        "  ✓ Synced 4 payment records",
+        "  ✓ Synced 3 warranty records"
+      ]
+    },
+    {
+      "id": "SYNC-12",
+      "timestamp": "2026-05-27T10:56:00.446Z",
+      "changes": 23,
+      "status": "success",
+      "log": [
+        "[SYNC #12] Starting sync at 2026-05-27T10:56:00.446Z",
+        "  ✓ Synced 6 products",
+        "  ✓ Synced 4 orders",
+        "  ✓ Synced 6 inventory records",
+        "  ✓ Synced 4 payment records",
+        "  ✓ Synced 3 warranty records"
+      ]
+    },
+    {
+      "id": "SYNC-13",
+      "timestamp": "2026-05-27T10:57:17.094Z",
+      "changes": 23,
+      "status": "success",
+      "log": [
+        "[SYNC #13] Starting sync at 2026-05-27T10:57:17.094Z",
+        "  ✓ Synced 6 products",
+        "  ✓ Synced 4 orders",
+        "  ✓ Synced 6 inventory records",
+        "  ✓ Synced 4 payment records",
+        "  ✓ Synced 3 warranty records"
+      ]
+    },
+    {
+      "id": "SYNC-14",
+      "timestamp": "2026-05-27T10:58:00.285Z",
+      "changes": 23,
+      "status": "success",
+      "log": [
+        "[SYNC #14] Starting sync at 2026-05-27T10:58:00.285Z",
+        "  ✓ Synced 6 products",
+        "  ✓ Synced 4 orders",
+        "  ✓ Synced 6 inventory records",
+        "  ✓ Synced 4 payment records",
+        "  ✓ Synced 3 warranty records"
+      ]
+    },
+    {
+      "id": "SYNC-15",
+      "timestamp": "2026-05-27T11:00:00.267Z",
+      "changes": 23,
+      "status": "success",
+      "log": [
+        "[SYNC #15] Starting sync at 2026-05-27T11:00:00.267Z",
+        "  ✓ Synced 6 products",
+        "  ✓ Synced 4 orders",
+        "  ✓ Synced 6 inventory records",
+        "  ✓ Synced 4 payment records",
+        "  ✓ Synced 3 warranty records"
+      ]
+    },
+    {
+      "id": "SYNC-16",
+      "timestamp": "2026-05-27T11:00:57.528Z",
+      "changes": 23,
+      "status": "success",
+      "log": [
+        "[SYNC #16] Starting sync at 2026-05-27T11:00:57.528Z",
+        "  ✓ Synced 6 products",
+        "  ✓ Synced 4 orders",
+        "  ✓ Synced 6 inventory records",
+        "  ✓ Synced 4 payment records",
+        "  ✓ Synced 3 warranty records",
+        "  ⚠ Low stock notification created for 2 items"
+      ]
+    },
+    {
+      "id": "SYNC-17",
+      "timestamp": "2026-05-27T11:01:49.370Z",
+      "changes": 23,
+      "status": "success",
+      "log": [
+        "[SYNC #17] Starting sync at 2026-05-27T11:01:49.370Z",
+        "  ✓ Synced 6 products",
+        "  ✓ Synced 4 orders",
+        "  ✓ Synced 6 inventory records",
+        "  ✓ Synced 4 payment records",
+        "  ✓ Synced 3 warranty records"
+      ]
+    },
+    {
+      "id": "SYNC-18",
+      "timestamp": "2026-05-27T11:01:52.166Z",
+      "changes": 23,
+      "status": "success",
+      "log": [
+        "[SYNC #18] Starting sync at 2026-05-27T11:01:52.166Z",
+        "  ✓ Synced 6 products",
+        "  ✓ Synced 4 orders",
+        "  ✓ Synced 6 inventory records",
+        "  ✓ Synced 4 payment records",
+        "  ✓ Synced 3 warranty records"
+      ]
+    },
+    {
+      "id": "SYNC-19",
+      "timestamp": "2026-05-27T11:02:00.146Z",
+      "changes": 23,
+      "status": "success",
+      "log": [
+        "[SYNC #19] Starting sync at 2026-05-27T11:02:00.146Z",
+        "  ✓ Synced 6 products",
+        "  ✓ Synced 4 orders",
+        "  ✓ Synced 6 inventory records",
+        "  ✓ Synced 4 payment records",
+        "  ✓ Synced 3 warranty records"
+      ]
+    },
+    {
+      "id": "SYNC-20",
+      "timestamp": "2026-05-27T11:04:00.355Z",
+      "changes": 23,
+      "status": "success",
+      "log": [
+        "[SYNC #20] Starting sync at 2026-05-27T11:04:00.355Z",
+        "  ✓ Synced 6 products",
+        "  ✓ Synced 4 orders",
+        "  ✓ Synced 6 inventory records",
+        "  ✓ Synced 4 payment records",
+        "  ✓ Synced 3 warranty records"
+      ]
+    },
+    {
+      "id": "SYNC-21",
+      "timestamp": "2026-05-27T11:06:00.574Z",
+      "changes": 23,
+      "status": "success",
+      "log": [
+        "[SYNC #21] Starting sync at 2026-05-27T11:06:00.574Z",
+        "  ✓ Synced 6 products",
+        "  ✓ Synced 4 orders",
+        "  ✓ Synced 6 inventory records",
+        "  ✓ Synced 4 payment records",
+        "  ✓ Synced 3 warranty records"
+      ]
+    },
+    {
+      "id": "SYNC-22",
+      "timestamp": "2026-05-27T11:08:00.533Z",
+      "changes": 23,
+      "status": "success",
+      "log": [
+        "[SYNC #22] Starting sync at 2026-05-27T11:08:00.533Z",
+        "  ✓ Synced 6 products",
+        "  ✓ Synced 4 orders",
+        "  ✓ Synced 6 inventory records",
+        "  ✓ Synced 4 payment records",
+        "  ✓ Synced 3 warranty records"
+      ]
+    },
+    {
+      "id": "SYNC-23",
+      "timestamp": "2026-05-27T11:10:00.696Z",
+      "changes": 23,
+      "status": "success",
+      "log": [
+        "[SYNC #23] Starting sync at 2026-05-27T11:10:00.696Z",
+        "  ✓ Synced 6 products",
+        "  ✓ Synced 4 orders",
+        "  ✓ Synced 6 inventory records",
+        "  ✓ Synced 4 payment records",
+        "  ✓ Synced 3 warranty records"
+      ]
+    },
+    {
+      "id": "SYNC-24",
+      "timestamp": "2026-05-27T11:12:00.896Z",
+      "changes": 23,
+      "status": "success",
+      "log": [
+        "[SYNC #24] Starting sync at 2026-05-27T11:12:00.896Z",
+        "  ✓ Synced 6 products",
+        "  ✓ Synced 4 orders",
+        "  ✓ Synced 6 inventory records",
+        "  ✓ Synced 4 payment records",
+        "  ✓ Synced 3 warranty records",
+        "  ⚠ Low stock notification created for 2 items"
+      ]
+    },
+    {
+      "id": "SYNC-25",
+      "timestamp": "2026-05-27T11:14:00.132Z",
+      "changes": 23,
+      "status": "success",
+      "log": [
+        "[SYNC #25] Starting sync at 2026-05-27T11:14:00.132Z",
+        "  ✓ Synced 6 products",
+        "  ✓ Synced 4 orders",
+        "  ✓ Synced 6 inventory records",
+        "  ✓ Synced 4 payment records",
+        "  ✓ Synced 3 warranty records"
+      ]
+    },
+    {
+      "id": "SYNC-26",
+      "timestamp": "2026-05-27T11:16:00.408Z",
+      "changes": 23,
+      "status": "success",
+      "log": [
+        "[SYNC #26] Starting sync at 2026-05-27T11:16:00.408Z",
+        "  ✓ Synced 6 products",
+        "  ✓ Synced 4 orders",
+        "  ✓ Synced 6 inventory records",
+        "  ✓ Synced 4 payment records",
+        "  ✓ Synced 3 warranty records"
+      ]
+    },
+    {
+      "id": "SYNC-27",
+      "timestamp": "2026-05-27T11:18:00.654Z",
+      "changes": 23,
+      "status": "success",
+      "log": [
+        "[SYNC #27] Starting sync at 2026-05-27T11:18:00.654Z",
+        "  ✓ Synced 6 products",
+        "  ✓ Synced 4 orders",
+        "  ✓ Synced 6 inventory records",
+        "  ✓ Synced 4 payment records",
+        "  ✓ Synced 3 warranty records"
+      ]
+    },
+    {
+      "id": "SYNC-28",
+      "timestamp": "2026-05-27T11:20:00.894Z",
+      "changes": 23,
+      "status": "success",
+      "log": [
+        "[SYNC #28] Starting sync at 2026-05-27T11:20:00.894Z",
+        "  ✓ Synced 6 products",
+        "  ✓ Synced 4 orders",
+        "  ✓ Synced 6 inventory records",
+        "  ✓ Synced 4 payment records",
+        "  ✓ Synced 3 warranty records"
+      ]
+    },
+    {
+      "id": "SYNC-29",
+      "timestamp": "2026-05-27T11:22:00.079Z",
+      "changes": 23,
+      "status": "success",
+      "log": [
+        "[SYNC #29] Starting sync at 2026-05-27T11:22:00.079Z",
+        "  ✓ Synced 6 products",
+        "  ✓ Synced 4 orders",
+        "  ✓ Synced 6 inventory records",
+        "  ✓ Synced 4 payment records",
+        "  ✓ Synced 3 warranty records"
+      ]
+    },
+    {
+      "id": "SYNC-30",
+      "timestamp": "2026-05-27T11:24:00.403Z",
+      "changes": 23,
+      "status": "success",
+      "log": [
+        "[SYNC #30] Starting sync at 2026-05-27T11:24:00.403Z",
+        "  ✓ Synced 6 products",
+        "  ✓ Synced 4 orders",
+        "  ✓ Synced 6 inventory records",
+        "  ✓ Synced 4 payment records",
+        "  ✓ Synced 3 warranty records",
+        "  ⚠ Low stock notification created for 2 items"
+      ]
+    },
+    {
+      "id": "SYNC-31",
+      "timestamp": "2026-05-27T11:26:00.771Z",
+      "changes": 23,
+      "status": "success",
+      "log": [
+        "[SYNC #31] Starting sync at 2026-05-27T11:26:00.771Z",
+        "  ✓ Synced 6 products",
+        "  ✓ Synced 4 orders",
+        "  ✓ Synced 6 inventory records",
+        "  ✓ Synced 4 payment records",
+        "  ✓ Synced 3 warranty records"
+      ]
+    },
+    {
+      "id": "SYNC-32",
+      "timestamp": "2026-05-27T11:28:00.167Z",
+      "changes": 23,
+      "status": "success",
+      "log": [
+        "[SYNC #32] Starting sync at 2026-05-27T11:28:00.167Z",
+        "  ✓ Synced 6 products",
+        "  ✓ Synced 4 orders",
+        "  ✓ Synced 6 inventory records",
+        "  ✓ Synced 4 payment records",
+        "  ✓ Synced 3 warranty records"
+      ]
+    },
+    {
+      "id": "SYNC-33",
+      "timestamp": "2026-05-27T11:30:00.331Z",
+      "changes": 23,
+      "status": "success",
+      "log": [
+        "[SYNC #33] Starting sync at 2026-05-27T11:30:00.331Z",
+        "  ✓ Synced 6 products",
+        "  ✓ Synced 4 orders",
+        "  ✓ Synced 6 inventory records",
+        "  ✓ Synced 4 payment records",
+        "  ✓ Synced 3 warranty records"
+      ]
+    },
+    {
+      "id": "SYNC-34",
+      "timestamp": "2026-05-27T11:32:00.575Z",
+      "changes": 23,
+      "status": "success",
+      "log": [
+        "[SYNC #34] Starting sync at 2026-05-27T11:32:00.575Z",
+        "  ✓ Synced 6 products",
+        "  ✓ Synced 4 orders",
+        "  ✓ Synced 6 inventory records",
+        "  ✓ Synced 4 payment records",
+        "  ✓ Synced 3 warranty records"
+      ]
+    },
+    {
+      "id": "SYNC-35",
+      "timestamp": "2026-05-27T11:34:00.956Z",
+      "changes": 23,
+      "status": "success",
+      "log": [
+        "[SYNC #35] Starting sync at 2026-05-27T11:34:00.956Z",
+        "  ✓ Synced 6 products",
+        "  ✓ Synced 4 orders",
+        "  ✓ Synced 6 inventory records",
+        "  ✓ Synced 4 payment records",
+        "  ✓ Synced 3 warranty records",
+        "  ⚠ Low stock notification created for 2 items"
+      ]
+    },
+    {
+      "id": "SYNC-36",
+      "timestamp": "2026-05-27T11:36:00.184Z",
+      "changes": 23,
+      "status": "success",
+      "log": [
+        "[SYNC #36] Starting sync at 2026-05-27T11:36:00.184Z",
+        "  ✓ Synced 6 products",
+        "  ✓ Synced 4 orders",
+        "  ✓ Synced 6 inventory records",
+        "  ✓ Synced 4 payment records",
+        "  ✓ Synced 3 warranty records"
+      ]
+    },
+    {
+      "id": "SYNC-37",
+      "timestamp": "2026-05-27T11:38:00.371Z",
+      "changes": 23,
+      "status": "success",
+      "log": [
+        "[SYNC #37] Starting sync at 2026-05-27T11:38:00.371Z",
+        "  ✓ Synced 6 products",
+        "  ✓ Synced 4 orders",
+        "  ✓ Synced 6 inventory records",
+        "  ✓ Synced 4 payment records",
+        "  ✓ Synced 3 warranty records"
+      ]
+    },
+    {
+      "id": "SYNC-38",
+      "timestamp": "2026-05-27T11:40:00.529Z",
+      "changes": 23,
+      "status": "success",
+      "log": [
+        "[SYNC #38] Starting sync at 2026-05-27T11:40:00.529Z",
+        "  ✓ Synced 6 products",
+        "  ✓ Synced 4 orders",
+        "  ✓ Synced 6 inventory records",
+        "  ✓ Synced 4 payment records",
+        "  ✓ Synced 3 warranty records"
+      ]
+    },
+    {
+      "id": "SYNC-39",
+      "timestamp": "2026-05-28T05:02:00.317Z",
+      "changes": 23,
+      "status": "success",
+      "log": [
+        "[SYNC #39] Starting sync at 2026-05-28T05:02:00.317Z",
+        "  ✓ Synced 6 products",
+        "  ✓ Synced 4 orders",
+        "  ✓ Synced 6 inventory records",
+        "  ✓ Synced 4 payment records",
+        "  ✓ Synced 3 warranty records",
+        "  ⚠ Low stock notification created for 2 items"
+      ]
+    },
+    {
+      "id": "SYNC-40",
+      "timestamp": "2026-05-28T05:04:00.016Z",
+      "changes": 23,
+      "status": "success",
+      "log": [
+        "[SYNC #40] Starting sync at 2026-05-28T05:04:00.016Z",
+        "  ✓ Synced 6 products",
+        "  ✓ Synced 4 orders",
+        "  ✓ Synced 6 inventory records",
+        "  ✓ Synced 4 payment records",
+        "  ✓ Synced 3 warranty records"
+      ]
+    },
+    {
+      "id": "SYNC-1",
+      "timestamp": "2026-05-28T06:07:08.988Z",
+      "changes": 23,
+      "status": "success",
+      "log": [
+        "[SYNC #1] Starting sync at 2026-05-28T06:07:08.988Z",
+        "  ✓ Synced 6 products",
+        "  ✓ Synced 4 orders",
+        "  ✓ Synced 6 inventory records",
+        "  ✓ Synced 4 payment records",
+        "  ✓ Synced 3 warranty records",
+        "  ⚠ Low stock notification created for 2 items"
+      ]
+    },
+    {
+      "id": "SYNC-2",
+      "timestamp": "2026-05-28T06:08:00.487Z",
+      "changes": 23,
+      "status": "success",
+      "log": [
+        "[SYNC #2] Starting sync at 2026-05-28T06:08:00.487Z",
+        "  ✓ Synced 6 products",
+        "  ✓ Synced 4 orders",
+        "  ✓ Synced 6 inventory records",
+        "  ✓ Synced 4 payment records",
+        "  ✓ Synced 3 warranty records"
+      ]
+    },
+    {
+      "id": "SYNC-3",
+      "timestamp": "2026-05-28T06:10:00.446Z",
+      "changes": 23,
+      "status": "success",
+      "log": [
+        "[SYNC #3] Starting sync at 2026-05-28T06:10:00.446Z",
+        "  ✓ Synced 6 products",
+        "  ✓ Synced 4 orders",
+        "  ✓ Synced 6 inventory records",
+        "  ✓ Synced 4 payment records",
+        "  ✓ Synced 3 warranty records"
+      ]
+    },
+    {
+      "id": "SYNC-4",
+      "timestamp": "2026-05-28T06:12:00.451Z",
+      "changes": 23,
+      "status": "success",
+      "log": [
+        "[SYNC #4] Starting sync at 2026-05-28T06:12:00.451Z",
+        "  ✓ Synced 6 products",
+        "  ✓ Synced 4 orders",
+        "  ✓ Synced 6 inventory records",
+        "  ✓ Synced 4 payment records",
+        "  ✓ Synced 3 warranty records"
+      ]
+    },
+    {
+      "id": "SYNC-5",
+      "timestamp": "2026-05-28T06:14:00.641Z",
+      "changes": 23,
+      "status": "success",
+      "log": [
+        "[SYNC #5] Starting sync at 2026-05-28T06:14:00.641Z",
+        "  ✓ Synced 6 products",
+        "  ✓ Synced 4 orders",
+        "  ✓ Synced 6 inventory records",
+        "  ✓ Synced 4 payment records",
+        "  ✓ Synced 3 warranty records"
+      ]
+    },
+    {
+      "id": "SYNC-6",
+      "timestamp": "2026-05-28T06:16:00.157Z",
+      "changes": 23,
+      "status": "success",
+      "log": [
+        "[SYNC #6] Starting sync at 2026-05-28T06:16:00.157Z",
+        "  ✓ Synced 6 products",
+        "  ✓ Synced 4 orders",
+        "  ✓ Synced 6 inventory records",
+        "  ✓ Synced 4 payment records",
+        "  ✓ Synced 3 warranty records"
+      ]
+    },
+    {
+      "id": "SYNC-7",
+      "timestamp": "2026-05-28T06:18:00.005Z",
+      "changes": 23,
+      "status": "success",
+      "log": [
+        "[SYNC #7] Starting sync at 2026-05-28T06:18:00.005Z",
+        "  ✓ Synced 6 products",
+        "  ✓ Synced 4 orders",
+        "  ✓ Synced 6 inventory records",
+        "  ✓ Synced 4 payment records",
+        "  ✓ Synced 3 warranty records",
+        "  ⚠ Low stock notification created for 2 items"
+      ]
+    },
+    {
+      "id": "SYNC-8",
+      "timestamp": "2026-05-28T06:20:00.948Z",
+      "changes": 23,
+      "status": "success",
+      "log": [
+        "[SYNC #8] Starting sync at 2026-05-28T06:20:00.948Z",
+        "  ✓ Synced 6 products",
+        "  ✓ Synced 4 orders",
+        "  ✓ Synced 6 inventory records",
+        "  ✓ Synced 4 payment records",
+        "  ✓ Synced 3 warranty records"
+      ]
+    },
+    {
+      "id": "SYNC-9",
+      "timestamp": "2026-05-28T06:22:00.883Z",
+      "changes": 23,
+      "status": "success",
+      "log": [
+        "[SYNC #9] Starting sync at 2026-05-28T06:22:00.883Z",
+        "  ✓ Synced 6 products",
+        "  ✓ Synced 4 orders",
+        "  ✓ Synced 6 inventory records",
+        "  ✓ Synced 4 payment records",
+        "  ✓ Synced 3 warranty records"
+      ]
+    },
+    {
+      "id": "SYNC-10",
+      "timestamp": "2026-05-28T06:24:00.948Z",
+      "changes": 23,
+      "status": "success",
+      "log": [
+        "[SYNC #10] Starting sync at 2026-05-28T06:24:00.948Z",
+        "  ✓ Synced 6 products",
+        "  ✓ Synced 4 orders",
+        "  ✓ Synced 6 inventory records",
+        "  ✓ Synced 4 payment records",
+        "  ✓ Synced 3 warranty records"
+      ]
+    },
+    {
+      "id": "SYNC-11",
+      "timestamp": "2026-05-28T06:26:00.913Z",
+      "changes": 23,
+      "status": "success",
+      "log": [
+        "[SYNC #11] Starting sync at 2026-05-28T06:26:00.913Z",
+        "  ✓ Synced 6 products",
+        "  ✓ Synced 4 orders",
+        "  ✓ Synced 6 inventory records",
+        "  ✓ Synced 4 payment records",
+        "  ✓ Synced 3 warranty records"
+      ]
+    },
+    {
+      "id": "SYNC-12",
+      "timestamp": "2026-05-28T06:28:00.837Z",
+      "changes": 23,
+      "status": "success",
+      "log": [
+        "[SYNC #12] Starting sync at 2026-05-28T06:28:00.837Z",
+        "  ✓ Synced 6 products",
+        "  ✓ Synced 4 orders",
+        "  ✓ Synced 6 inventory records",
+        "  ✓ Synced 4 payment records",
+        "  ✓ Synced 3 warranty records",
+        "  ⚠ Low stock notification created for 2 items"
+      ]
+    },
+    {
+      "id": "SYNC-13",
+      "timestamp": "2026-05-28T06:30:00.807Z",
+      "changes": 23,
+      "status": "success",
+      "log": [
+        "[SYNC #13] Starting sync at 2026-05-28T06:30:00.807Z",
+        "  ✓ Synced 6 products",
+        "  ✓ Synced 4 orders",
+        "  ✓ Synced 6 inventory records",
+        "  ✓ Synced 4 payment records",
+        "  ✓ Synced 3 warranty records"
+      ]
+    },
+    {
+      "id": "SYNC-14",
+      "timestamp": "2026-05-28T06:32:00.757Z",
+      "changes": 23,
+      "status": "success",
+      "log": [
+        "[SYNC #14] Starting sync at 2026-05-28T06:32:00.757Z",
+        "  ✓ Synced 6 products",
+        "  ✓ Synced 4 orders",
+        "  ✓ Synced 6 inventory records",
+        "  ✓ Synced 4 payment records",
+        "  ✓ Synced 3 warranty records"
+      ]
+    },
+    {
+      "id": "SYNC-15",
+      "timestamp": "2026-05-28T06:34:00.761Z",
+      "changes": 23,
+      "status": "success",
+      "log": [
+        "[SYNC #15] Starting sync at 2026-05-28T06:34:00.761Z",
+        "  ✓ Synced 6 products",
+        "  ✓ Synced 4 orders",
+        "  ✓ Synced 6 inventory records",
+        "  ✓ Synced 4 payment records",
+        "  ✓ Synced 3 warranty records"
+      ]
+    },
+    {
+      "id": "SYNC-16",
+      "timestamp": "2026-05-28T06:36:00.770Z",
+      "changes": 23,
+      "status": "success",
+      "log": [
+        "[SYNC #16] Starting sync at 2026-05-28T06:36:00.770Z",
+        "  ✓ Synced 6 products",
+        "  ✓ Synced 4 orders",
+        "  ✓ Synced 6 inventory records",
+        "  ✓ Synced 4 payment records",
+        "  ✓ Synced 3 warranty records"
+      ]
+    },
+    {
+      "id": "SYNC-1",
+      "timestamp": "2026-05-28T06:44:44.304Z",
+      "changes": 23,
+      "status": "success",
+      "log": [
+        "[SYNC #1] Starting sync at 2026-05-28T06:44:44.304Z",
+        "  ✓ Synced 6 products",
+        "  ✓ Synced 4 orders",
+        "  ✓ Synced 6 inventory records",
+        "  ✓ Synced 4 payment records",
+        "  ✓ Synced 3 warranty records",
+        "  ⚠ Low stock notification created for 2 items"
+      ]
+    },
+    {
+      "id": "SYNC-2",
+      "timestamp": "2026-05-28T06:46:00.965Z",
+      "changes": 23,
+      "status": "success",
+      "log": [
+        "[SYNC #2] Starting sync at 2026-05-28T06:46:00.965Z",
+        "  ✓ Synced 6 products",
+        "  ✓ Synced 4 orders",
+        "  ✓ Synced 6 inventory records",
+        "  ✓ Synced 4 payment records",
+        "  ✓ Synced 3 warranty records"
+      ]
+    },
+    {
+      "id": "SYNC-3",
+      "timestamp": "2026-05-28T06:48:00.984Z",
+      "changes": 23,
+      "status": "success",
+      "log": [
+        "[SYNC #3] Starting sync at 2026-05-28T06:48:00.984Z",
+        "  ✓ Synced 6 products",
+        "  ✓ Synced 4 orders",
+        "  ✓ Synced 6 inventory records",
+        "  ✓ Synced 4 payment records",
+        "  ✓ Synced 3 warranty records"
+      ]
+    },
+    {
+      "id": "SYNC-4",
+      "timestamp": "2026-05-28T06:50:00.857Z",
+      "changes": 23,
+      "status": "success",
+      "log": [
+        "[SYNC #4] Starting sync at 2026-05-28T06:50:00.857Z",
+        "  ✓ Synced 6 products",
+        "  ✓ Synced 4 orders",
+        "  ✓ Synced 6 inventory records",
+        "  ✓ Synced 4 payment records",
+        "  ✓ Synced 3 warranty records"
+      ]
+    },
+    {
+      "id": "SYNC-5",
+      "timestamp": "2026-05-28T06:52:00.993Z",
+      "changes": 23,
+      "status": "success",
+      "log": [
+        "[SYNC #5] Starting sync at 2026-05-28T06:52:00.993Z",
+        "  ✓ Synced 6 products",
+        "  ✓ Synced 4 orders",
+        "  ✓ Synced 6 inventory records",
+        "  ✓ Synced 4 payment records",
+        "  ✓ Synced 3 warranty records"
+      ]
+    },
+    {
+      "id": "SYNC-6",
+      "timestamp": "2026-05-28T06:54:00.895Z",
+      "changes": 23,
+      "status": "success",
+      "log": [
+        "[SYNC #6] Starting sync at 2026-05-28T06:54:00.895Z",
+        "  ✓ Synced 6 products",
+        "  ✓ Synced 4 orders",
+        "  ✓ Synced 6 inventory records",
+        "  ✓ Synced 4 payment records",
+        "  ✓ Synced 3 warranty records"
+      ]
+    },
+    {
+      "id": "SYNC-7",
+      "timestamp": "2026-05-28T06:56:00.849Z",
+      "changes": 23,
+      "status": "success",
+      "log": [
+        "[SYNC #7] Starting sync at 2026-05-28T06:56:00.849Z",
+        "  ✓ Synced 6 products",
+        "  ✓ Synced 4 orders",
+        "  ✓ Synced 6 inventory records",
+        "  ✓ Synced 4 payment records",
+        "  ✓ Synced 3 warranty records",
+        "  ⚠ Low stock notification created for 2 items"
+      ]
+    },
+    {
+      "id": "SYNC-8",
+      "timestamp": "2026-05-28T06:58:00.729Z",
+      "changes": 23,
+      "status": "success",
+      "log": [
+        "[SYNC #8] Starting sync at 2026-05-28T06:58:00.729Z",
+        "  ✓ Synced 6 products",
+        "  ✓ Synced 4 orders",
+        "  ✓ Synced 6 inventory records",
+        "  ✓ Synced 4 payment records",
+        "  ✓ Synced 3 warranty records"
+      ]
+    },
+    {
+      "id": "SYNC-9",
+      "timestamp": "2026-05-28T07:00:00.631Z",
+      "changes": 23,
+      "status": "success",
+      "log": [
+        "[SYNC #9] Starting sync at 2026-05-28T07:00:00.631Z",
+        "  ✓ Synced 6 products",
+        "  ✓ Synced 4 orders",
+        "  ✓ Synced 6 inventory records",
+        "  ✓ Synced 4 payment records",
+        "  ✓ Synced 3 warranty records"
+      ]
+    },
+    {
+      "id": "SYNC-10",
+      "timestamp": "2026-05-28T07:02:00.702Z",
+      "changes": 23,
+      "status": "success",
+      "log": [
+        "[SYNC #10] Starting sync at 2026-05-28T07:02:00.702Z",
+        "  ✓ Synced 6 products",
+        "  ✓ Synced 4 orders",
+        "  ✓ Synced 6 inventory records",
+        "  ✓ Synced 4 payment records",
+        "  ✓ Synced 3 warranty records"
+      ]
+    },
+    {
+      "id": "SYNC-11",
+      "timestamp": "2026-05-28T07:04:00.688Z",
+      "changes": 23,
+      "status": "success",
+      "log": [
+        "[SYNC #11] Starting sync at 2026-05-28T07:04:00.688Z",
+        "  ✓ Synced 6 products",
+        "  ✓ Synced 4 orders",
+        "  ✓ Synced 6 inventory records",
+        "  ✓ Synced 4 payment records",
+        "  ✓ Synced 3 warranty records"
+      ]
+    },
+    {
+      "id": "SYNC-12",
+      "timestamp": "2026-05-28T07:06:00.803Z",
+      "changes": 23,
+      "status": "success",
+      "log": [
+        "[SYNC #12] Starting sync at 2026-05-28T07:06:00.803Z",
+        "  ✓ Synced 6 products",
+        "  ✓ Synced 4 orders",
+        "  ✓ Synced 6 inventory records",
+        "  ✓ Synced 4 payment records",
+        "  ✓ Synced 3 warranty records"
+      ]
+    },
+    {
+      "id": "SYNC-13",
+      "timestamp": "2026-05-28T07:08:00.867Z",
+      "changes": 23,
+      "status": "success",
+      "log": [
+        "[SYNC #13] Starting sync at 2026-05-28T07:08:00.867Z",
+        "  ✓ Synced 6 products",
+        "  ✓ Synced 4 orders",
+        "  ✓ Synced 6 inventory records",
+        "  ✓ Synced 4 payment records",
+        "  ✓ Synced 3 warranty records",
+        "  ⚠ Low stock notification created for 2 items"
+      ]
+    },
+    {
+      "id": "SYNC-14",
+      "timestamp": "2026-05-28T07:10:00.199Z",
+      "changes": 23,
+      "status": "success",
+      "log": [
+        "[SYNC #14] Starting sync at 2026-05-28T07:10:00.199Z",
+        "  ✓ Synced 6 products",
+        "  ✓ Synced 4 orders",
+        "  ✓ Synced 6 inventory records",
+        "  ✓ Synced 4 payment records",
+        "  ✓ Synced 3 warranty records"
+      ]
+    },
+    {
+      "id": "SYNC-15",
+      "timestamp": "2026-05-28T07:12:00.265Z",
+      "changes": 23,
+      "status": "success",
+      "log": [
+        "[SYNC #15] Starting sync at 2026-05-28T07:12:00.265Z",
+        "  ✓ Synced 6 products",
+        "  ✓ Synced 4 orders",
+        "  ✓ Synced 6 inventory records",
+        "  ✓ Synced 4 payment records",
+        "  ✓ Synced 3 warranty records"
+      ]
+    },
+    {
+      "id": "SYNC-16",
+      "timestamp": "2026-05-28T07:14:00.377Z",
+      "changes": 23,
+      "status": "success",
+      "log": [
+        "[SYNC #16] Starting sync at 2026-05-28T07:14:00.377Z",
+        "  ✓ Synced 6 products",
+        "  ✓ Synced 4 orders",
+        "  ✓ Synced 6 inventory records",
+        "  ✓ Synced 4 payment records",
+        "  ✓ Synced 3 warranty records"
+      ]
+    },
+    {
+      "id": "SYNC-17",
+      "timestamp": "2026-05-28T07:16:00.493Z",
+      "changes": 23,
+      "status": "success",
+      "log": [
+        "[SYNC #17] Starting sync at 2026-05-28T07:16:00.493Z",
+        "  ✓ Synced 6 products",
+        "  ✓ Synced 4 orders",
+        "  ✓ Synced 6 inventory records",
+        "  ✓ Synced 4 payment records",
+        "  ✓ Synced 3 warranty records"
+      ]
+    },
+    {
+      "id": "SYNC-18",
+      "timestamp": "2026-05-28T07:18:00.538Z",
+      "changes": 23,
+      "status": "success",
+      "log": [
+        "[SYNC #18] Starting sync at 2026-05-28T07:18:00.538Z",
+        "  ✓ Synced 6 products",
+        "  ✓ Synced 4 orders",
+        "  ✓ Synced 6 inventory records",
+        "  ✓ Synced 4 payment records",
+        "  ✓ Synced 3 warranty records"
+      ]
+    },
+    {
+      "id": "SYNC-19",
+      "timestamp": "2026-05-28T07:20:00.085Z",
+      "changes": 23,
+      "status": "success",
+      "log": [
+        "[SYNC #19] Starting sync at 2026-05-28T07:20:00.085Z",
+        "  ✓ Synced 6 products",
+        "  ✓ Synced 4 orders",
+        "  ✓ Synced 6 inventory records",
+        "  ✓ Synced 4 payment records",
+        "  ✓ Synced 3 warranty records",
+        "  ⚠ Low stock notification created for 2 items"
+      ]
+    },
+    {
+      "id": "SYNC-20",
+      "timestamp": "2026-05-28T07:22:00.016Z",
+      "changes": 23,
+      "status": "success",
+      "log": [
+        "[SYNC #20] Starting sync at 2026-05-28T07:22:00.016Z",
+        "  ✓ Synced 6 products",
+        "  ✓ Synced 4 orders",
+        "  ✓ Synced 6 inventory records",
+        "  ✓ Synced 4 payment records",
+        "  ✓ Synced 3 warranty records"
+      ]
+    },
+    {
+      "id": "SYNC-21",
+      "timestamp": "2026-05-28T07:24:00.881Z",
+      "changes": 23,
+      "status": "success",
+      "log": [
+        "[SYNC #21] Starting sync at 2026-05-28T07:24:00.881Z",
+        "  ✓ Synced 6 products",
+        "  ✓ Synced 4 orders",
+        "  ✓ Synced 6 inventory records",
+        "  ✓ Synced 4 payment records",
+        "  ✓ Synced 3 warranty records"
+      ]
+    },
+    {
+      "id": "SYNC-22",
+      "timestamp": "2026-05-28T07:26:00.605Z",
+      "changes": 23,
+      "status": "success",
+      "log": [
+        "[SYNC #22] Starting sync at 2026-05-28T07:26:00.605Z",
+        "  ✓ Synced 6 products",
+        "  ✓ Synced 4 orders",
+        "  ✓ Synced 6 inventory records",
+        "  ✓ Synced 4 payment records",
+        "  ✓ Synced 3 warranty records"
+      ]
+    },
+    {
+      "id": "SYNC-23",
+      "timestamp": "2026-05-28T07:28:00.368Z",
+      "changes": 23,
+      "status": "success",
+      "log": [
+        "[SYNC #23] Starting sync at 2026-05-28T07:28:00.368Z",
+        "  ✓ Synced 6 products",
+        "  ✓ Synced 4 orders",
+        "  ✓ Synced 6 inventory records",
+        "  ✓ Synced 4 payment records",
+        "  ✓ Synced 3 warranty records"
+      ]
+    },
+    {
+      "id": "SYNC-24",
+      "timestamp": "2026-05-28T07:30:00.273Z",
+      "changes": 23,
+      "status": "success",
+      "log": [
+        "[SYNC #24] Starting sync at 2026-05-28T07:30:00.273Z",
+        "  ✓ Synced 6 products",
+        "  ✓ Synced 4 orders",
+        "  ✓ Synced 6 inventory records",
+        "  ✓ Synced 4 payment records",
+        "  ✓ Synced 3 warranty records",
+        "  ⚠ Low stock notification created for 2 items"
+      ]
+    },
+    {
+      "id": "SYNC-25",
+      "timestamp": "2026-05-28T07:32:00.117Z",
+      "changes": 23,
+      "status": "success",
+      "log": [
+        "[SYNC #25] Starting sync at 2026-05-28T07:32:00.117Z",
+        "  ✓ Synced 6 products",
+        "  ✓ Synced 4 orders",
+        "  ✓ Synced 6 inventory records",
+        "  ✓ Synced 4 payment records",
+        "  ✓ Synced 3 warranty records"
+      ]
+    },
+    {
+      "id": "SYNC-26",
+      "timestamp": "2026-05-28T07:34:00.975Z",
+      "changes": 23,
+      "status": "success",
+      "log": [
+        "[SYNC #26] Starting sync at 2026-05-28T07:34:00.975Z",
+        "  ✓ Synced 6 products",
+        "  ✓ Synced 4 orders",
+        "  ✓ Synced 6 inventory records",
+        "  ✓ Synced 4 payment records",
+        "  ✓ Synced 3 warranty records"
+      ]
+    },
+    {
+      "id": "SYNC-27",
+      "timestamp": "2026-05-28T07:36:00.019Z",
+      "changes": 23,
+      "status": "success",
+      "log": [
+        "[SYNC #27] Starting sync at 2026-05-28T07:36:00.019Z",
+        "  ✓ Synced 6 products",
+        "  ✓ Synced 4 orders",
+        "  ✓ Synced 6 inventory records",
+        "  ✓ Synced 4 payment records",
+        "  ✓ Synced 3 warranty records"
+      ]
+    },
+    {
+      "id": "SYNC-28",
+      "timestamp": "2026-05-28T07:38:00.159Z",
+      "changes": 23,
+      "status": "success",
+      "log": [
+        "[SYNC #28] Starting sync at 2026-05-28T07:38:00.159Z",
+        "  ✓ Synced 6 products",
+        "  ✓ Synced 4 orders",
+        "  ✓ Synced 6 inventory records",
+        "  ✓ Synced 4 payment records",
+        "  ✓ Synced 3 warranty records"
+      ]
+    },
+    {
+      "id": "SYNC-29",
+      "timestamp": "2026-05-28T07:40:00.232Z",
+      "changes": 23,
+      "status": "success",
+      "log": [
+        "[SYNC #29] Starting sync at 2026-05-28T07:40:00.232Z",
+        "  ✓ Synced 6 products",
+        "  ✓ Synced 4 orders",
+        "  ✓ Synced 6 inventory records",
+        "  ✓ Synced 4 payment records",
+        "  ✓ Synced 3 warranty records"
+      ]
+    },
+    {
+      "id": "SYNC-30",
+      "timestamp": "2026-05-28T07:42:00.372Z",
+      "changes": 23,
+      "status": "success",
+      "log": [
+        "[SYNC #30] Starting sync at 2026-05-28T07:42:00.372Z",
+        "  ✓ Synced 6 products",
+        "  ✓ Synced 4 orders",
+        "  ✓ Synced 6 inventory records",
+        "  ✓ Synced 4 payment records",
+        "  ✓ Synced 3 warranty records",
+        "  ⚠ Low stock notification created for 2 items"
+      ]
+    },
+    {
+      "id": "SYNC-31",
+      "timestamp": "2026-05-28T07:44:00.736Z",
+      "changes": 23,
+      "status": "success",
+      "log": [
+        "[SYNC #31] Starting sync at 2026-05-28T07:44:00.736Z",
+        "  ✓ Synced 6 products",
+        "  ✓ Synced 4 orders",
+        "  ✓ Synced 6 inventory records",
+        "  ✓ Synced 4 payment records",
+        "  ✓ Synced 3 warranty records"
+      ]
+    },
+    {
+      "id": "SYNC-32",
+      "timestamp": "2026-05-28T07:46:00.052Z",
+      "changes": 23,
+      "status": "success",
+      "log": [
+        "[SYNC #32] Starting sync at 2026-05-28T07:46:00.052Z",
+        "  ✓ Synced 6 products",
+        "  ✓ Synced 4 orders",
+        "  ✓ Synced 6 inventory records",
+        "  ✓ Synced 4 payment records",
+        "  ✓ Synced 3 warranty records"
+      ]
+    },
+    {
+      "id": "SYNC-33",
+      "timestamp": "2026-05-28T07:48:00.313Z",
+      "changes": 23,
+      "status": "success",
+      "log": [
+        "[SYNC #33] Starting sync at 2026-05-28T07:48:00.313Z",
+        "  ✓ Synced 6 products",
+        "  ✓ Synced 4 orders",
+        "  ✓ Synced 6 inventory records",
+        "  ✓ Synced 4 payment records",
+        "  ✓ Synced 3 warranty records"
+      ]
+    },
+    {
+      "id": "SYNC-34",
+      "timestamp": "2026-05-28T07:50:00.638Z",
+      "changes": 23,
+      "status": "success",
+      "log": [
+        "[SYNC #34] Starting sync at 2026-05-28T07:50:00.638Z",
+        "  ✓ Synced 6 products",
+        "  ✓ Synced 4 orders",
+        "  ✓ Synced 6 inventory records",
+        "  ✓ Synced 4 payment records",
+        "  ✓ Synced 3 warranty records"
+      ]
+    },
+    {
+      "id": "SYNC-35",
+      "timestamp": "2026-05-28T07:52:00.005Z",
+      "changes": 23,
+      "status": "success",
+      "log": [
+        "[SYNC #35] Starting sync at 2026-05-28T07:52:00.005Z",
+        "  ✓ Synced 6 products",
+        "  ✓ Synced 4 orders",
+        "  ✓ Synced 6 inventory records",
+        "  ✓ Synced 4 payment records",
+        "  ✓ Synced 3 warranty records"
+      ]
+    },
+    {
+      "id": "SYNC-36",
+      "timestamp": "2026-05-28T07:54:00.265Z",
+      "changes": 23,
+      "status": "success",
+      "log": [
+        "[SYNC #36] Starting sync at 2026-05-28T07:54:00.265Z",
+        "  ✓ Synced 6 products",
+        "  ✓ Synced 4 orders",
+        "  ✓ Synced 6 inventory records",
+        "  ✓ Synced 4 payment records",
+        "  ✓ Synced 3 warranty records",
+        "  ⚠ Low stock notification created for 2 items"
+      ]
+    },
+    {
+      "id": "SYNC-37",
+      "timestamp": "2026-05-28T07:56:00.402Z",
+      "changes": 23,
+      "status": "success",
+      "log": [
+        "[SYNC #37] Starting sync at 2026-05-28T07:56:00.402Z",
+        "  ✓ Synced 6 products",
+        "  ✓ Synced 4 orders",
+        "  ✓ Synced 6 inventory records",
+        "  ✓ Synced 4 payment records",
+        "  ✓ Synced 3 warranty records"
+      ]
+    },
+    {
+      "id": "SYNC-38",
+      "timestamp": "2026-05-28T07:58:00.746Z",
+      "changes": 23,
+      "status": "success",
+      "log": [
+        "[SYNC #38] Starting sync at 2026-05-28T07:58:00.746Z",
+        "  ✓ Synced 6 products",
+        "  ✓ Synced 4 orders",
+        "  ✓ Synced 6 inventory records",
+        "  ✓ Synced 4 payment records",
+        "  ✓ Synced 3 warranty records"
+      ]
+    },
+    {
+      "id": "SYNC-39",
+      "timestamp": "2026-05-28T08:00:00.022Z",
+      "changes": 23,
+      "status": "success",
+      "log": [
+        "[SYNC #39] Starting sync at 2026-05-28T08:00:00.022Z",
+        "  ✓ Synced 6 products",
+        "  ✓ Synced 4 orders",
+        "  ✓ Synced 6 inventory records",
+        "  ✓ Synced 4 payment records",
+        "  ✓ Synced 3 warranty records"
+      ]
+    },
+    {
+      "id": "SYNC-40",
+      "timestamp": "2026-05-28T08:02:00.250Z",
+      "changes": 23,
+      "status": "success",
+      "log": [
+        "[SYNC #40] Starting sync at 2026-05-28T08:02:00.250Z",
+        "  ✓ Synced 6 products",
+        "  ✓ Synced 4 orders",
+        "  ✓ Synced 6 inventory records",
+        "  ✓ Synced 4 payment records",
+        "  ✓ Synced 3 warranty records"
+      ]
+    },
+    {
+      "id": "SYNC-41",
+      "timestamp": "2026-05-28T08:04:00.602Z",
+      "changes": 23,
+      "status": "success",
+      "log": [
+        "[SYNC #41] Starting sync at 2026-05-28T08:04:00.602Z",
+        "  ✓ Synced 6 products",
+        "  ✓ Synced 4 orders",
+        "  ✓ Synced 6 inventory records",
+        "  ✓ Synced 4 payment records",
+        "  ✓ Synced 3 warranty records",
+        "  ⚠ Low stock notification created for 2 items"
+      ]
+    },
+    {
+      "id": "SYNC-42",
+      "timestamp": "2026-05-28T08:06:00.905Z",
+      "changes": 23,
+      "status": "success",
+      "log": [
+        "[SYNC #42] Starting sync at 2026-05-28T08:06:00.905Z",
+        "  ✓ Synced 6 products",
+        "  ✓ Synced 4 orders",
+        "  ✓ Synced 6 inventory records",
+        "  ✓ Synced 4 payment records",
+        "  ✓ Synced 3 warranty records"
+      ]
+    },
+    {
+      "id": "SYNC-43",
+      "timestamp": "2026-05-28T08:08:00.195Z",
+      "changes": 23,
+      "status": "success",
+      "log": [
+        "[SYNC #43] Starting sync at 2026-05-28T08:08:00.195Z",
+        "  ✓ Synced 6 products",
+        "  ✓ Synced 4 orders",
+        "  ✓ Synced 6 inventory records",
+        "  ✓ Synced 4 payment records",
+        "  ✓ Synced 3 warranty records"
+      ]
+    },
+    {
+      "id": "SYNC-44",
+      "timestamp": "2026-05-28T08:10:00.355Z",
+      "changes": 23,
+      "status": "success",
+      "log": [
+        "[SYNC #44] Starting sync at 2026-05-28T08:10:00.355Z",
+        "  ✓ Synced 6 products",
+        "  ✓ Synced 4 orders",
+        "  ✓ Synced 6 inventory records",
+        "  ✓ Synced 4 payment records",
+        "  ✓ Synced 3 warranty records"
+      ]
+    },
+    {
+      "id": "SYNC-45",
+      "timestamp": "2026-05-28T08:12:00.551Z",
+      "changes": 23,
+      "status": "success",
+      "log": [
+        "[SYNC #45] Starting sync at 2026-05-28T08:12:00.551Z",
+        "  ✓ Synced 6 products",
+        "  ✓ Synced 4 orders",
+        "  ✓ Synced 6 inventory records",
+        "  ✓ Synced 4 payment records",
+        "  ✓ Synced 3 warranty records"
+      ]
+    },
+    {
+      "id": "SYNC-46",
+      "timestamp": "2026-05-28T08:14:00.851Z",
+      "changes": 23,
+      "status": "success",
+      "log": [
+        "[SYNC #46] Starting sync at 2026-05-28T08:14:00.851Z",
+        "  ✓ Synced 6 products",
+        "  ✓ Synced 4 orders",
+        "  ✓ Synced 6 inventory records",
+        "  ✓ Synced 4 payment records",
+        "  ✓ Synced 3 warranty records",
+        "  ⚠ Low stock notification created for 2 items"
+      ]
+    },
+    {
+      "id": "SYNC-47",
+      "timestamp": "2026-05-28T08:16:00.130Z",
+      "changes": 23,
+      "status": "success",
+      "log": [
+        "[SYNC #47] Starting sync at 2026-05-28T08:16:00.130Z",
+        "  ✓ Synced 6 products",
+        "  ✓ Synced 4 orders",
+        "  ✓ Synced 6 inventory records",
+        "  ✓ Synced 4 payment records",
+        "  ✓ Synced 3 warranty records"
+      ]
+    },
+    {
+      "id": "SYNC-48",
+      "timestamp": "2026-05-28T08:18:00.411Z",
+      "changes": 23,
+      "status": "success",
+      "log": [
+        "[SYNC #48] Starting sync at 2026-05-28T08:18:00.411Z",
+        "  ✓ Synced 6 products",
+        "  ✓ Synced 4 orders",
+        "  ✓ Synced 6 inventory records",
+        "  ✓ Synced 4 payment records",
+        "  ✓ Synced 3 warranty records"
+      ]
+    },
+    {
+      "id": "SYNC-49",
+      "timestamp": "2026-05-28T08:20:00.705Z",
+      "changes": 23,
+      "status": "success",
+      "log": [
+        "[SYNC #49] Starting sync at 2026-05-28T08:20:00.705Z",
+        "  ✓ Synced 6 products",
+        "  ✓ Synced 4 orders",
+        "  ✓ Synced 6 inventory records",
+        "  ✓ Synced 4 payment records",
+        "  ✓ Synced 3 warranty records"
+      ]
+    },
+    {
+      "id": "SYNC-50",
+      "timestamp": "2026-05-28T08:22:00.076Z",
+      "changes": 23,
+      "status": "success",
+      "log": [
+        "[SYNC #50] Starting sync at 2026-05-28T08:22:00.076Z",
+        "  ✓ Synced 6 products",
+        "  ✓ Synced 4 orders",
+        "  ✓ Synced 6 inventory records",
+        "  ✓ Synced 4 payment records",
+        "  ✓ Synced 3 warranty records"
+      ]
+    },
+    {
+      "id": "SYNC-51",
+      "timestamp": "2026-05-28T08:24:00.386Z",
+      "changes": 23,
+      "status": "success",
+      "log": [
+        "[SYNC #51] Starting sync at 2026-05-28T08:24:00.386Z",
+        "  ✓ Synced 6 products",
+        "  ✓ Synced 4 orders",
+        "  ✓ Synced 6 inventory records",
+        "  ✓ Synced 4 payment records",
+        "  ✓ Synced 3 warranty records"
+      ]
+    },
+    {
+      "id": "SYNC-52",
+      "timestamp": "2026-05-28T08:26:00.686Z",
+      "changes": 23,
+      "status": "success",
+      "log": [
+        "[SYNC #52] Starting sync at 2026-05-28T08:26:00.686Z",
+        "  ✓ Synced 6 products",
+        "  ✓ Synced 4 orders",
+        "  ✓ Synced 6 inventory records",
+        "  ✓ Synced 4 payment records",
+        "  ✓ Synced 3 warranty records",
+        "  ⚠ Low stock notification created for 2 items"
+      ]
+    },
+    {
+      "id": "SYNC-53",
+      "timestamp": "2026-05-28T08:28:00.044Z",
+      "changes": 23,
+      "status": "success",
+      "log": [
+        "[SYNC #53] Starting sync at 2026-05-28T08:28:00.044Z",
+        "  ✓ Synced 6 products",
+        "  ✓ Synced 4 orders",
+        "  ✓ Synced 6 inventory records",
+        "  ✓ Synced 4 payment records",
+        "  ✓ Synced 3 warranty records"
+      ]
+    },
+    {
+      "id": "SYNC-54",
+      "timestamp": "2026-05-28T08:30:00.366Z",
+      "changes": 23,
+      "status": "success",
+      "log": [
+        "[SYNC #54] Starting sync at 2026-05-28T08:30:00.366Z",
+        "  ✓ Synced 6 products",
+        "  ✓ Synced 4 orders",
+        "  ✓ Synced 6 inventory records",
+        "  ✓ Synced 4 payment records",
+        "  ✓ Synced 3 warranty records"
+      ]
+    },
+    {
+      "id": "SYNC-55",
+      "timestamp": "2026-05-28T08:32:00.633Z",
+      "changes": 23,
+      "status": "success",
+      "log": [
+        "[SYNC #55] Starting sync at 2026-05-28T08:32:00.633Z",
+        "  ✓ Synced 6 products",
+        "  ✓ Synced 4 orders",
+        "  ✓ Synced 6 inventory records",
+        "  ✓ Synced 4 payment records",
+        "  ✓ Synced 3 warranty records"
+      ]
+    },
+    {
+      "id": "SYNC-56",
+      "timestamp": "2026-05-28T08:34:00.853Z",
+      "changes": 23,
+      "status": "success",
+      "log": [
+        "[SYNC #56] Starting sync at 2026-05-28T08:34:00.853Z",
+        "  ✓ Synced 6 products",
+        "  ✓ Synced 4 orders",
+        "  ✓ Synced 6 inventory records",
+        "  ✓ Synced 4 payment records",
+        "  ✓ Synced 3 warranty records"
+      ]
+    },
+    {
+      "id": "SYNC-57",
+      "timestamp": "2026-05-28T08:36:00.688Z",
+      "changes": 23,
+      "status": "success",
+      "log": [
+        "[SYNC #57] Starting sync at 2026-05-28T08:36:00.688Z",
+        "  ✓ Synced 6 products",
+        "  ✓ Synced 4 orders",
+        "  ✓ Synced 6 inventory records",
+        "  ✓ Synced 4 payment records",
+        "  ✓ Synced 3 warranty records",
+        "  ⚠ Low stock notification created for 2 items"
+      ]
+    },
+    {
+      "id": "SYNC-58",
+      "timestamp": "2026-05-28T08:38:00.433Z",
+      "changes": 23,
+      "status": "success",
+      "log": [
+        "[SYNC #58] Starting sync at 2026-05-28T08:38:00.433Z",
+        "  ✓ Synced 6 products",
+        "  ✓ Synced 4 orders",
+        "  ✓ Synced 6 inventory records",
+        "  ✓ Synced 4 payment records",
+        "  ✓ Synced 3 warranty records"
+      ]
+    },
+    {
+      "id": "SYNC-59",
+      "timestamp": "2026-05-28T08:40:00.589Z",
+      "changes": 23,
+      "status": "success",
+      "log": [
+        "[SYNC #59] Starting sync at 2026-05-28T08:40:00.589Z",
+        "  ✓ Synced 6 products",
+        "  ✓ Synced 4 orders",
+        "  ✓ Synced 6 inventory records",
+        "  ✓ Synced 4 payment records",
+        "  ✓ Synced 3 warranty records"
+      ]
+    },
+    {
+      "id": "SYNC-60",
+      "timestamp": "2026-05-28T08:42:00.823Z",
+      "changes": 23,
+      "status": "success",
+      "log": [
+        "[SYNC #60] Starting sync at 2026-05-28T08:42:00.823Z",
+        "  ✓ Synced 6 products",
+        "  ✓ Synced 4 orders",
+        "  ✓ Synced 6 inventory records",
+        "  ✓ Synced 4 payment records",
+        "  ✓ Synced 3 warranty records"
+      ]
+    },
+    {
+      "id": "SYNC-61",
+      "timestamp": "2026-05-28T08:44:00.726Z",
+      "changes": 23,
+      "status": "success",
+      "log": [
+        "[SYNC #61] Starting sync at 2026-05-28T08:44:00.726Z",
+        "  ✓ Synced 6 products",
+        "  ✓ Synced 4 orders",
+        "  ✓ Synced 6 inventory records",
+        "  ✓ Synced 4 payment records",
+        "  ✓ Synced 3 warranty records"
+      ]
+    },
+    {
+      "id": "SYNC-62",
+      "timestamp": "2026-05-28T08:46:00.542Z",
+      "changes": 23,
+      "status": "success",
+      "log": [
+        "[SYNC #62] Starting sync at 2026-05-28T08:46:00.542Z",
+        "  ✓ Synced 6 products",
+        "  ✓ Synced 4 orders",
+        "  ✓ Synced 6 inventory records",
+        "  ✓ Synced 4 payment records",
+        "  ✓ Synced 3 warranty records"
+      ]
+    },
+    {
+      "id": "SYNC-63",
+      "timestamp": "2026-05-28T08:48:00.706Z",
+      "changes": 23,
+      "status": "success",
+      "log": [
+        "[SYNC #63] Starting sync at 2026-05-28T08:48:00.706Z",
+        "  ✓ Synced 6 products",
+        "  ✓ Synced 4 orders",
+        "  ✓ Synced 6 inventory records",
+        "  ✓ Synced 4 payment records",
+        "  ✓ Synced 3 warranty records",
+        "  ⚠ Low stock notification created for 2 items"
+      ]
+    },
+    {
+      "id": "SYNC-64",
+      "timestamp": "2026-05-28T08:50:00.934Z",
+      "changes": 23,
+      "status": "success",
+      "log": [
+        "[SYNC #64] Starting sync at 2026-05-28T08:50:00.934Z",
+        "  ✓ Synced 6 products",
+        "  ✓ Synced 4 orders",
+        "  ✓ Synced 6 inventory records",
+        "  ✓ Synced 4 payment records",
+        "  ✓ Synced 3 warranty records"
+      ]
+    },
+    {
+      "id": "SYNC-65",
+      "timestamp": "2026-05-28T08:52:00.784Z",
+      "changes": 23,
+      "status": "success",
+      "log": [
+        "[SYNC #65] Starting sync at 2026-05-28T08:52:00.784Z",
+        "  ✓ Synced 6 products",
+        "  ✓ Synced 4 orders",
+        "  ✓ Synced 6 inventory records",
+        "  ✓ Synced 4 payment records",
+        "  ✓ Synced 3 warranty records"
+      ]
+    },
+    {
+      "id": "SYNC-66",
+      "timestamp": "2026-05-28T08:54:00.848Z",
+      "changes": 23,
+      "status": "success",
+      "log": [
+        "[SYNC #66] Starting sync at 2026-05-28T08:54:00.848Z",
+        "  ✓ Synced 6 products",
+        "  ✓ Synced 4 orders",
+        "  ✓ Synced 6 inventory records",
+        "  ✓ Synced 4 payment records",
+        "  ✓ Synced 3 warranty records"
+      ]
+    },
+    {
+      "id": "SYNC-67",
+      "timestamp": "2026-05-28T08:56:00.000Z",
+      "changes": 23,
+      "status": "success",
+      "log": [
+        "[SYNC #67] Starting sync at 2026-05-28T08:56:00.000Z",
+        "  ✓ Synced 6 products",
+        "  ✓ Synced 4 orders",
+        "  ✓ Synced 6 inventory records",
+        "  ✓ Synced 4 payment records",
+        "  ✓ Synced 3 warranty records"
+      ]
+    },
+    {
+      "id": "SYNC-68",
+      "timestamp": "2026-05-28T08:58:00.222Z",
+      "changes": 23,
+      "status": "success",
+      "log": [
+        "[SYNC #68] Starting sync at 2026-05-28T08:58:00.222Z",
+        "  ✓ Synced 6 products",
+        "  ✓ Synced 4 orders",
+        "  ✓ Synced 6 inventory records",
+        "  ✓ Synced 4 payment records",
+        "  ✓ Synced 3 warranty records"
+      ]
+    },
+    {
+      "id": "SYNC-69",
+      "timestamp": "2026-05-28T09:00:00.266Z",
+      "changes": 23,
+      "status": "success",
+      "log": [
+        "[SYNC #69] Starting sync at 2026-05-28T09:00:00.266Z",
+        "  ✓ Synced 6 products",
+        "  ✓ Synced 4 orders",
+        "  ✓ Synced 6 inventory records",
+        "  ✓ Synced 4 payment records",
+        "  ✓ Synced 3 warranty records",
+        "  ⚠ Low stock notification created for 2 items"
+      ]
+    },
+    {
+      "id": "SYNC-70",
+      "timestamp": "2026-05-28T09:02:00.574Z",
+      "changes": 23,
+      "status": "success",
+      "log": [
+        "[SYNC #70] Starting sync at 2026-05-28T09:02:00.574Z",
+        "  ✓ Synced 6 products",
+        "  ✓ Synced 4 orders",
+        "  ✓ Synced 6 inventory records",
+        "  ✓ Synced 4 payment records",
+        "  ✓ Synced 3 warranty records"
+      ]
+    },
+    {
+      "id": "SYNC-71",
+      "timestamp": "2026-05-28T09:04:00.821Z",
+      "changes": 23,
+      "status": "success",
+      "log": [
+        "[SYNC #71] Starting sync at 2026-05-28T09:04:00.821Z",
+        "  ✓ Synced 6 products",
+        "  ✓ Synced 4 orders",
+        "  ✓ Synced 6 inventory records",
+        "  ✓ Synced 4 payment records",
+        "  ✓ Synced 3 warranty records"
+      ]
+    },
+    {
+      "id": "SYNC-1",
+      "timestamp": "2026-05-28T09:05:59.999Z",
+      "changes": 23,
+      "status": "success",
+      "log": [
+        "[SYNC #1] Starting sync at 2026-05-28T09:05:59.999Z",
+        "  ✓ Synced 6 products",
+        "  ✓ Synced 4 orders",
+        "  ✓ Synced 6 inventory records",
+        "  ✓ Synced 4 payment records",
+        "  ✓ Synced 3 warranty records"
+      ]
+    },
+    {
+      "id": "SYNC-2",
+      "timestamp": "2026-05-28T09:06:00.061Z",
+      "changes": 23,
+      "status": "success",
+      "log": [
+        "[SYNC #2] Starting sync at 2026-05-28T09:06:00.061Z",
+        "  ✓ Synced 6 products",
+        "  ✓ Synced 4 orders",
+        "  ✓ Synced 6 inventory records",
+        "  ✓ Synced 4 payment records",
+        "  ✓ Synced 3 warranty records"
+      ]
+    },
+    {
+      "id": "SYNC-3",
+      "timestamp": "2026-05-28T09:08:00.098Z",
+      "changes": 23,
+      "status": "success",
+      "log": [
+        "[SYNC #3] Starting sync at 2026-05-28T09:08:00.098Z",
+        "  ✓ Synced 6 products",
+        "  ✓ Synced 4 orders",
+        "  ✓ Synced 6 inventory records",
+        "  ✓ Synced 4 payment records",
+        "  ✓ Synced 3 warranty records"
+      ]
+    },
+    {
+      "id": "SYNC-4",
+      "timestamp": "2026-05-28T09:10:00.368Z",
+      "changes": 23,
+      "status": "success",
+      "log": [
+        "[SYNC #4] Starting sync at 2026-05-28T09:10:00.368Z",
+        "  ✓ Synced 6 products",
+        "  ✓ Synced 4 orders",
+        "  ✓ Synced 6 inventory records",
+        "  ✓ Synced 4 payment records",
+        "  ✓ Synced 3 warranty records",
+        "  ⚠ Low stock notification created for 2 items"
+      ]
+    },
+    {
+      "id": "SYNC-5",
+      "timestamp": "2026-05-28T09:12:00.283Z",
+      "changes": 23,
+      "status": "success",
+      "log": [
+        "[SYNC #5] Starting sync at 2026-05-28T09:12:00.283Z",
+        "  ✓ Synced 6 products",
+        "  ✓ Synced 4 orders",
+        "  ✓ Synced 6 inventory records",
+        "  ✓ Synced 4 payment records",
+        "  ✓ Synced 3 warranty records"
+      ]
+    },
+    {
+      "id": "SYNC-6",
+      "timestamp": "2026-05-28T09:14:00.100Z",
+      "changes": 23,
+      "status": "success",
+      "log": [
+        "[SYNC #6] Starting sync at 2026-05-28T09:14:00.100Z",
+        "  ✓ Synced 6 products",
+        "  ✓ Synced 4 orders",
+        "  ✓ Synced 6 inventory records",
+        "  ✓ Synced 4 payment records",
+        "  ✓ Synced 3 warranty records"
+      ]
+    },
+    {
+      "id": "SYNC-1",
+      "timestamp": "2026-05-28T09:16:53.293Z",
+      "changes": 23,
+      "status": "success",
+      "log": [
+        "[SYNC #1] Starting sync at 2026-05-28T09:16:53.293Z",
+        "  ✓ Synced 6 products",
+        "  ✓ Synced 4 orders",
+        "  ✓ Synced 6 inventory records",
+        "  ✓ Synced 4 payment records",
+        "  ✓ Synced 3 warranty records"
+      ]
+    },
+    {
+      "id": "SYNC-2",
+      "timestamp": "2026-05-28T09:18:00.898Z",
+      "changes": 23,
+      "status": "success",
+      "log": [
+        "[SYNC #2] Starting sync at 2026-05-28T09:18:00.898Z",
+        "  ✓ Synced 6 products",
+        "  ✓ Synced 4 orders",
+        "  ✓ Synced 6 inventory records",
+        "  ✓ Synced 4 payment records",
+        "  ✓ Synced 3 warranty records"
+      ]
+    },
+    {
+      "id": "SYNC-3",
+      "timestamp": "2026-05-28T09:20:00.854Z",
+      "changes": 23,
+      "status": "success",
+      "log": [
+        "[SYNC #3] Starting sync at 2026-05-28T09:20:00.854Z",
+        "  ✓ Synced 6 products",
+        "  ✓ Synced 4 orders",
+        "  ✓ Synced 6 inventory records",
+        "  ✓ Synced 4 payment records",
+        "  ✓ Synced 3 warranty records",
+        "  ⚠ Low stock notification created for 2 items"
+      ]
+    },
+    {
+      "id": "SYNC-4",
+      "timestamp": "2026-05-28T09:22:00.727Z",
+      "changes": 23,
+      "status": "success",
+      "log": [
+        "[SYNC #4] Starting sync at 2026-05-28T09:22:00.727Z",
+        "  ✓ Synced 6 products",
+        "  ✓ Synced 4 orders",
+        "  ✓ Synced 6 inventory records",
+        "  ✓ Synced 4 payment records",
+        "  ✓ Synced 3 warranty records"
+      ]
+    },
+    {
+      "id": "SYNC-5",
+      "timestamp": "2026-05-28T09:24:00.554Z",
+      "changes": 23,
+      "status": "success",
+      "log": [
+        "[SYNC #5] Starting sync at 2026-05-28T09:24:00.554Z",
+        "  ✓ Synced 6 products",
+        "  ✓ Synced 4 orders",
+        "  ✓ Synced 6 inventory records",
+        "  ✓ Synced 4 payment records",
+        "  ✓ Synced 3 warranty records"
+      ]
+    },
+    {
+      "id": "SYNC-1",
+      "timestamp": "2026-05-28T09:24:59.046Z",
+      "changes": 23,
+      "status": "success",
+      "log": [
+        "[SYNC #1] Starting sync at 2026-05-28T09:24:59.046Z",
+        "  ✓ Synced 6 products",
+        "  ✓ Synced 4 orders",
+        "  ✓ Synced 6 inventory records",
+        "  ✓ Synced 4 payment records",
+        "  ✓ Synced 3 warranty records"
+      ]
+    },
+    {
+      "id": "SYNC-2",
+      "timestamp": "2026-05-28T09:26:00.522Z",
+      "changes": 23,
+      "status": "success",
+      "log": [
+        "[SYNC #2] Starting sync at 2026-05-28T09:26:00.522Z",
+        "  ✓ Synced 6 products",
+        "  ✓ Synced 4 orders",
+        "  ✓ Synced 6 inventory records",
+        "  ✓ Synced 4 payment records",
+        "  ✓ Synced 3 warranty records"
+      ]
+    },
+    {
+      "id": "SYNC-3",
+      "timestamp": "2026-05-28T09:28:00.414Z",
+      "changes": 23,
+      "status": "success",
+      "log": [
+        "[SYNC #3] Starting sync at 2026-05-28T09:28:00.414Z",
+        "  ✓ Synced 6 products",
+        "  ✓ Synced 4 orders",
+        "  ✓ Synced 6 inventory records",
+        "  ✓ Synced 4 payment records",
+        "  ✓ Synced 3 warranty records"
+      ]
+    },
+    {
+      "id": "SYNC-4",
+      "timestamp": "2026-05-28T09:30:00.270Z",
+      "changes": 23,
+      "status": "success",
+      "log": [
+        "[SYNC #4] Starting sync at 2026-05-28T09:30:00.270Z",
+        "  ✓ Synced 6 products",
+        "  ✓ Synced 4 orders",
+        "  ✓ Synced 6 inventory records",
+        "  ✓ Synced 4 payment records",
+        "  ✓ Synced 3 warranty records"
+      ]
+    },
+    {
+      "id": "SYNC-5",
+      "timestamp": "2026-05-28T09:32:00.022Z",
+      "changes": 23,
+      "status": "success",
+      "log": [
+        "[SYNC #5] Starting sync at 2026-05-28T09:32:00.022Z",
+        "  ✓ Synced 6 products",
+        "  ✓ Synced 4 orders",
+        "  ✓ Synced 6 inventory records",
+        "  ✓ Synced 4 payment records",
+        "  ✓ Synced 3 warranty records",
+        "  ⚠ Low stock notification created for 2 items"
+      ]
+    },
+    {
+      "id": "SYNC-1",
+      "timestamp": "2026-05-28T09:33:08.307Z",
+      "changes": 23,
+      "status": "success",
+      "log": [
+        "[SYNC #1] Starting sync at 2026-05-28T09:33:08.307Z",
+        "  ✓ Synced 6 products",
+        "  ✓ Synced 4 orders",
+        "  ✓ Synced 6 inventory records",
+        "  ✓ Synced 4 payment records",
+        "  ✓ Synced 3 warranty records"
+      ]
+    },
+    {
+      "id": "SYNC-2",
+      "timestamp": "2026-05-28T09:34:00.791Z",
+      "changes": 23,
+      "status": "success",
+      "log": [
+        "[SYNC #2] Starting sync at 2026-05-28T09:34:00.791Z",
+        "  ✓ Synced 6 products",
+        "  ✓ Synced 4 orders",
+        "  ✓ Synced 6 inventory records",
+        "  ✓ Synced 4 payment records",
+        "  ✓ Synced 3 warranty records"
+      ]
+    },
+    {
+      "id": "SYNC-3",
+      "timestamp": "2026-05-28T09:36:00.637Z",
+      "changes": 23,
+      "status": "success",
+      "log": [
+        "[SYNC #3] Starting sync at 2026-05-28T09:36:00.637Z",
+        "  ✓ Synced 6 products",
+        "  ✓ Synced 4 orders",
+        "  ✓ Synced 6 inventory records",
+        "  ✓ Synced 4 payment records",
+        "  ✓ Synced 3 warranty records"
+      ]
+    },
+    {
+      "id": "SYNC-1",
+      "timestamp": "2026-05-28T09:39:57.738Z",
+      "changes": 23,
+      "status": "success",
+      "log": [
+        "[SYNC #1] Starting sync at 2026-05-28T09:39:57.738Z",
+        "  ✓ Synced 6 products",
+        "  ✓ Synced 4 orders",
+        "  ✓ Synced 6 inventory records",
+        "  ✓ Synced 4 payment records",
+        "  ✓ Synced 3 warranty records"
+      ]
+    },
+    {
+      "id": "SYNC-2",
+      "timestamp": "2026-05-28T09:40:00.861Z",
+      "changes": 23,
+      "status": "success",
+      "log": [
+        "[SYNC #2] Starting sync at 2026-05-28T09:40:00.861Z",
+        "  ✓ Synced 6 products",
+        "  ✓ Synced 4 orders",
+        "  ✓ Synced 6 inventory records",
+        "  ✓ Synced 4 payment records",
+        "  ✓ Synced 3 warranty records"
+      ]
+    },
+    {
+      "id": "SYNC-3",
+      "timestamp": "2026-05-28T09:42:00.914Z",
+      "changes": 23,
+      "status": "success",
+      "log": [
+        "[SYNC #3] Starting sync at 2026-05-28T09:42:00.914Z",
+        "  ✓ Synced 6 products",
+        "  ✓ Synced 4 orders",
+        "  ✓ Synced 6 inventory records",
+        "  ✓ Synced 4 payment records",
+        "  ✓ Synced 3 warranty records",
+        "  ⚠ Low stock notification created for 2 items"
+      ]
+    },
+    {
+      "id": "SYNC-4",
+      "timestamp": "2026-05-28T09:44:00.980Z",
+      "changes": 23,
+      "status": "success",
+      "log": [
+        "[SYNC #4] Starting sync at 2026-05-28T09:44:00.980Z",
+        "  ✓ Synced 6 products",
+        "  ✓ Synced 4 orders",
+        "  ✓ Synced 6 inventory records",
+        "  ✓ Synced 4 payment records",
+        "  ✓ Synced 3 warranty records"
+      ]
+    },
+    {
+      "id": "SYNC-5",
+      "timestamp": "2026-05-28T09:46:00.914Z",
+      "changes": 23,
+      "status": "success",
+      "log": [
+        "[SYNC #5] Starting sync at 2026-05-28T09:46:00.914Z",
+        "  ✓ Synced 6 products",
+        "  ✓ Synced 4 orders",
+        "  ✓ Synced 6 inventory records",
+        "  ✓ Synced 4 payment records",
+        "  ✓ Synced 3 warranty records"
+      ]
+    },
+    {
+      "id": "SYNC-1",
+      "timestamp": "2026-05-28T11:33:57.556Z",
+      "changes": 23,
+      "status": "success",
+      "log": [
+        "[SYNC #1] Starting sync at 2026-05-28T11:33:57.556Z",
+        "  ✓ Synced 6 products",
+        "  ✓ Synced 4 orders",
+        "  ✓ Synced 6 inventory records",
+        "  ✓ Synced 4 payment records",
+        "  ✓ Synced 3 warranty records",
+        "  ⚠ Low stock notification created for 2 items"
+      ]
+    },
+    {
+      "id": "SYNC-2",
+      "timestamp": "2026-05-28T11:35:37.112Z",
+      "changes": 23,
+      "status": "success",
+      "log": [
+        "[SYNC #2] Starting sync at 2026-05-28T11:35:37.112Z",
+        "  ✓ Synced 6 products",
+        "  ✓ Synced 4 orders",
+        "  ✓ Synced 6 inventory records",
+        "  ✓ Synced 4 payment records",
+        "  ✓ Synced 3 warranty records"
+      ]
+    },
+    {
+      "id": "SYNC-3",
+      "timestamp": "2026-05-28T11:35:54.424Z",
+      "changes": 23,
+      "status": "success",
+      "log": [
+        "[SYNC #3] Starting sync at 2026-05-28T11:35:54.424Z",
+        "  ✓ Synced 6 products",
+        "  ✓ Synced 4 orders",
+        "  ✓ Synced 6 inventory records",
+        "  ✓ Synced 4 payment records",
+        "  ✓ Synced 3 warranty records"
+      ]
+    },
+    {
+      "id": "SYNC-4",
+      "timestamp": "2026-05-28T11:36:14.396Z",
+      "changes": 23,
+      "status": "success",
+      "log": [
+        "[SYNC #4] Starting sync at 2026-05-28T11:36:14.396Z",
+        "  ✓ Synced 6 products",
+        "  ✓ Synced 4 orders",
+        "  ✓ Synced 6 inventory records",
+        "  ✓ Synced 4 payment records",
+        "  ✓ Synced 3 warranty records"
+      ]
+    },
+    {
+      "id": "SYNC-1",
+      "timestamp": "2026-05-29T06:12:58.515Z",
+      "changes": 29,
+      "status": "success",
+      "log": [
+        "[SYNC #1] Starting sync at 2026-05-29T06:12:58.515Z",
+        "  ✓ Synced 6 products",
+        "  ✓ Synced 4 orders",
+        "  ✓ Synced 6 inventory records",
+        "  ✓ Synced 10 payment records",
+        "  ✓ Synced 3 warranty records",
+        "  ⚠ Low stock notification created for 2 items"
+      ]
+    }
+  ],
+  "leads": []
+}

@@ -1,0 +1,1372 @@
+{
+  "users": [
+    {
+      "id": "USR001",
+      "email": "dealer@sunrise.com",
+      "password": "$2a$10$zm8M/eZVIvofke9HxHNKn.IXxMYKaB4ezGnxbeDbF1ez5KPsO6bAS",
+      "accountId": "ACC001",
+      "role": "dealer",
+      "name": "Raj Sharma",
+      "createdAt": "2026-05-27T10:38:00.082Z"
+    },
+    {
+      "id": "USR88FD2",
+      "email": "harwaniamit2@gmail.com",
+      "password": "$2a$10$EEz4bM5y9T09xdg9itpSdeSUZ5eTvsKJIWWIp1jJEMnoktTfY5sDK",
+      "accountId": "ACCEC9D5",
+      "role": "dealer",
+      "name": "Amit ",
+      "createdAt": "2026-05-27T10:55:44.415Z"
+    }
+  ],
+  "sessions": [],
+  "cachedProducts": [
+    {
+      "Id": "01tgK00000AuquDQAR",
+      "Name": "GenWatt Diesel 1000kW",
+      "ProductCode": "GC1060",
+      "Family": "General",
+      "Description": "",
+      "IsActive": true,
+      "StockKeepingUnit": "GC1060",
+      "UnitPrice": 100000,
+      "ListPrice": 100000,
+      "Forecasted_Demand__c": 240,
+      "Restock_Recommendation__c": 83
+    },
+    {
+      "Id": "01tgK00000AuquEQAR",
+      "Name": "GenWatt Diesel 200kW",
+      "ProductCode": "GC1040",
+      "Family": "General",
+      "Description": "",
+      "IsActive": true,
+      "StockKeepingUnit": "GC1040",
+      "UnitPrice": 25000,
+      "ListPrice": 25000,
+      "Forecasted_Demand__c": 98,
+      "Restock_Recommendation__c": 53
+    },
+    {
+      "Id": "01tgK00000AuquFQAR",
+      "Name": "GenWatt Diesel 10kW",
+      "ProductCode": "GC1020",
+      "Family": "General",
+      "Description": "",
+      "IsActive": true,
+      "StockKeepingUnit": "GC1020",
+      "UnitPrice": 5000,
+      "ListPrice": 5000,
+      "Forecasted_Demand__c": 221,
+      "Restock_Recommendation__c": 36
+    },
+    {
+      "Id": "01tgK00000AuquGQAR",
+      "Name": "Installation: Industrial - High",
+      "ProductCode": "IN7080",
+      "Family": "General",
+      "Description": "",
+      "IsActive": true,
+      "StockKeepingUnit": "IN7080",
+      "UnitPrice": 85000,
+      "ListPrice": 85000,
+      "Forecasted_Demand__c": 175,
+      "Restock_Recommendation__c": 34
+    },
+    {
+      "Id": "01tgK00000AuquHQAR",
+      "Name": "SLA: Silver",
+      "ProductCode": "SL9040",
+      "Family": "General",
+      "Description": "",
+      "IsActive": true,
+      "StockKeepingUnit": "SL9040",
+      "UnitPrice": 20000,
+      "ListPrice": 20000,
+      "Forecasted_Demand__c": 118,
+      "Restock_Recommendation__c": 86
+    },
+    {
+      "Id": "01tgK00000AuquIQAR",
+      "Name": "GenWatt Propane 500kW",
+      "ProductCode": "GC3040",
+      "Family": "General",
+      "Description": "",
+      "IsActive": true,
+      "StockKeepingUnit": "GC3040",
+      "UnitPrice": 50000,
+      "ListPrice": 50000,
+      "Forecasted_Demand__c": 66,
+      "Restock_Recommendation__c": 65
+    },
+    {
+      "Id": "01tgK00000AuquJQAR",
+      "Name": "SLA: Platinum",
+      "ProductCode": "SL9080",
+      "Family": "General",
+      "Description": "",
+      "IsActive": true,
+      "StockKeepingUnit": "SL9080",
+      "UnitPrice": 40000,
+      "ListPrice": 40000,
+      "Forecasted_Demand__c": 109,
+      "Restock_Recommendation__c": 35
+    },
+    {
+      "Id": "01tgK00000AuquKQAR",
+      "Name": "GenWatt Propane 100kW",
+      "ProductCode": "GC3020",
+      "Family": "General",
+      "Description": "",
+      "IsActive": true,
+      "StockKeepingUnit": "GC3020",
+      "UnitPrice": 15000,
+      "ListPrice": 15000,
+      "Forecasted_Demand__c": 173,
+      "Restock_Recommendation__c": 76
+    },
+    {
+      "Id": "01tgK00000AuquLQAR",
+      "Name": "GenWatt Propane 1500kW",
+      "ProductCode": "GC3060",
+      "Family": "General",
+      "Description": "",
+      "IsActive": true,
+      "StockKeepingUnit": "GC3060",
+      "UnitPrice": 120000,
+      "ListPrice": 120000,
+      "Forecasted_Demand__c": 236,
+      "Restock_Recommendation__c": 78
+    },
+    {
+      "Id": "01tgK00000AuquMQAR",
+      "Name": "SLA: Bronze",
+      "ProductCode": "SL9020",
+      "Family": "General",
+      "Description": "",
+      "IsActive": true,
+      "StockKeepingUnit": "SL9020",
+      "UnitPrice": 10000,
+      "ListPrice": 10000,
+      "Forecasted_Demand__c": 107,
+      "Restock_Recommendation__c": 78
+    },
+    {
+      "Id": "01tgK00000AuquNQAR",
+      "Name": "GenWatt Gasoline 750kW",
+      "ProductCode": "GC5040",
+      "Family": "General",
+      "Description": "",
+      "IsActive": true,
+      "StockKeepingUnit": "GC5040",
+      "UnitPrice": 75000,
+      "ListPrice": 75000,
+      "Forecasted_Demand__c": 210,
+      "Restock_Recommendation__c": 79
+    },
+    {
+      "Id": "01tgK00000AuquOQAR",
+      "Name": "Installation: Portable",
+      "ProductCode": "IN7020",
+      "Family": "General",
+      "Description": "",
+      "IsActive": true,
+      "StockKeepingUnit": "IN7020",
+      "UnitPrice": 5000,
+      "ListPrice": 5000,
+      "Forecasted_Demand__c": 63,
+      "Restock_Recommendation__c": 40
+    },
+    {
+      "Id": "01tgK00000AuquPQAR",
+      "Name": "SLA: Gold",
+      "ProductCode": "SL9060",
+      "Family": "General",
+      "Description": "",
+      "IsActive": true,
+      "StockKeepingUnit": "SL9060",
+      "UnitPrice": 30000,
+      "ListPrice": 30000,
+      "Forecasted_Demand__c": 67,
+      "Restock_Recommendation__c": 89
+    },
+    {
+      "Id": "01tgK00000AuquQQAR",
+      "Name": "GenWatt Gasoline 300kW",
+      "ProductCode": "GC5020",
+      "Family": "General",
+      "Description": "",
+      "IsActive": true,
+      "StockKeepingUnit": "GC5020",
+      "UnitPrice": 35000,
+      "ListPrice": 35000,
+      "Forecasted_Demand__c": 54,
+      "Restock_Recommendation__c": 83
+    },
+    {
+      "Id": "01tgK00000AuquRQAR",
+      "Name": "Installation: Industrial - Low",
+      "ProductCode": "IN7040",
+      "Family": "General",
+      "Description": "",
+      "IsActive": true,
+      "StockKeepingUnit": "IN7040",
+      "UnitPrice": 20000,
+      "ListPrice": 20000,
+      "Forecasted_Demand__c": 143,
+      "Restock_Recommendation__c": 33
+    },
+    {
+      "Id": "01tgK00000AuquSQAR",
+      "Name": "GenWatt Gasoline 2000kW",
+      "ProductCode": "GC5060",
+      "Family": "General",
+      "Description": "",
+      "IsActive": true,
+      "StockKeepingUnit": "GC5060",
+      "UnitPrice": 150000,
+      "ListPrice": 150000,
+      "Forecasted_Demand__c": 135,
+      "Restock_Recommendation__c": 73
+    },
+    {
+      "Id": "01tgK00000AuquTQAR",
+      "Name": "Installation: Industrial - Medium",
+      "ProductCode": "IN7060",
+      "Family": "General",
+      "Description": "",
+      "IsActive": true,
+      "StockKeepingUnit": "IN7060",
+      "UnitPrice": 50000,
+      "ListPrice": 50000,
+      "Forecasted_Demand__c": 142,
+      "Restock_Recommendation__c": 83
+    },
+    {
+      "Id": "01tgK00000BCwebQAD",
+      "Name": "Cold Rolled Steel Sheet",
+      "ProductCode": "RM-001",
+      "Family": "Raw Material",
+      "Description": "2mm Cold Rolled Steel 4x8 ft",
+      "IsActive": true,
+      "StockKeepingUnit": "RM-001",
+      "UnitPrice": 120,
+      "ListPrice": 120,
+      "Forecasted_Demand__c": 87,
+      "Restock_Recommendation__c": 72
+    },
+    {
+      "Id": "01tgK00000BCwecQAD",
+      "Name": "Microcontroller Unit X1",
+      "ProductCode": "CMP-101",
+      "Family": "Component",
+      "Description": "32-bit ARM Cortex Microcontroller",
+      "IsActive": true,
+      "StockKeepingUnit": "CMP-101",
+      "UnitPrice": 15.5,
+      "ListPrice": 15.5,
+      "Forecasted_Demand__c": 216,
+      "Restock_Recommendation__c": 39
+    },
+    {
+      "Id": "01tgK00000BCwedQAD",
+      "Name": "M8 Hex Bolt Pack",
+      "ProductCode": "FST-050",
+      "Family": "Fastener",
+      "Description": "Pack of 100 M8 High-Tensile Bolts",
+      "IsActive": true,
+      "StockKeepingUnit": "FST-050",
+      "UnitPrice": 45,
+      "ListPrice": 45,
+      "Forecasted_Demand__c": 216,
+      "Restock_Recommendation__c": 84
+    },
+    {
+      "Id": "01tgK00000BCweeQAD",
+      "Name": "Hydraulic Pump Assembly",
+      "ProductCode": "ASY-300",
+      "Family": "Assembly",
+      "Description": "50GPM Industrial Hydraulic Pump",
+      "IsActive": true,
+      "StockKeepingUnit": "ASY-300",
+      "UnitPrice": 850,
+      "ListPrice": 850,
+      "Forecasted_Demand__c": 236,
+      "Restock_Recommendation__c": 58
+    }
+  ],
+  "cachedOrders": [
+    {
+      "CustomerFirstName": "",
+      "CustomerLastName": "",
+      "CustomerEmail": "",
+      "CustomerPhone": "",
+      "_id": "6a1922853a3252ac7c2c2cdf",
+      "user": "6a1814bc24e169a07d11c9da",
+      "accountId": "001gK000015w9abQAA",
+      "sfId": "a0HgK000000x5enUAA",
+      "OrderNumber": "ORD-00004",
+      "Product": "6a187ed76aeb30a68ca9449b",
+      "ProductName": "GenWatt Diesel 200kW",
+      "ProductCode": "GC1040",
+      "Quantity": 1,
+      "UnitPrice": 25000,
+      "TotalAmount": 25000,
+      "Status": "Delivered",
+      "TrackingNumber": "",
+      "DeliveryDate": null,
+      "ShippingCity": "Ajmer",
+      "AppliedScheme": "",
+      "DiscountAmount": 0,
+      "InventoryCredited": true,
+      "CreatedDate": "2026-05-29",
+      "__v": 0,
+      "Id": "a0HgK000000x5enUAA",
+      "items": [
+        {
+          "Product2Id": "6a187ed76aeb30a68ca9449b",
+          "ProductName": "GenWatt Diesel 200kW",
+          "ProductCode": "GC1040",
+          "Quantity": 1,
+          "UnitPrice": 25000,
+          "TotalPrice": 25000
+        }
+      ]
+    },
+    {
+      "CustomerFirstName": "",
+      "CustomerLastName": "",
+      "CustomerEmail": "",
+      "CustomerPhone": "",
+      "_id": "6a18ad43abc13c2367826f0d",
+      "user": "6a1814bc24e169a07d11c9da",
+      "accountId": "001gK000015w9abQAA",
+      "sfId": "a0HgK000000wyobUAA",
+      "OrderNumber": "ORD-00003",
+      "Product": "6a187ed76aeb30a68ca9449a",
+      "ProductName": "GenWatt Diesel 1000kW",
+      "ProductCode": "GC1060",
+      "Quantity": 2,
+      "UnitPrice": 100000,
+      "TotalAmount": 200000,
+      "Status": "Cancelled",
+      "TrackingNumber": "",
+      "DeliveryDate": null,
+      "ShippingCity": "Ajmer",
+      "AppliedScheme": "",
+      "DiscountAmount": 0,
+      "InventoryCredited": false,
+      "CreatedDate": "2026-05-28",
+      "__v": 0,
+      "Id": "a0HgK000000wyobUAA",
+      "items": [
+        {
+          "Product2Id": "6a187ed76aeb30a68ca9449a",
+          "ProductName": "GenWatt Diesel 1000kW",
+          "ProductCode": "GC1060",
+          "Quantity": 2,
+          "UnitPrice": 100000,
+          "TotalPrice": 200000
+        }
+      ]
+    },
+    {
+      "CustomerFirstName": "",
+      "CustomerLastName": "",
+      "CustomerEmail": "",
+      "CustomerPhone": "",
+      "_id": "6a18a35a18523fa7e21838fe",
+      "user": "6a1814bc24e169a07d11c9da",
+      "accountId": "001gK000015w9abQAA",
+      "sfId": "a0HgK000000wxqvUAA",
+      "OrderNumber": "ORD-00002",
+      "Product": "6a187ed76aeb30a68ca9449b",
+      "ProductName": "GenWatt Diesel 200kW",
+      "ProductCode": "GC1040",
+      "Quantity": 20,
+      "UnitPrice": 25000,
+      "TotalAmount": 440000,
+      "Status": "Delivered",
+      "TrackingNumber": "",
+      "DeliveryDate": null,
+      "ShippingCity": "Ajmer",
+      "AppliedScheme": "Mega Factory Restock",
+      "DiscountAmount": 60000,
+      "CreatedDate": "2026-05-28",
+      "__v": 0,
+      "InventoryCredited": true,
+      "Id": "a0HgK000000wxqvUAA",
+      "items": [
+        {
+          "Product2Id": "6a187ed76aeb30a68ca9449b",
+          "ProductName": "GenWatt Diesel 200kW",
+          "ProductCode": "GC1040",
+          "Quantity": 20,
+          "UnitPrice": 25000,
+          "TotalPrice": 440000
+        }
+      ]
+    },
+    {
+      "CustomerFirstName": "",
+      "CustomerLastName": "",
+      "CustomerEmail": "",
+      "CustomerPhone": "",
+      "_id": "6a189b173c1c47877308e51c",
+      "user": "6a1814bc24e169a07d11c9da",
+      "accountId": "001gK000015w9abQAA",
+      "sfId": "a0HgK000000wxEDUAY",
+      "OrderNumber": "ORD-00001",
+      "Product": "6a187ed86aeb30a68ca9449d",
+      "ProductName": "Installation: Industrial - High",
+      "ProductCode": "IN7080",
+      "Quantity": 3,
+      "UnitPrice": 85000,
+      "TotalAmount": 255000,
+      "Status": "Delivered",
+      "TrackingNumber": "",
+      "DeliveryDate": null,
+      "ShippingCity": "Ajmer",
+      "CreatedDate": "2026-05-28",
+      "__v": 0,
+      "AppliedScheme": "",
+      "DiscountAmount": 0,
+      "InventoryCredited": true,
+      "Id": "a0HgK000000wxEDUAY",
+      "items": [
+        {
+          "Product2Id": "6a187ed86aeb30a68ca9449d",
+          "ProductName": "Installation: Industrial - High",
+          "ProductCode": "IN7080",
+          "Quantity": 3,
+          "UnitPrice": 85000,
+          "TotalPrice": 255000
+        }
+      ]
+    }
+  ],
+  "cachedInventory": [
+    {
+      "Id": "INV001",
+      "Dealer__c": "ACC001",
+      "Product2Id": "P001",
+      "Product_Name__c": "Industrial Pump X200",
+      "Stock_On_Hand__c": 15,
+      "Min_Stock_Level__c": 10,
+      "Last_Audit_Date__c": "2024-02-28",
+      "Location__c": "Warehouse A"
+    },
+    {
+      "Id": "INV002",
+      "Dealer__c": "ACC001",
+      "Product2Id": "P002",
+      "Product_Name__c": "Hydraulic Motor HM500",
+      "Stock_On_Hand__c": 8,
+      "Min_Stock_Level__c": 5,
+      "Last_Audit_Date__c": "2024-02-28",
+      "Location__c": "Warehouse A"
+    },
+    {
+      "Id": "INV003",
+      "Dealer__c": "ACC001",
+      "Product2Id": "P003",
+      "Product_Name__c": "Control Valve CV100",
+      "Stock_On_Hand__c": 35,
+      "Min_Stock_Level__c": 20,
+      "Last_Audit_Date__c": "2026-05-27",
+      "Location__c": "Warehouse B"
+    },
+    {
+      "Id": "INV004",
+      "Dealer__c": "ACC001",
+      "Product2Id": "P004",
+      "Product_Name__c": "Pressure Gauge PG50",
+      "Stock_On_Hand__c": 4,
+      "Min_Stock_Level__c": 15,
+      "Last_Audit_Date__c": "2024-02-28",
+      "Location__c": "Warehouse B"
+    },
+    {
+      "Id": "INV005",
+      "Dealer__c": "ACC001",
+      "Product2Id": "P005",
+      "Product_Name__c": "Filtration Unit FU300",
+      "Stock_On_Hand__c": 11,
+      "Min_Stock_Level__c": 8,
+      "Last_Audit_Date__c": "2024-02-28",
+      "Location__c": "Warehouse A"
+    },
+    {
+      "Id": "INV006",
+      "Dealer__c": "ACC001",
+      "Product2Id": "P006",
+      "Product_Name__c": "Compressor CP750",
+      "Stock_On_Hand__c": 3,
+      "Min_Stock_Level__c": 5,
+      "Last_Audit_Date__c": "2024-02-28",
+      "Location__c": "Warehouse C"
+    }
+  ],
+  "cachedPayments": [
+    {
+      "Id": "PAY001",
+      "Dealer__c": "ACC001",
+      "Invoice_Number__c": "INV-2024-001",
+      "Amount__c": 135000,
+      "Due_Date__c": "2024-02-10",
+      "Payment_Date__c": "2024-02-08",
+      "Payment_Status__c": "Paid",
+      "OrderId__c": "ORD001",
+      "Type__c": "Invoice"
+    },
+    {
+      "Id": "PAY002",
+      "Dealer__c": "ACC001",
+      "Invoice_Number__c": "INV-2024-002",
+      "Amount__c": 234000,
+      "Due_Date__c": "2024-03-15",
+      "Payment_Date__c": "2026-05-28",
+      "Payment_Status__c": "Paid",
+      "OrderId__c": "ORD002",
+      "Type__c": "Invoice"
+    },
+    {
+      "Id": "PAY003",
+      "Dealer__c": "ACC001",
+      "Invoice_Number__c": "INV-2024-003",
+      "Amount__c": 78000,
+      "Due_Date__c": "2024-03-20",
+      "Payment_Date__c": null,
+      "Payment_Status__c": "Overdue",
+      "OrderId__c": "ORD003",
+      "Type__c": "Invoice"
+    },
+    {
+      "Id": "PAY004",
+      "Dealer__c": "ACC001",
+      "Invoice_Number__c": "CN-2024-001",
+      "Amount__c": -15000,
+      "Due_Date__c": "2024-02-28",
+      "Payment_Date__c": "2024-02-28",
+      "Payment_Status__c": "Paid",
+      "OrderId__c": null,
+      "Type__c": "Credit Note"
+    },
+    {
+      "Id": "PAY9016D7",
+      "Dealer__c": "001gK000015w9abQAA",
+      "Invoice_Number__c": "INV-2026-005",
+      "Amount__c": 120000,
+      "Due_Date__c": "2026-06-27",
+      "Payment_Date__c": null,
+      "Payment_Status__c": "Cancelled",
+      "OrderId__c": "6a189935a840909c8a73bc66",
+      "Type__c": "Invoice"
+    },
+    {
+      "Id": "PAY5CF6C0",
+      "Dealer__c": "001gK000015w9abQAA",
+      "Invoice_Number__c": "INV-2026-006",
+      "Amount__c": 5000,
+      "Due_Date__c": "2026-06-27",
+      "Payment_Date__c": null,
+      "Payment_Status__c": "Cancelled",
+      "OrderId__c": "6a1899f03c1c47877308e51b",
+      "Type__c": "Invoice"
+    },
+    {
+      "Id": "PAY1F0B32",
+      "Dealer__c": "001gK000015w9abQAA",
+      "Invoice_Number__c": "INV-2026-007",
+      "Amount__c": 255000,
+      "Due_Date__c": "2026-06-27",
+      "Payment_Date__c": "2026-05-28",
+      "Payment_Status__c": "Paid",
+      "OrderId__c": "a0HgK000000wxEDUAY",
+      "Type__c": "Invoice"
+    },
+    {
+      "Id": "PAY837807",
+      "Dealer__c": "001gK000015w9abQAA",
+      "Invoice_Number__c": "INV-2026-008",
+      "Amount__c": 440000,
+      "Due_Date__c": "2026-06-27",
+      "Payment_Date__c": "2026-05-28",
+      "Payment_Status__c": "Paid",
+      "OrderId__c": "a0HgK000000wxqvUAA",
+      "Type__c": "Invoice"
+    },
+    {
+      "Id": "PAYB73D0B",
+      "Dealer__c": "001gK000015w9abQAA",
+      "Invoice_Number__c": "INV-2026-009",
+      "Amount__c": 200000,
+      "Due_Date__c": "2026-06-27",
+      "Payment_Date__c": null,
+      "Payment_Status__c": "Cancelled",
+      "OrderId__c": "a0HgK000000wyobUAA",
+      "Type__c": "Invoice"
+    },
+    {
+      "Id": "PAY6234B7",
+      "Dealer__c": "001gK000015w9abQAA",
+      "Invoice_Number__c": "INV-2026-010",
+      "Amount__c": 25000,
+      "Due_Date__c": "2026-06-28",
+      "Payment_Date__c": null,
+      "Payment_Status__c": "Pending",
+      "OrderId__c": "a0HgK000000x5enUAA",
+      "Type__c": "Invoice"
+    }
+  ],
+  "cachedWarranty": [
+    {
+      "Id": "WR001",
+      "Dealer__c": "ACC001",
+      "Customer_Name__c": "Ravi Kumar",
+      "Product2Id": "P001",
+      "Product_Name__c": "Industrial Pump X200",
+      "Serial_Number__c": "SN-IPX200-001",
+      "Purchase_Date__c": "2023-11-15",
+      "Warranty_Expiry__c": "2025-11-15",
+      "Status__c": "Active",
+      "Claim_Date__c": null,
+      "Claim_Description__c": null
+    },
+    {
+      "Id": "WR002",
+      "Dealer__c": "ACC001",
+      "Customer_Name__c": "Priya Sharma",
+      "Product2Id": "P002",
+      "Product_Name__c": "Hydraulic Motor HM500",
+      "Serial_Number__c": "SN-HM500-002",
+      "Purchase_Date__c": "2023-12-01",
+      "Warranty_Expiry__c": "2025-12-01",
+      "Status__c": "Claim Raised",
+      "Claim_Date__c": "2024-02-10",
+      "Claim_Description__c": "Motor overheating issue"
+    },
+    {
+      "Id": "WR003",
+      "Dealer__c": "ACC001",
+      "Customer_Name__c": "Arjun Mehta",
+      "Product2Id": "P003",
+      "Product_Name__c": "Control Valve CV100",
+      "Serial_Number__c": "SN-CV100-003",
+      "Purchase_Date__c": "2024-01-05",
+      "Warranty_Expiry__c": "2026-01-05",
+      "Status__c": "Active",
+      "Claim_Date__c": null,
+      "Claim_Description__c": null
+    }
+  ],
+  "activityLog": [
+    {
+      "id": "053b402e-41e9-4f59-ba07-4c6f752035b6",
+      "type": "login",
+      "userId": "USR001",
+      "timestamp": "2026-05-27T10:39:19.051Z"
+    },
+    {
+      "id": "5d99ee96-14b6-4c5c-9656-b9b9113a0621",
+      "type": "login",
+      "userId": "USR001",
+      "timestamp": "2026-05-27T10:54:53.023Z"
+    },
+    {
+      "id": "53be72d8-d2c4-4ee4-b22b-7e5b1d9313b7",
+      "type": "login",
+      "userId": "USR88FD2",
+      "timestamp": "2026-05-27T10:56:06.873Z"
+    },
+    {
+      "id": "10ddddb0-43de-4b5e-9fe8-b8f2cd95e780",
+      "type": "login",
+      "userId": "USR88FD2",
+      "timestamp": "2026-05-27T10:56:38.045Z"
+    },
+    {
+      "id": "c078d2b8-9ff1-41e2-abb5-08e16166cfc9",
+      "type": "login",
+      "userId": "USR001",
+      "timestamp": "2026-05-27T11:02:09.651Z"
+    },
+    {
+      "id": "07927e5a-8f08-4b44-94d4-05915183db42",
+      "type": "login",
+      "userId": "USR001",
+      "timestamp": "2026-05-28T06:08:01.039Z"
+    },
+    {
+      "id": "22ba03db-dc35-4f00-a9f7-f5df8cd3affd",
+      "type": "login",
+      "userId": "USR88FD2",
+      "timestamp": "2026-05-28T06:09:13.552Z"
+    },
+    {
+      "id": "0b846df1-4279-4387-a0b3-058bd4b5a7ef",
+      "type": "login",
+      "userId": "USR001",
+      "timestamp": "2026-05-28T06:46:13.376Z"
+    },
+    {
+      "id": "3eafafb1-cbfc-472d-8931-53d460a50441",
+      "type": "login",
+      "userId": "USRD9C0F",
+      "timestamp": "2026-05-28T06:49:38.512Z"
+    },
+    {
+      "id": "822b50aa-a9cc-4f9a-995c-936cb4ed420d",
+      "type": "login",
+      "userId": "USR001",
+      "timestamp": "2026-05-28T09:07:27.096Z"
+    },
+    {
+      "id": "b05133b2-2745-40e1-b940-39ec2330ad89",
+      "type": "login",
+      "userId": "USR001",
+      "timestamp": "2026-05-28T09:36:30.345Z"
+    },
+    {
+      "id": "7ccb7622-1fa1-488c-af4f-51b44c37f8ef",
+      "type": "login",
+      "userId": "USR001",
+      "timestamp": "2026-05-28T09:45:32.545Z"
+    },
+    {
+      "id": "fd1e559d-716d-4dbb-a8d8-ea4c745b7a39",
+      "type": "login",
+      "userId": "USR001",
+      "timestamp": "2026-05-28T09:47:55.089Z"
+    },
+    {
+      "id": "9da1a52c-ad37-4c1c-a23b-02aba4dfc6d7",
+      "type": "login",
+      "userId": "USR001",
+      "timestamp": "2026-05-28T10:18:15.212Z"
+    },
+    {
+      "id": "172689b7-15f4-4ab7-bb31-6087d3aa01fc",
+      "type": "login",
+      "userId": "USR7A1F4",
+      "timestamp": "2026-05-28T11:00:38.506Z"
+    },
+    {
+      "id": "1445b7ce-80a2-412c-979b-b815cf44a4db",
+      "type": "login",
+      "userId": "USR7A1F4",
+      "timestamp": "2026-05-28T11:06:54.903Z"
+    },
+    {
+      "id": "4e13c3c5-a4a3-4570-b82b-21796c13a063",
+      "type": "login",
+      "userId": "USRD9D23",
+      "timestamp": "2026-05-28T11:11:52.731Z"
+    },
+    {
+      "id": "30baae75-1425-4e7e-9ed5-bb1633bbeb70",
+      "type": "login",
+      "userId": "USR7A1F4",
+      "timestamp": "2026-05-28T11:12:10.034Z"
+    },
+    {
+      "id": "bc4f966f-fbe0-498a-9c59-ac452e15489c",
+      "type": "login",
+      "userId": "USR7A1F4",
+      "timestamp": "2026-05-28T11:34:20.420Z"
+    },
+    {
+      "id": "246d2959-4416-4fa0-8543-36ef2f470e26",
+      "type": "login",
+      "userId": "USR7A1F4",
+      "timestamp": "2026-05-28T11:34:52.056Z"
+    },
+    {
+      "id": "3ed251de-e40f-41fe-9710-2edbf67ea195",
+      "type": "login",
+      "userId": "USR001",
+      "timestamp": "2026-05-28T16:05:07.754Z"
+    },
+    {
+      "id": "1ef5afa6-9f14-473a-aac4-25d3a50866dd",
+      "type": "login",
+      "userId": "USR7A1F4",
+      "timestamp": "2026-05-28T16:06:14.780Z"
+    },
+    {
+      "id": "7b71fa0d-fe85-4050-9c9a-846195a9a92a",
+      "type": "login",
+      "userId": "USR7A1F4",
+      "timestamp": "2026-05-28T17:43:31.428Z"
+    },
+    {
+      "id": "5fd506e8-5cbf-4e9f-af2a-c8584c587f80",
+      "type": "login",
+      "userId": "USR7A1F4",
+      "timestamp": "2026-05-28T19:35:51.078Z"
+    },
+    {
+      "id": "d3dae86a-4876-4c55-993e-9399eeafef98",
+      "type": "login",
+      "userId": "USR7A1F4",
+      "timestamp": "2026-05-28T20:12:54.293Z"
+    },
+    {
+      "id": "3e6be526-4870-4ba8-91f1-d9e3fac08eb1",
+      "type": "login",
+      "userId": "USR7A1F4",
+      "timestamp": "2026-05-28T20:17:16.001Z"
+    },
+    {
+      "id": "7515b3d3-3964-423b-b301-a00bc046f286",
+      "type": "login",
+      "userId": "USR7A1F4",
+      "timestamp": "2026-05-28T20:37:12.539Z"
+    },
+    {
+      "id": "fc0a0ec5-175c-4c60-a6f0-c1239a96a865",
+      "type": "login",
+      "userId": "USR7A1F4",
+      "timestamp": "2026-05-28T20:40:11.920Z"
+    },
+    {
+      "id": "99a1127c-08e9-4a42-bbf0-35a246e11980",
+      "type": "login",
+      "userId": "USR7A1F4",
+      "timestamp": "2026-05-28T20:58:35.132Z"
+    },
+    {
+      "id": "06d05141-e22e-44d8-b5a8-786b7a67205b",
+      "type": "login",
+      "userId": "USR7A1F4",
+      "timestamp": "2026-05-29T05:03:12.679Z"
+    },
+    {
+      "id": "e3d73c4b-250a-424a-a41f-444bc12a5ce4",
+      "type": "login",
+      "userId": "USR7A1F4",
+      "timestamp": "2026-05-29T05:16:11.103Z"
+    },
+    {
+      "id": "59bf126a-5669-4b20-8567-654f3f212edb",
+      "type": "login",
+      "userId": "USR7A1F4",
+      "timestamp": "2026-05-29T05:19:47.890Z"
+    },
+    {
+      "id": "87e2edb1-291d-4b86-9e6d-51df3674afaf",
+      "type": "login",
+      "userId": "USR7A1F4",
+      "timestamp": "2026-05-29T05:23:32.733Z"
+    },
+    {
+      "id": "f277bfc5-f882-4a79-93e6-f39df12389c4",
+      "type": "login",
+      "userId": "USR7A1F4",
+      "timestamp": "2026-05-29T05:36:56.875Z"
+    },
+    {
+      "id": "347ff413-5bf0-4f3e-bbd1-8303c6aad32c",
+      "type": "login",
+      "userId": "USR7A1F4",
+      "timestamp": "2026-05-29T05:42:26.060Z"
+    },
+    {
+      "id": "16095529-7e9a-452c-905e-e2a20307dbb8",
+      "type": "login",
+      "userId": "USR7A1F4",
+      "timestamp": "2026-05-29T05:46:50.530Z"
+    },
+    {
+      "id": "c9139c3c-7df0-4513-bc9e-1786602c0e31",
+      "type": "login",
+      "userId": "USR7A1F4",
+      "timestamp": "2026-05-29T06:06:55.432Z"
+    },
+    {
+      "id": "157dfb39-b1a8-4bd6-8c0b-550f1e0efae7",
+      "type": "login",
+      "userId": "USR7A1F4",
+      "timestamp": "2026-05-29T06:11:24.402Z"
+    },
+    {
+      "id": "25eb4312-8c61-4550-bab6-c1802de0e3d6",
+      "type": "login",
+      "userId": "USR7A1F4",
+      "timestamp": "2026-05-29T06:30:15.488Z"
+    },
+    {
+      "id": "1ebbd4d9-3c66-4287-bb62-78a31aabb5bc",
+      "type": "login",
+      "userId": "USR7A1F4",
+      "timestamp": "2026-05-29T08:22:40.575Z"
+    },
+    {
+      "id": "a66366e3-1b0f-471a-8d89-0cebf6c8a613",
+      "type": "login",
+      "userId": "USR7A1F4",
+      "timestamp": "2026-05-29T09:27:07.233Z"
+    },
+    {
+      "id": "6710640d-d1bb-40a1-a398-b8ac755e29b7",
+      "type": "login",
+      "userId": "USR7A1F4",
+      "timestamp": "2026-05-29T11:17:33.670Z"
+    },
+    {
+      "id": "17045a1a-4fc3-4e99-826a-9aa814677b55",
+      "type": "login",
+      "userId": "USR7A1F4",
+      "timestamp": "2026-05-29T11:25:07.885Z"
+    },
+    {
+      "id": "28a7489e-d694-4bf1-9900-a8ce941b56b6",
+      "type": "login",
+      "userId": "USR7A1F4",
+      "timestamp": "2026-05-29T13:06:35.832Z"
+    },
+    {
+      "id": "af1b235c-05b4-4dff-ae6e-559b541af05e",
+      "type": "login",
+      "userId": "USR7A1F4",
+      "timestamp": "2026-05-29T13:08:11.296Z"
+    },
+    {
+      "id": "d17619c2-578b-438f-a782-773a25e2e9d0",
+      "type": "login",
+      "userId": "USR7A1F4",
+      "timestamp": "2026-05-29T13:15:34.653Z"
+    },
+    {
+      "id": "c0aab300-90b5-49e5-a4ac-b7ff51ebdd01",
+      "type": "login",
+      "userId": "USR7A1F4",
+      "timestamp": "2026-05-29T13:34:19.264Z"
+    }
+  ],
+  "notifications": [
+    {
+      "id": "NOTIF-1779878283104",
+      "type": "warning",
+      "title": "Low Stock Alert",
+      "message": "2 product(s) below minimum stock level",
+      "items": [
+        "Pressure Gauge PG50",
+        "Compressor CP750"
+      ],
+      "timestamp": "2026-05-27T10:38:03.095Z",
+      "read": false
+    },
+    {
+      "id": "NOTIF-1779879000647",
+      "type": "warning",
+      "title": "Low Stock Alert",
+      "message": "2 product(s) below minimum stock level",
+      "items": [
+        "Pressure Gauge PG50",
+        "Compressor CP750"
+      ],
+      "timestamp": "2026-05-27T10:50:00.644Z",
+      "read": false
+    },
+    {
+      "id": "NOTIF-1779879657540",
+      "type": "warning",
+      "title": "Low Stock Alert",
+      "message": "2 product(s) below minimum stock level",
+      "items": [
+        "Pressure Gauge PG50",
+        "Compressor CP750"
+      ],
+      "timestamp": "2026-05-27T11:00:57.528Z",
+      "read": false
+    },
+    {
+      "id": "NOTIF-1779880320899",
+      "type": "warning",
+      "title": "Low Stock Alert",
+      "message": "2 product(s) below minimum stock level",
+      "items": [
+        "Pressure Gauge PG50",
+        "Compressor CP750"
+      ],
+      "timestamp": "2026-05-27T11:12:00.896Z",
+      "read": false
+    },
+    {
+      "id": "NOTIF-1779881040406",
+      "type": "warning",
+      "title": "Low Stock Alert",
+      "message": "2 product(s) below minimum stock level",
+      "items": [
+        "Pressure Gauge PG50",
+        "Compressor CP750"
+      ],
+      "timestamp": "2026-05-27T11:24:00.403Z",
+      "read": false
+    },
+    {
+      "id": "NOTIF-1779881640960",
+      "type": "warning",
+      "title": "Low Stock Alert",
+      "message": "2 product(s) below minimum stock level",
+      "items": [
+        "Pressure Gauge PG50",
+        "Compressor CP750"
+      ],
+      "timestamp": "2026-05-27T11:34:00.956Z",
+      "read": false
+    },
+    {
+      "id": "NOTIF-1779944520333",
+      "type": "warning",
+      "title": "Low Stock Alert",
+      "message": "2 product(s) below minimum stock level",
+      "items": [
+        "Pressure Gauge PG50",
+        "Compressor CP750"
+      ],
+      "timestamp": "2026-05-28T05:02:00.317Z",
+      "read": false
+    },
+    {
+      "id": "NOTIF-1779948429000",
+      "type": "warning",
+      "title": "Low Stock Alert",
+      "message": "2 product(s) below minimum stock level",
+      "items": [
+        "Pressure Gauge PG50",
+        "Compressor CP750"
+      ],
+      "timestamp": "2026-05-28T06:07:08.988Z",
+      "read": false
+    },
+    {
+      "id": "NOTIF-1779949080025",
+      "type": "warning",
+      "title": "Low Stock Alert",
+      "message": "2 product(s) below minimum stock level",
+      "items": [
+        "Pressure Gauge PG50",
+        "Compressor CP750"
+      ],
+      "timestamp": "2026-05-28T06:18:00.005Z",
+      "read": false
+    },
+    {
+      "id": "NOTIF-1779949680846",
+      "type": "warning",
+      "title": "Low Stock Alert",
+      "message": "2 product(s) below minimum stock level",
+      "items": [
+        "Pressure Gauge PG50",
+        "Compressor CP750"
+      ],
+      "timestamp": "2026-05-28T06:28:00.837Z",
+      "read": false
+    },
+    {
+      "id": "NOTIF-1779950684315",
+      "type": "warning",
+      "title": "Low Stock Alert",
+      "message": "2 product(s) below minimum stock level",
+      "items": [
+        "Pressure Gauge PG50",
+        "Compressor CP750"
+      ],
+      "timestamp": "2026-05-28T06:44:44.304Z",
+      "read": false
+    },
+    {
+      "id": "NOTIF-1779951360854",
+      "type": "warning",
+      "title": "Low Stock Alert",
+      "message": "2 product(s) below minimum stock level",
+      "items": [
+        "Pressure Gauge PG50",
+        "Compressor CP750"
+      ],
+      "timestamp": "2026-05-28T06:56:00.849Z",
+      "read": false
+    },
+    {
+      "id": "NOTIF-1779952080872",
+      "type": "warning",
+      "title": "Low Stock Alert",
+      "message": "2 product(s) below minimum stock level",
+      "items": [
+        "Pressure Gauge PG50",
+        "Compressor CP750"
+      ],
+      "timestamp": "2026-05-28T07:08:00.867Z",
+      "read": false
+    },
+    {
+      "id": "NOTIF-1779952800096",
+      "type": "warning",
+      "title": "Low Stock Alert",
+      "message": "2 product(s) below minimum stock level",
+      "items": [
+        "Pressure Gauge PG50",
+        "Compressor CP750"
+      ],
+      "timestamp": "2026-05-28T07:20:00.085Z",
+      "read": false
+    },
+    {
+      "id": "NOTIF-1779953400276",
+      "type": "warning",
+      "title": "Low Stock Alert",
+      "message": "2 product(s) below minimum stock level",
+      "items": [
+        "Pressure Gauge PG50",
+        "Compressor CP750"
+      ],
+      "timestamp": "2026-05-28T07:30:00.273Z",
+      "read": false
+    },
+    {
+      "id": "NOTIF-1779954120376",
+      "type": "warning",
+      "title": "Low Stock Alert",
+      "message": "2 product(s) below minimum stock level",
+      "items": [
+        "Pressure Gauge PG50",
+        "Compressor CP750"
+      ],
+      "timestamp": "2026-05-28T07:42:00.372Z",
+      "read": false
+    },
+    {
+      "id": "NOTIF-1779954840269",
+      "type": "warning",
+      "title": "Low Stock Alert",
+      "message": "2 product(s) below minimum stock level",
+      "items": [
+        "Pressure Gauge PG50",
+        "Compressor CP750"
+      ],
+      "timestamp": "2026-05-28T07:54:00.265Z",
+      "read": false
+    },
+    {
+      "id": "NOTIF-1779955440606",
+      "type": "warning",
+      "title": "Low Stock Alert",
+      "message": "2 product(s) below minimum stock level",
+      "items": [
+        "Pressure Gauge PG50",
+        "Compressor CP750"
+      ],
+      "timestamp": "2026-05-28T08:04:00.602Z",
+      "read": false
+    },
+    {
+      "id": "NOTIF-1779956040857",
+      "type": "warning",
+      "title": "Low Stock Alert",
+      "message": "2 product(s) below minimum stock level",
+      "items": [
+        "Pressure Gauge PG50",
+        "Compressor CP750"
+      ],
+      "timestamp": "2026-05-28T08:14:00.851Z",
+      "read": false
+    },
+    {
+      "id": "NOTIF-1779956760690",
+      "type": "warning",
+      "title": "Low Stock Alert",
+      "message": "2 product(s) below minimum stock level",
+      "items": [
+        "Pressure Gauge PG50",
+        "Compressor CP750"
+      ],
+      "timestamp": "2026-05-28T08:26:00.686Z",
+      "read": false
+    },
+    {
+      "id": "NOTIF-1779957360691",
+      "type": "warning",
+      "title": "Low Stock Alert",
+      "message": "2 product(s) below minimum stock level",
+      "items": [
+        "Pressure Gauge PG50",
+        "Compressor CP750"
+      ],
+      "timestamp": "2026-05-28T08:36:00.688Z",
+      "read": false
+    },
+    {
+      "id": "NOTIF-1779958080709",
+      "type": "warning",
+      "title": "Low Stock Alert",
+      "message": "2 product(s) below minimum stock level",
+      "items": [
+        "Pressure Gauge PG50",
+        "Compressor CP750"
+      ],
+      "timestamp": "2026-05-28T08:48:00.706Z",
+      "read": false
+    },
+    {
+      "id": "NOTIF-1779958800270",
+      "type": "warning",
+      "title": "Low Stock Alert",
+      "message": "2 product(s) below minimum stock level",
+      "items": [
+        "Pressure Gauge PG50",
+        "Compressor CP750"
+      ],
+      "timestamp": "2026-05-28T09:00:00.266Z",
+      "read": false
+    },
+    {
+      "id": "NOTIF-1779959400372",
+      "type": "warning",
+      "title": "Low Stock Alert",
+      "message": "2 product(s) below minimum stock level",
+      "items": [
+        "Pressure Gauge PG50",
+        "Compressor CP750"
+      ],
+      "timestamp": "2026-05-28T09:10:00.368Z",
+      "read": false
+    },
+    {
+      "id": "NOTIF-1779960000857",
+      "type": "warning",
+      "title": "Low Stock Alert",
+      "message": "2 product(s) below minimum stock level",
+      "items": [
+        "Pressure Gauge PG50",
+        "Compressor CP750"
+      ],
+      "timestamp": "2026-05-28T09:20:00.854Z",
+      "read": false
+    },
+    {
+      "id": "NOTIF-1779960720025",
+      "type": "warning",
+      "title": "Low Stock Alert",
+      "message": "2 product(s) below minimum stock level",
+      "items": [
+        "Pressure Gauge PG50",
+        "Compressor CP750"
+      ],
+      "timestamp": "2026-05-28T09:32:00.022Z",
+      "read": false
+    },
+    {
+      "id": "NOTIF-1779961320920",
+      "type": "warning",
+      "title": "Low Stock Alert",
+      "message": "2 product(s) below minimum stock level",
+      "items": [
+        "Pressure Gauge PG50",
+        "Compressor CP750"
+      ],
+      "timestamp": "2026-05-28T09:42:00.914Z",
+      "read": false
+    },
+    {
+      "id": "NOTIF-1779968037575",
+      "type": "warning",
+      "title": "Low Stock Alert",
+      "message": "2 product(s) below minimum stock level",
+      "items": [
+        "Pressure Gauge PG50",
+        "Compressor CP750"
+      ],
+      "timestamp": "2026-05-28T11:33:57.556Z",
+      "read": false
+    },
+    {
+      "id": "NOTIF-1779996981682",
+      "type": "success",
+      "title": "Order Placed Successfully",
+      "message": "Order ORD-2026-001 has been placed. Final Amount: ₹1,20,000",
+      "timestamp": "2026-05-28T19:36:21.874Z",
+      "read": false
+    },
+    {
+      "id": "NOTIF-1779997113968",
+      "type": "info",
+      "title": "Order Cancelled",
+      "message": "Order ORD-2026-001 has been successfully cancelled. Outstanding limit updated.",
+      "timestamp": "2026-05-28T19:38:33.968Z",
+      "read": false
+    },
+    {
+      "id": "NOTIF-1779997168553",
+      "type": "success",
+      "title": "Order Placed Successfully",
+      "message": "Order ORD-2026-002 has been placed. Final Amount: ₹5,000",
+      "timestamp": "2026-05-28T19:39:28.690Z",
+      "read": false
+    },
+    {
+      "id": "NOTIF-1779997451387",
+      "type": "info",
+      "title": "Order Cancelled",
+      "message": "Order ORD-2026-002 has been successfully cancelled. Outstanding limit updated.",
+      "timestamp": "2026-05-28T19:44:11.389Z",
+      "read": false
+    },
+    {
+      "id": "NOTIF-1779997463852",
+      "type": "success",
+      "title": "Order Placed Successfully",
+      "message": "Order ORD-00001 has been placed. Final Amount: ₹2,55,000",
+      "timestamp": "2026-05-28T19:44:23.884Z",
+      "read": false
+    },
+    {
+      "id": "NOTIF-1779999579064",
+      "type": "success",
+      "title": "Order Placed Successfully",
+      "message": "Order ORD-00002 has been placed. Final Amount: ₹4,40,000",
+      "timestamp": "2026-05-28T20:19:39.066Z",
+      "read": false
+    },
+    {
+      "id": "NOTIF-1780002115246",
+      "type": "success",
+      "title": "Order Placed Successfully",
+      "message": "Order ORD-00003 has been placed. Final Amount: ₹2,00,000",
+      "timestamp": "2026-05-28T21:01:55.246Z",
+      "read": false
+    },
+    {
+      "id": "NOTIF-1780032133145",
+      "type": "success",
+      "title": "Order Placed Successfully",
+      "message": "Order ORD-00004 has been placed. Final Amount: ₹25,000",
+      "timestamp": "2026-05-29T05:22:13.256Z",
+      "read": false
+    },
+    {
+      "id": "NOTIF-1780033094580",
+      "type": "info",
+      "title": "Order Cancelled",
+      "message": "Order ORD-00003 has been successfully cancelled. Outstanding limit updated.",
+      "timestamp": "2026-05-29T05:38:14.580Z",
+      "read": false
+    },
+    {
+      "id": "NOTIF-1780035178520",
+      "type": "warning",
+      "title": "Low Stock Alert",
+      "message": "2 product(s) below minimum stock level",
+      "items": [
+        "Pressure Gauge PG50",
+        "Compressor CP750"
+      ],
+      "timestamp": "2026-05-29T06:12:58.515Z",
+      "read": false
+    }
+  ],
+  "cases": [],
+  "leads": [],
+  "opportunities": []
+}
