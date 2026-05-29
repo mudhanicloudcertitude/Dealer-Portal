@@ -1,5 +1,6 @@
 import { useState, type FormEvent } from 'react';
 import { Link } from 'react-router-dom';
+import API from '../api/client';
 
 export default function Register() {
   const [form, setForm] = useState({ 
@@ -21,14 +22,8 @@ export default function Register() {
     setError(''); 
     setLoading(true);
     try {
-      const res = await fetch('http://localhost:5000/api/auth/register', { 
-        method: 'POST', 
-        headers: { 'Content-Type': 'application/json' }, 
-        body: JSON.stringify(form) 
-      });
-      const data = await res.json();
-      if (!res.ok) throw new Error(data.error || 'Registration failed');
-      localStorage.setItem('dp_token', data.token);
+      const res = await API.post('/auth/register', form);
+      localStorage.setItem('dp_token', res.data.token);
       window.location.href = '/';
     } catch (err: any) { 
       setError(err.message); 
