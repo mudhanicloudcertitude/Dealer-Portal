@@ -31,7 +31,6 @@ export default function Orders() {
   const prefillQuantity = searchParams.get('prefillQuantity');
   const triggerCreate = searchParams.get('triggerCreate');
 
-  // Placement Form States
   const [showCreateModal, setShowCreateModal] = useState(false);
   const [selectedProductId, setSelectedProductId] = useState('');
   const [quantity, setQuantity] = useState<number>(1);
@@ -39,7 +38,6 @@ export default function Orders() {
   const [formError, setFormError] = useState('');
   const [submitting, setSubmitting] = useState(false);
 
-  // Customer Details Form States
   const [customerFirstName, setCustomerFirstName] = useState('');
   const [customerLastName, setCustomerLastName] = useState('');
   const [customerEmail, setCustomerEmail] = useState('');
@@ -65,17 +63,11 @@ export default function Orders() {
 
   useEffect(() => {
     load().then(() => {
-      if (orderIdParam) {
-        viewOrder(orderIdParam);
-      }
+      if (orderIdParam) viewOrder(orderIdParam);
       if (prefillProductId) {
         setSelectedProductId(prefillProductId);
-        if (prefillQuantity) {
-          setQuantity(Number(prefillQuantity));
-        }
-        if (triggerCreate === 'true') {
-          setShowCreateModal(true);
-        }
+        if (prefillQuantity) setQuantity(Number(prefillQuantity));
+        if (triggerCreate === 'true') setShowCreateModal(true);
       }
     });
   }, [orderIdParam, prefillProductId, prefillQuantity, triggerCreate]);
@@ -89,15 +81,12 @@ export default function Orders() {
     }
   };
 
-  // Selected Product details
   const activeProduct = products.find(p => p.Id === selectedProductId || p._id === selectedProductId);
   const finalCartTotal = activeProduct ? activeProduct.UnitPrice * quantity : 0;
 
   const handlePlaceOrder = async (e: React.FormEvent) => {
     e.preventDefault();
     setFormError('');
-    
-    // Validation
     if (!customerFirstName || !customerLastName) {
       setFormError('Customer first and last name are required.');
       return;
@@ -110,7 +99,6 @@ export default function Orders() {
       setFormError('Please select a valid product and set a quantity greater than zero.');
       return;
     }
-
     setSubmitting(true);
     try {
       await API.post('/orders', {
@@ -124,7 +112,6 @@ export default function Orders() {
         customerPhone
       });
       setShowCreateModal(false);
-      // Reset form
       setSelectedProductId('');
       setQuantity(1);
       setShippingCity('');
@@ -163,21 +150,21 @@ export default function Orders() {
     <div>
       <div className="page-header">
         <div className="page-header-left">
-          <h1 className="page-title">📦 Order Management</h1>
+          <h1 className="page-title">Order Management</h1>
           <p className="page-desc">Submit Salesforce orders for customers and track real-time fulfillment status</p>
         </div>
         <button className="btn btn-primary" onClick={() => setShowCreateModal(true)}>
-          ➕ Place Customer Order
+          Place Customer Order
         </button>
       </div>
 
       <div className="filter-bar">
-        <div className="search-box" style={{ maxWidth: 280 }}>
-          <span>🔍</span>
+        <div className="search-box" style={{ maxWidth: 280, paddingLeft: '12px' }}>
           <input 
             value={search} 
             onChange={e => setSearch(e.target.value)} 
             placeholder="Search order, customer or product..." 
+            style={{ paddingLeft: 0 }}
           />
         </div>
         <div style={{ display: 'flex', gap: '4px', flexWrap: 'wrap' }}>
@@ -266,7 +253,7 @@ export default function Orders() {
         <div className="modal-overlay" onClick={e => e.target === e.currentTarget && setSelected(null)}>
           <div className="modal" style={{ maxWidth: '640px' }}>
             <div className="modal-header">
-              <div className="modal-title">📦 Customer Order: {selected.OrderNumber}</div>
+              <div className="modal-title">Order: {selected.OrderNumber}</div>
               <button className="btn btn-ghost btn-sm" onClick={() => setSelected(null)}>✕</button>
             </div>
             <div className="modal-body">
@@ -285,7 +272,7 @@ export default function Orders() {
                 <div style={{ padding: '14px', background: 'rgba(16,185,129,0.06)', border: '1px solid rgba(16,185,129,0.2)', borderRadius: '12px', marginBottom: '20px' }}>
                   <div style={{ fontSize: '11px', color: 'var(--text-muted)', fontWeight: 600, textTransform: 'uppercase' }}>Promotional Scheme Applied</div>
                   <div style={{ fontSize: '14px', fontWeight: 700, color: 'var(--success)', marginTop: '4px', display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-                    <span>🏷️ {selected.AppliedScheme}</span>
+                    <span>{selected.AppliedScheme}</span>
                     <span>Saved {fmt(selected.DiscountAmount)}!</span>
                   </div>
                 </div>
@@ -300,8 +287,8 @@ export default function Orders() {
                 <div>
                   <div style={{ fontSize: '11px', color: 'var(--text-muted)' }}>CONTACT DETAILS</div>
                   <div style={{ fontSize: '14px', color: 'var(--text-secondary)', marginTop: '4px', display: 'flex', flexDirection: 'column', gap: '2px' }}>
-                    {selected.CustomerPhone && <span>📞 {selected.CustomerPhone}</span>}
-                    {selected.CustomerEmail && <span>✉️ {selected.CustomerEmail}</span>}
+                    {selected.CustomerPhone && <span>{selected.CustomerPhone}</span>}
+                    {selected.CustomerEmail && <span>{selected.CustomerEmail}</span>}
                     {!selected.CustomerPhone && !selected.CustomerEmail && <span>—</span>}
                   </div>
                 </div>
@@ -360,7 +347,7 @@ export default function Orders() {
         <div className="modal-overlay" onClick={e => e.target === e.currentTarget && setShowCreateModal(false)}>
           <div className="modal" style={{ maxWidth: '540px' }}>
             <div className="modal-header">
-              <div className="modal-title">📝 Place Customer Order</div>
+              <div className="modal-title">Place Customer Order</div>
               <button className="btn btn-ghost btn-sm" onClick={() => setShowCreateModal(false)}>✕</button>
             </div>
             <form onSubmit={handlePlaceOrder}>
@@ -370,108 +357,58 @@ export default function Orders() {
                 <h4 style={{ fontSize: '13px', fontWeight: 700, color: 'var(--text-secondary)', marginBottom: '12px' }}>CUSTOMER DETAILS</h4>
                 <div className="grid-2">
                   <div className="form-group">
-                    <label className="form-label">CUSTOMER FIRST NAME <span style={{ color: 'var(--danger)' }}>*</span></label>
-                    <input 
-                      className="form-input" 
-                      value={customerFirstName} 
-                      onChange={e => setCustomerFirstName(e.target.value)} 
-                      placeholder="e.g. John" 
-                      required 
-                    />
+                    <label className="form-label">First Name <span style={{ color: 'var(--danger)' }}>*</span></label>
+                    <input className="form-input" value={customerFirstName} onChange={e => setCustomerFirstName(e.target.value)} placeholder="e.g. John" required />
                   </div>
                   <div className="form-group">
-                    <label className="form-label">CUSTOMER LAST NAME <span style={{ color: 'var(--danger)' }}>*</span></label>
-                    <input 
-                      className="form-input" 
-                      value={customerLastName} 
-                      onChange={e => setCustomerLastName(e.target.value)} 
-                      placeholder="e.g. Doe" 
-                      required 
-                    />
+                    <label className="form-label">Last Name <span style={{ color: 'var(--danger)' }}>*</span></label>
+                    <input className="form-input" value={customerLastName} onChange={e => setCustomerLastName(e.target.value)} placeholder="e.g. Doe" required />
                   </div>
                 </div>
 
                 <div className="grid-2">
                   <div className="form-group">
-                    <label className="form-label">CUSTOMER PHONE <span style={{ color: 'var(--danger)' }}>*</span></label>
-                    <input 
-                      type="tel" 
-                      className="form-input" 
-                      value={customerPhone} 
-                      onChange={e => setCustomerPhone(e.target.value)} 
-                      placeholder="e.g. +91 98765 43210" 
-                      required 
-                    />
+                    <label className="form-label">Phone <span style={{ color: 'var(--danger)' }}>*</span></label>
+                    <input type="tel" className="form-input" value={customerPhone} onChange={e => setCustomerPhone(e.target.value)} placeholder="+91 98765 43210" required />
                   </div>
                   <div className="form-group">
-                    <label className="form-label">CUSTOMER EMAIL (OPTIONAL)</label>
-                    <input 
-                      type="email" 
-                      className="form-input" 
-                      value={customerEmail} 
-                      onChange={e => setCustomerEmail(e.target.value)} 
-                      placeholder="e.g. john.doe@example.com" 
-                    />
+                    <label className="form-label">Email (Optional)</label>
+                    <input type="email" className="form-input" value={customerEmail} onChange={e => setCustomerEmail(e.target.value)} placeholder="john.doe@example.com" />
                   </div>
                 </div>
 
                 <h4 style={{ fontSize: '13px', fontWeight: 700, color: 'var(--text-secondary)', marginBottom: '12px', marginTop: '16px' }}>ORDER SPECIFICATIONS</h4>
                 <div className="form-group">
-                  <label className="form-label">SELECT PRODUCT SPECIFICATION</label>
-                  <select 
-                    className="form-input" 
-                    value={selectedProductId} 
-                    onChange={e => setSelectedProductId(e.target.value)}
-                    required
-                  >
+                  <label className="form-label">Select Product</label>
+                  <select className="form-input" value={selectedProductId} onChange={e => setSelectedProductId(e.target.value)} required>
                     <option value="">-- Choose Product --</option>
                     {products.map(p => (
-                      <option key={p.Id} value={p.Id}>
-                        {p.Name} ({fmt(p.UnitPrice)})
-                      </option>
+                      <option key={p.Id} value={p.Id}>{p.Name} ({fmt(p.UnitPrice)})</option>
                     ))}
                   </select>
                 </div>
 
                 <div className="grid-2">
                   <div className="form-group">
-                    <label className="form-label">ORDER QUANTITY (UNITS)</label>
-                    <input 
-                      type="number" 
-                      className="form-input" 
-                      min="1" 
-                      value={quantity} 
-                      onChange={e => setQuantity(Math.max(1, parseInt(e.target.value) || 1))}
-                      placeholder="e.g. 5"
-                      required 
-                    />
+                    <label className="form-label">Quantity (Units)</label>
+                    <input type="number" className="form-input" min="1" value={quantity} onChange={e => setQuantity(Math.max(1, parseInt(e.target.value) || 1))} placeholder="e.g. 5" required />
                   </div>
                   <div className="form-group">
-                    <label className="form-label">DISPATCH SHIPPING CITY</label>
-                    <input 
-                      className="form-input" 
-                      value={shippingCity} 
-                      onChange={e => setShippingCity(e.target.value)} 
-                      placeholder="e.g. Mumbai, Pune" 
-                    />
+                    <label className="form-label">Shipping City</label>
+                    <input className="form-input" value={shippingCity} onChange={e => setShippingCity(e.target.value)} placeholder="e.g. Mumbai, Pune" />
                   </div>
                 </div>
 
-                {/* Scheme Picker */}
                 {products.length > 0 && selectedProductId && (
                   <div className="form-group" style={{ marginTop: '16px' }}>
-                    <label className="form-label">APPLY PROMOTIONAL VOLUME SCHEME (OPTIONAL)</label>
-                    <select 
-                      className="form-input" 
-                      value={selectedSchemeId} 
-                      onChange={e => setSelectedSchemeId(e.target.value)}
-                    >
-                      <option value="">-- Apply Volume Discount (Optional) --</option>
+                    <label className="form-label">Apply Volume Scheme (Optional)</label>
+                    <select className="form-input" value={selectedSchemeId} onChange={e => setSelectedSchemeId(e.target.value)}>
+                      <option value="">-- No Scheme --</option>
                       {schemes.map(s => {
                         const isEligible = finalCartTotal >= s.Min_Order_Value__c && (!s.Max_Order_Value__c || finalCartTotal <= s.Max_Order_Value__c);
                         return (
                           <option key={s.Id} value={s.Id}>
-                            {s.Scheme_Name__c} ({s.Discount_Percentage__c}% Rebate) {!isEligible ? ' [Ineligible]' : ''}
+                            {s.Scheme_Name__c} ({s.Discount_Percentage__c}% Rebate){!isEligible ? ' [Ineligible]' : ''}
                           </option>
                         );
                       })}
@@ -500,19 +437,11 @@ export default function Orders() {
                     <>
                       {eligibilityError && (
                         <div style={{ color: 'var(--warning)', fontSize: '12px', marginTop: '10px', fontWeight: 600, background: 'rgba(245,158,11,0.06)', border: '1px solid rgba(245,158,11,0.2)', padding: '10px', borderRadius: '8px' }}>
-                          ⚠️ {eligibilityError} Scheme will not be applied at checkout.
+                          {eligibilityError} Scheme will not be applied at checkout.
                         </div>
                       )}
                       
-                      <div 
-                        style={{ 
-                          marginTop: '20px', 
-                          padding: '16px', 
-                          background: 'rgba(255,255,255,0.02)', 
-                          border: '1px solid var(--border)', 
-                          borderRadius: '12px' 
-                        }}
-                      >
+                      <div style={{ marginTop: '20px', padding: '16px', background: 'rgba(255,255,255,0.02)', border: '1px solid var(--border)', borderRadius: '12px' }}>
                         <div style={{ display: 'flex', justifyContent: 'space-between', fontSize: '13px', color: 'var(--text-secondary)' }}>
                           <span>Product Unit Rate</span>
                           <span>{fmt(activeProduct?.UnitPrice || 0)}</span>
@@ -541,7 +470,7 @@ export default function Orders() {
                   Cancel
                 </button>
                 <button type="submit" className="btn btn-primary" disabled={submitting}>
-                  {submitting ? '⏳ Transmitting Order...' : '🚀 Place Customer Order'}
+                  {submitting ? 'Placing Order...' : 'Place Customer Order'}
                 </button>
               </div>
             </form>

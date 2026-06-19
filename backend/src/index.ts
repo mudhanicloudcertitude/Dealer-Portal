@@ -3,8 +3,10 @@ dotenv.config();
 import express from 'express';
 import cors from 'cors';
 import morgan from 'morgan';
+import bcrypt from 'bcryptjs';
 import { connectMongoDB } from './db/mongo';
 import { initDatabases } from './db/init';
+import { stableObjectId } from './db/mockHydrate';
 import authRoutes from './routes/auth';
 import productRoutes from './routes/products';
 import orderRoutes from './routes/orders';
@@ -47,27 +49,28 @@ app.use(morgan('dev'));
 
 // Connect to MongoDB Atlas (users collection)
 connectMongoDB().then(async () => {
-  // After MongoDB is ready, seed default user if none exists
   const { User } = await import('./models/User');
-  const bcrypt = await import('bcryptjs');
   const { sfDB } = await import('./db/init');
   const userCount = await User.countDocuments();
   if (userCount === 0) {
-    const defaultAccount = sfDB.get('accounts').find({ Id: 'ACC001' }).value();
+    const defaultAccount = sfDB.get('accounts').find({ Id: '001gK0000133auLQAQ' }).value();
     if (defaultAccount) {
       await User.create({
+        _id: stableObjectId('USR001'),
         id: 'USR001',
         email: 'dealer@sunrise.com',
         password: bcrypt.hashSync('dealer123', 10),
-        accountId: 'ACC001',
+        accountId: '001gK0000133auLQAQ',
         role: 'dealer',
         name: 'Raj Sharma',
         createdAt: new Date().toISOString(),
       });
-      console.log('✅ Default dealer user seeded to MongoDB Atlas');
+      console.log('✅ Default dealer user seeded');
       console.log('   Login: dealer@sunrise.com / dealer123');
     }
   }
+}).catch((err) => {
+  console.error('⚠️ MongoDB setup warning:', err.message);
 });
 
 // Initialize local mock Salesforce databases and seed data

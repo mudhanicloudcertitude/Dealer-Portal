@@ -7,7 +7,7 @@ import { InventoryModel } from '../models/Inventory';
 
 const router = Router();
 
-// GET /api/inventory - Dealer's current stock from MongoDB
+// GET /api/inventory - Dealer's current stock from MongoDB (synced from Dealer_Inventory__c)
 router.get('/', authenticateToken, async (req: AuthRequest, res) => {
   try {
     const accountId = req.user.accountId;
@@ -17,51 +17,46 @@ router.get('/', authenticateToken, async (req: AuthRequest, res) => {
     // Fetch local MongoDB inventory records
     let inventory = await InventoryModel.find({ user: dbUser._id });
 
-    // If completely empty, auto-seed from standard mock inventory to provide a pre-populated B2B experience
+    // If completely empty, auto-seed from mock data (fallback for demo/mock accounts)
     if (inventory.length === 0) {
       console.log(`[INVENTORY] Auto-seeding initial MongoDB inventory for user: ${dbUser.name}`);
       const defaultMockStock = sfDB.get('dealerInventory').filter({ Dealer__c: accountId }).value();
-      
+
       for (const item of defaultMockStock) {
         const localProduct = await ProductModel.findOne({ Id: item.Product2Id });
         if (localProduct) {
           const newInv = new InventoryModel({
             user: dbUser._id,
             accountId,
+            sfId: item.Id || '',
             Product: localProduct._id,
             Product2Id: item.Product2Id,
             Product_Name__c: item.Product_Name__c,
-            Stock_On_Hand__c: item.Stock_On_Hand__c,
-            Min_Stock_Level__c: item.Min_Stock_Level__c || 10,
-            Last_Audit_Date__c: item.Last_Audit_Date__c || new Date().toISOString().split('T')[0]
+            Quantity__c: item.Quantity__c || item.Stock_On_Hand__c || 0,
+            Amount__c: item.Amount__c || 0,
           });
           await newInv.save();
         }
       }
-      // Re-query
+      // Re-query after seeding
       inventory = await InventoryModel.find({ user: dbUser._id });
     }
 
-    // Enrich with pricebook demand and price info for UI replenishment charts
+    // Enrich with pricebook data for pricing and AI demand info
     const pricebooks = sfDB.get('pricebooks').value();
     const enriched = inventory.map((item: any) => {
       const pb = pricebooks.find((p: any) => p.Product2Id === item.Product2Id);
-      const pct = item.Min_Stock_Level__c > 0 
-        ? Math.min(100, Math.round((item.Stock_On_Hand__c / item.Min_Stock_Level__c) * 100))
-        : 100;
-        
+
       return {
         Id: item._id.toString(),
+        sfId: item.sfId || '',
         Product2Id: item.Product2Id,
         Product_Name__c: item.Product_Name__c,
-        Stock_On_Hand__c: item.Stock_On_Hand__c,
-        Min_Stock_Level__c: item.Min_Stock_Level__c,
-        Last_Audit_Date__c: item.Last_Audit_Date__c,
-        isLowStock: item.Stock_On_Hand__c < item.Min_Stock_Level__c,
-        stockHealthPercent: pct,
-        Forecasted_Demand__c: pb?.Forecasted_Demand__c || 120,
-        Restock_Recommendation__c: pb?.Restock_Recommendation__c || 40,
-        UnitPrice: pb?.UnitPrice || 5000,
+        Quantity__c: item.Quantity__c,
+        Amount__c: item.Amount__c || (item.Quantity__c || 0) * (pb?.UnitPrice || 0),
+        Forecasted_Demand__c: pb?.Forecasted_Demand__c || 0,
+        Restock_Recommendation__c: pb?.Restock_Recommendation__c || 0,
+        UnitPrice: pb?.UnitPrice || 0,
       };
     });
 
@@ -71,19 +66,16 @@ router.get('/', authenticateToken, async (req: AuthRequest, res) => {
   }
 });
 
-// PUT /api/inventory/:id - Update stock directly in MongoDB (physical audit)
+// PUT /api/inventory/:id - Manually update stock quantity in MongoDB
 router.put('/:id', authenticateToken, async (req: AuthRequest, res) => {
   try {
-    const { Stock_On_Hand__c, Last_Audit_Date__c } = req.body;
+    const { Quantity__c } = req.body;
     const dbUser = await User.findOne({ id: req.user.userId });
     if (!dbUser) return res.status(404).json({ error: 'User not found in local database' });
 
     const updated = await InventoryModel.findOneAndUpdate(
       { _id: req.params.id, user: dbUser._id },
-      { 
-        Stock_On_Hand__c: Number(Stock_On_Hand__c) || 0,
-        Last_Audit_Date__c: Last_Audit_Date__c || new Date().toISOString().split('T')[0]
-      },
+      { Quantity__c: Number(Quantity__c) || 0 },
       { new: true }
     );
 

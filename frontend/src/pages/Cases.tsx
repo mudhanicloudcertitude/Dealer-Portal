@@ -79,7 +79,7 @@ export default function Cases() {
         priority: form.priority,
       };
       await API.post('/cases', payload);
-      setSuccessMsg('✅ Case submitted successfully to Salesforce! Our team will review it shortly.');
+      setSuccessMsg('Case submitted successfully to Salesforce. Our support team will review it shortly.');
       setForm(emptyForm);
       setTimeout(() => {
         setSuccessMsg('');
@@ -115,21 +115,21 @@ export default function Cases() {
     <div>
       <div className="page-header">
         <div className="page-header-left">
-          <h1 className="page-title">🎧 Customer Support Cases</h1>
-          <p className="page-desc">Raise support cases on behalf of customers — all cases are managed by the SF team</p>
+          <h1 className="page-title">Customer Support Cases</h1>
+          <p className="page-desc">Raise support cases on behalf of customers — all cases are managed by the support team</p>
         </div>
         <button className="btn btn-primary" onClick={() => { setForm(emptyForm); setFormError(''); setSuccessMsg(''); setShowModal(true); }}>
-          ＋ Raise New Case
+          Raise New Case
         </button>
       </div>
 
       <div className="filter-bar">
-        <div className="search-box" style={{ maxWidth: '360px' }}>
-          <span>🔍</span>
+        <div className="search-box" style={{ maxWidth: '360px', paddingLeft: '12px' }}>
           <input
             value={search}
             onChange={e => setSearch(e.target.value)}
             placeholder="Search by case #, subject, customer, order ID..."
+            style={{ paddingLeft: 0 }}
           />
         </div>
         <div style={{ display: 'flex', gap: '4px', flexWrap: 'wrap' }}>
@@ -150,12 +150,12 @@ export default function Cases() {
           <table>
             <thead>
               <tr>
-                <th>Case #</th>
+                <th>Case Number</th>
                 <th>Customer</th>
                 <th>Subject</th>
                 <th>Order ID</th>
                 <th>Priority</th>
-                <th>Created</th>
+                <th>Created Date</th>
                 <th>Status</th>
                 <th>Resolution</th>
               </tr>
@@ -199,8 +199,7 @@ export default function Cases() {
               {filtered.length === 0 && (
                 <tr>
                   <td colSpan={8} style={{ textAlign: 'center', padding: '36px', color: 'var(--text-muted)' }}>
-                    <div style={{ fontSize: '28px', marginBottom: '8px' }}>🎧</div>
-                    No cases found matching your search.
+                    No support cases found matching your search.
                   </td>
                 </tr>
               )}
@@ -214,20 +213,20 @@ export default function Cases() {
         <div className="modal-overlay" onClick={e => e.target === e.currentTarget && setShowModal(false)}>
           <div className="modal" style={{ maxWidth: '580px' }}>
             <div className="modal-header">
-              <div className="modal-title">🎧 Raise Support Case</div>
-              <button className="btn btn-ghost btn-sm" onClick={() => setShowModal(false)}>✕</button>
+              <div className="modal-title">Raise Support Case</div>
+              <button className="btn btn-ghost btn-sm" onClick={() => setShowModal(false)}>Close</button>
             </div>
             <form onSubmit={handleSubmit}>
               <div className="modal-body">
                 {successMsg && (
                   <div style={{ background: 'rgba(16,185,129,0.10)', border: '1px solid rgba(16,185,129,0.3)', borderRadius: '8px', padding: '12px 16px', marginBottom: '16px', color: 'var(--success)', fontWeight: 600, fontSize: '13px' }}>
-                    {successMsg}
+                    <span>{successMsg}</span>
                   </div>
                 )}
                 {formError && <div className="auth-error" style={{ marginBottom: '16px' }}>{formError}</div>}
 
                 <div style={{ background: 'rgba(99,102,241,0.06)', border: '1px solid rgba(99,102,241,0.18)', borderRadius: '8px', padding: '10px 14px', marginBottom: '18px', fontSize: '12px', color: 'var(--text-secondary)' }}>
-                  📋 Cases are submitted directly to Salesforce on behalf of your customer. The SF team handles all resolution. Origin is set to <strong>Dealer Portal</strong> automatically.
+                  <span>Cases are submitted directly to Salesforce on behalf of your customer. The support team handles all resolution. Origin is set to Dealer Portal automatically.</span>
                 </div>
 
                 <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '12px' }}>
@@ -253,8 +252,8 @@ export default function Cases() {
                 </div>
 
                 <div className="form-group">
-                  <label className="form-label">Order ID <span style={{ fontSize: '11px', color: 'var(--text-muted)', fontWeight: 400 }}>(optional — leave blank if no order)</span></label>
-                  <input className="form-input" value={form.orderId} onChange={e => setForm({ ...form, orderId: e.target.value })} placeholder="e.g. ORD-2024-0012 or Salesforce Order ID" />
+                  <label className="form-label">Order ID <span style={{ fontSize: '11px', color: 'var(--text-muted)', fontWeight: 400 }}>(optional)</span></label>
+                  <input className="form-input" value={form.orderId} onChange={e => setForm({ ...form, orderId: e.target.value })} placeholder="e.g. ORD-2024-0012" />
                 </div>
 
                 <div className="form-group">
@@ -265,21 +264,21 @@ export default function Cases() {
                 <div className="form-group">
                   <label className="form-label">Priority</label>
                   <select className="form-input" value={form.priority} onChange={e => setForm({ ...form, priority: e.target.value })}>
-                    <option value="High">🔴 High — Urgent / Blocking Issue</option>
-                    <option value="Medium">🟡 Medium — Delay / Billing Problem</option>
-                    <option value="Low">🔵 Low — General Query / Documentation</option>
+                    <option value="High">High — Urgent / Blocking Issue</option>
+                    <option value="Medium">Medium — Delay / Billing Problem</option>
+                    <option value="Low">Low — General Query / Documentation</option>
                   </select>
                 </div>
 
                 <div className="form-group">
                   <label className="form-label">Description</label>
-                  <textarea className="form-input" rows={4} value={form.description} onChange={e => setForm({ ...form, description: e.target.value })} placeholder="Describe the customer's issue clearly so the SF team can resolve it efficiently..." />
+                  <textarea className="form-input" rows={4} value={form.description} onChange={e => setForm({ ...form, description: e.target.value })} placeholder="Describe the customer's issue clearly so the team can resolve it efficiently..." />
                 </div>
               </div>
               <div className="modal-footer">
                 <button type="button" className="btn btn-ghost" onClick={() => setShowModal(false)}>Cancel</button>
                 <button type="submit" className="btn btn-primary" disabled={submitting || !!successMsg}>
-                  {submitting ? '⏳ Submitting to Salesforce...' : '🚀 Submit Case'}
+                  {submitting ? 'Submitting to Salesforce...' : 'Submit Case'}
                 </button>
               </div>
             </form>

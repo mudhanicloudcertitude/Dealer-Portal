@@ -21,6 +21,10 @@ router.get('/', authenticateToken, async (req: AuthRequest, res) => {
     // Load Leads from MongoDB (synced from SF)
     let leads: any[] = [];
     try {
+      const { syncLeadsFromSF, syncOpportunitiesFromSF } = await import('../services/salesforce');
+      await syncLeadsFromSF(accountId, dbUser._id).catch(console.error);
+      await syncOpportunitiesFromSF(accountId, dbUser._id).catch(console.error);
+
       const rawLeads = await LeadModel.find({ user: dbUser._id }).sort({ createdAt: -1 }).lean();
       leads = rawLeads.map(l => ({
         Id: (l as any).sfId || (l as any)._id.toString(),
@@ -41,10 +45,10 @@ router.get('/', authenticateToken, async (req: AuthRequest, res) => {
       const rawOpps = await OpportunityModel.find({ user: dbUser._id }).sort({ createdAt: -1 }).lean();
       opportunities = rawOpps.map(o => ({
         Id: (o as any).sfId || (o as any)._id.toString(),
-        Name: (o as any).name || (o as any).Name || 'Unnamed Deal',
+        Name: (o as any).title || (o as any).name || (o as any).Name || 'Unnamed Deal',
         StageName: (o as any).stage || (o as any).StageName || 'Prospecting',
-        Amount: (o as any).amount || (o as any).Amount || 0,
-        CloseDate: (o as any).closeDate || (o as any).CloseDate || '',
+        Amount: (o as any).expectedValue || (o as any).amount || (o as any).Amount || 0,
+        CloseDate: (o as any).expectedCloseDate || (o as any).closeDate || (o as any).CloseDate || '',
         Probability: (o as any).probability || 0,
       }));
     } catch (e) {

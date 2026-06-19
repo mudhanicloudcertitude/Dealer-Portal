@@ -34,7 +34,6 @@ export default function Dashboard() {
   if (!data) {
     return (
       <div className="empty-state">
-        <div className="empty-state-icon">⚠️</div>
         <h3>Failed to load dashboard</h3>
       </div>
     );
@@ -44,150 +43,147 @@ export default function Dashboard() {
   const opportunities = data.opportunities || [];
   const cases = data.cases || [];
 
-  // Summary counts
-  const openLeads = leads.filter((l: any) => !['Converted', 'Unqualified', 'Dead'].includes(l.Status)).length;
-  const convertedLeads = leads.filter((l: any) => l.Status === 'Converted').length;
+  const convertedStatuses = ['Converted', 'Closed - Converted'];
+  const closedLeadStatuses = ['Converted', 'Closed - Converted', 'Unqualified', 'Closed - Not Converted', 'Disqualified', 'Dead'];
+  const openLeads = leads.filter((l: any) => !closedLeadStatuses.includes(l.Status)).length;
+  const convertedLeads = leads.filter((l: any) => convertedStatuses.includes(l.Status)).length;
   const openOpps = opportunities.filter((o: any) => !['Closed Won', 'Closed Lost'].includes(o.StageName)).length;
   const wonOpps = opportunities.filter((o: any) => o.StageName === 'Closed Won').length;
   const openCases = cases.filter((c: any) => !['Closed', 'Resolved'].includes(c.Status)).length;
   const resolvedCases = cases.filter((c: any) => ['Closed', 'Resolved'].includes(c.Status)).length;
 
-  const summaryCards = [
-    {
-      icon: '🎯',
-      label: 'Total Leads',
-      value: leads.length,
-      sub: `${openLeads} open · ${convertedLeads} converted`,
-      type: 'accent',
-      link: '/sales',
-    },
-    {
-      icon: '💼',
-      label: 'Opportunities',
-      value: opportunities.length,
-      sub: `${openOpps} active · ${wonOpps} won`,
-      type: 'success',
-      link: '/sales',
-    },
-    {
-      icon: '🎧',
-      label: 'Support Cases',
-      value: cases.length,
-      sub: `${openCases} open · ${resolvedCases} resolved`,
-      type: openCases > 0 ? 'warning' : 'success',
-      link: '/cases',
-    },
-  ];
-
   return (
     <div>
       <div className="page-header">
         <div className="page-header-left">
-          <h1 className="page-title">📊 Dealer Dashboard</h1>
-          <p className="page-desc">Overview of your leads, deals, and support cases synced from Salesforce</p>
+          <h1 className="page-title">Dashboard</h1>
+          <p className="page-desc">Synced from Salesforce</p>
         </div>
         {data.account && (
-          <div style={{ display: 'flex', gap: '8px', alignItems: 'center' }}>
-            <span
-              className={`badge ${data.account?.Tier__c === 'Gold' ? 'badge-warning' : data.account?.Tier__c === 'Silver' ? 'badge-muted' : 'badge-info'}`}
-              style={{ fontSize: '13px', padding: '6px 16px' }}
-            >
-              ⭐ {data.account?.Tier__c || 'Standard'} Tier
+          <div style={{ display: 'flex', gap: '6px', alignItems: 'center' }}>
+            <span className={`badge ${data.account?.Tier__c === 'Gold' ? 'badge-warning' : data.account?.Tier__c === 'Silver' ? 'badge-muted' : 'badge-info'}`}>
+              {data.account?.Tier__c || 'Standard'}
             </span>
-            <span className={`badge ${data.account?.Status__c === 'Active' ? 'badge-success' : 'badge-danger'}`} style={{ fontSize: '13px', padding: '6px 16px' }}>
+            <span className={`badge ${data.account?.Status__c === 'Active' ? 'badge-success' : 'badge-danger'}`}>
               {data.account?.Status__c || 'Active'}
             </span>
           </div>
         )}
       </div>
 
-      {/* Summary Cards */}
-      <div className="metrics-grid" style={{ gridTemplateColumns: 'repeat(3, 1fr)', marginBottom: '28px' }}>
-        {summaryCards.map((c, i) => (
-          <Link key={i} to={c.link} style={{ textDecoration: 'none' }}>
-            <div className={`metric-card ${c.type}`} style={{ cursor: 'pointer', transition: 'transform 0.15s', borderRadius: '14px' }}
-              onMouseEnter={e => (e.currentTarget.style.transform = 'translateY(-2px)')}
-              onMouseLeave={e => (e.currentTarget.style.transform = 'translateY(0)')}
-            >
-              <div className={`metric-icon ${c.type}`}>{c.icon}</div>
-              <div className="metric-value" style={{ fontSize: '30px', marginTop: '6px' }}>{c.value}</div>
-              <div className="metric-label" style={{ marginTop: '4px', fontSize: '13px', fontWeight: 600 }}>{c.label}</div>
-              <div style={{ fontSize: '11px', opacity: 0.75, marginTop: '4px' }}>{c.sub}</div>
-            </div>
-          </Link>
-        ))}
+      {/* Summary row */}
+      <div style={{ display: 'grid', gridTemplateColumns: 'repeat(4, 1fr)', gap: '12px', marginBottom: '24px' }} className="grid-responsive">
+        <div className="card" style={{ padding: '14px 16px' }}>
+          <div style={{ fontSize: '11px', color: 'var(--text-muted)', fontWeight: 500, marginBottom: '4px' }}>Leads</div>
+          <div style={{ fontSize: '24px', fontWeight: 700 }}>{leads.length}</div>
+          <div style={{ fontSize: '12px', color: 'var(--text-muted)', marginTop: '2px' }}>{openLeads} open, {convertedLeads} converted</div>
+        </div>
+        <div className="card" style={{ padding: '14px 16px' }}>
+          <div style={{ fontSize: '11px', color: 'var(--text-muted)', fontWeight: 500, marginBottom: '4px' }}>Opportunities</div>
+          <div style={{ fontSize: '24px', fontWeight: 700 }}>{opportunities.length}</div>
+          <div style={{ fontSize: '12px', color: 'var(--text-muted)', marginTop: '2px' }}>{openOpps} active, {wonOpps} won</div>
+        </div>
+        <div className="card" style={{ padding: '14px 16px' }}>
+          <div style={{ fontSize: '11px', color: 'var(--text-muted)', fontWeight: 500, marginBottom: '4px' }}>Support Cases</div>
+          <div style={{ fontSize: '24px', fontWeight: 700 }}>{cases.length}</div>
+          <div style={{ fontSize: '12px', color: 'var(--text-muted)', marginTop: '2px' }}>{openCases} open, {resolvedCases} resolved</div>
+        </div>
+        <div className="card" style={{ padding: '14px 16px' }}>
+          <div style={{ fontSize: '11px', color: 'var(--text-muted)', fontWeight: 500, marginBottom: '4px' }}>Win Rate</div>
+          <div style={{ fontSize: '24px', fontWeight: 700 }}>
+            {opportunities.length > 0 ? Math.round((wonOpps / opportunities.length) * 100) : 0}%
+          </div>
+          <div style={{ fontSize: '12px', color: 'var(--text-muted)', marginTop: '2px' }}>{wonOpps} of {opportunities.length} deals</div>
+        </div>
       </div>
 
-      <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr 1fr', gap: '20px' }} className="grid-responsive">
-        {/* Recent Leads */}
-        <div className="card" style={{ display: 'flex', flexDirection: 'column' }}>
-          <div className="card-title" style={{ borderBottom: '1px solid var(--border)', paddingBottom: '10px', marginBottom: '12px', display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-            <span>🎯 Recent Leads</span>
-            <Link to="/sales" style={{ fontSize: '11px', color: 'var(--accent-light)', textDecoration: 'none', fontWeight: 600 }}>View All →</Link>
+      {/* Two-column layout: main content + sidebar */}
+      <div style={{ display: 'grid', gridTemplateColumns: '2fr 1fr', gap: '16px' }} className="grid-responsive">
+        {/* Left: Recent Leads table */}
+        <div>
+          <div className="card">
+            <div className="card-title">
+              <span>Recent Leads</span>
+              <Link to="/sales" style={{ fontSize: '12px', color: 'var(--accent)', fontWeight: 500 }}>View all</Link>
+            </div>
+            <div className="table-wrap">
+              <table>
+                <thead>
+                  <tr>
+                    <th>Name</th>
+                    <th>Company</th>
+                    <th>Status</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {leads.slice(0, 6).map((l: any, i: number) => (
+                    <tr key={i}>
+                      <td style={{ fontWeight: 500 }}>{l.contactName || l.FirstName + ' ' + l.LastName || 'Unknown'}</td>
+                      <td style={{ color: 'var(--text-secondary)' }}>{l.company || l.Company || '—'}</td>
+                      <td><span className={statusBadge(l.Status)}>{l.Status}</span></td>
+                    </tr>
+                  ))}
+                  {leads.length === 0 && (
+                    <tr><td colSpan={3} style={{ textAlign: 'center', color: 'var(--text-muted)', padding: '20px' }}>No leads</td></tr>
+                  )}
+                </tbody>
+              </table>
+            </div>
           </div>
-          <div style={{ flex: 1 }}>
-            {leads.slice(0, 5).length === 0 ? (
-              <div style={{ textAlign: 'center', padding: '20px', color: 'var(--text-muted)', fontSize: '13px' }}>No leads yet</div>
-            ) : (
-              leads.slice(0, 5).map((l: any, i: number) => (
-                <div key={i} style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', padding: '8px 0', borderBottom: '1px solid var(--border)' }}>
-                  <div>
-                    <div style={{ fontWeight: 600, fontSize: '13px', color: 'var(--text-primary)' }}>{l.contactName || l.FirstName + ' ' + l.LastName || 'Unknown'}</div>
-                    <div style={{ fontSize: '11px', color: 'var(--text-muted)' }}>{l.company || l.Company || '—'}</div>
-                  </div>
-                  <span className={statusBadge(l.Status)}>{l.Status}</span>
-                </div>
-              ))
-            )}
+
+          {/* Recent Opportunities table below leads */}
+          <div className="card" style={{ marginTop: '16px' }}>
+            <div className="card-title">
+              <span>Recent Opportunities</span>
+              <Link to="/sales" style={{ fontSize: '12px', color: 'var(--accent)', fontWeight: 500 }}>View all</Link>
+            </div>
+            <div className="table-wrap">
+              <table>
+                <thead>
+                  <tr>
+                    <th>Name</th>
+                    <th>Amount</th>
+                    <th>Stage</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {opportunities.slice(0, 5).map((o: any, i: number) => (
+                    <tr key={i}>
+                      <td style={{ fontWeight: 500 }}>{o.Name}</td>
+                      <td>{o.Amount ? `₹${Number(o.Amount).toLocaleString('en-IN')}` : '—'}</td>
+                      <td><span className={statusBadge(o.StageName)}>{o.StageName}</span></td>
+                    </tr>
+                  ))}
+                  {opportunities.length === 0 && (
+                    <tr><td colSpan={3} style={{ textAlign: 'center', color: 'var(--text-muted)', padding: '20px' }}>No opportunities</td></tr>
+                  )}
+                </tbody>
+              </table>
+            </div>
           </div>
         </div>
 
-        {/* Recent Opportunities */}
-        <div className="card" style={{ display: 'flex', flexDirection: 'column' }}>
-          <div className="card-title" style={{ borderBottom: '1px solid var(--border)', paddingBottom: '10px', marginBottom: '12px', display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-            <span>💼 Recent Opportunities</span>
-            <Link to="/sales" style={{ fontSize: '11px', color: 'var(--accent-light)', textDecoration: 'none', fontWeight: 600 }}>View All →</Link>
+        {/* Right sidebar: Cases list */}
+        <div className="card" style={{ height: 'fit-content' }}>
+          <div className="card-title">
+            <span>Open Cases</span>
+            <Link to="/cases" style={{ fontSize: '12px', color: 'var(--accent)', fontWeight: 500 }}>View all</Link>
           </div>
-          <div style={{ flex: 1 }}>
-            {opportunities.slice(0, 5).length === 0 ? (
-              <div style={{ textAlign: 'center', padding: '20px', color: 'var(--text-muted)', fontSize: '13px' }}>No opportunities yet</div>
-            ) : (
-              opportunities.slice(0, 5).map((o: any, i: number) => (
-                <div key={i} style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', padding: '8px 0', borderBottom: '1px solid var(--border)' }}>
-                  <div>
-                    <div style={{ fontWeight: 600, fontSize: '13px', color: 'var(--text-primary)' }}>{o.Name}</div>
-                    <div style={{ fontSize: '11px', color: 'var(--text-muted)' }}>
-                      {o.Amount ? `₹${Number(o.Amount).toLocaleString('en-IN')}` : '—'}
-                    </div>
+          {cases.slice(0, 8).length === 0 ? (
+            <div style={{ textAlign: 'center', padding: '20px', color: 'var(--text-muted)', fontSize: '13px' }}>No cases</div>
+          ) : (
+            <div style={{ display: 'flex', flexDirection: 'column', gap: '0' }}>
+              {cases.slice(0, 8).map((c: any, i: number) => (
+                <div key={i} style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', padding: '8px 0', borderBottom: i < Math.min(cases.length, 8) - 1 ? '1px solid #f0f0f0' : 'none' }}>
+                  <div style={{ minWidth: 0 }}>
+                    <div style={{ fontWeight: 500, fontSize: '12px', fontFamily: 'monospace', color: 'var(--text-secondary)' }}>{c.CaseNumber}</div>
+                    <div style={{ fontSize: '12px', color: 'var(--text-muted)', whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis', maxWidth: '160px' }}>{(c.Subject || '').slice(0, 35)}</div>
                   </div>
-                  <span className={statusBadge(o.StageName)}>{o.StageName}</span>
+                  <span className={statusBadge(c.Status)} style={{ flexShrink: 0 }}>{c.Status}</span>
                 </div>
-              ))
-            )}
-          </div>
-        </div>
-
-        {/* Recent Cases */}
-        <div className="card" style={{ display: 'flex', flexDirection: 'column' }}>
-          <div className="card-title" style={{ borderBottom: '1px solid var(--border)', paddingBottom: '10px', marginBottom: '12px', display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-            <span>🎧 Recent Cases</span>
-            <Link to="/cases" style={{ fontSize: '11px', color: 'var(--accent-light)', textDecoration: 'none', fontWeight: 600 }}>View All →</Link>
-          </div>
-          <div style={{ flex: 1 }}>
-            {cases.slice(0, 5).length === 0 ? (
-              <div style={{ textAlign: 'center', padding: '20px', color: 'var(--text-muted)', fontSize: '13px' }}>No cases yet</div>
-            ) : (
-              cases.slice(0, 5).map((c: any, i: number) => (
-                <div key={i} style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', padding: '8px 0', borderBottom: '1px solid var(--border)' }}>
-                  <div>
-                    <div style={{ fontWeight: 600, fontSize: '13px', color: 'var(--text-primary)', fontFamily: 'monospace' }}>{c.CaseNumber}</div>
-                    <div style={{ fontSize: '11px', color: 'var(--text-muted)' }}>{(c.Subject || '').slice(0, 40)}{(c.Subject || '').length > 40 ? '…' : ''}</div>
-                  </div>
-                  <span className={statusBadge(c.Status)}>{c.Status}</span>
-                </div>
-              ))
-            )}
-          </div>
+              ))}
+            </div>
+          )}
         </div>
       </div>
     </div>

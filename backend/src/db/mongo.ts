@@ -30,17 +30,51 @@ const originalModel = mongoose.model.bind(mongoose);
     collectionName = 'leads';
   } else if (name.toLowerCase() === 'opportunity') {
     collectionName = 'opportunities';
+  } else if (name.toLowerCase() === 'inventory') {
+    collectionName = 'cachedInventory';
+  } else if (name.toLowerCase() === 'invoice') {
+    collectionName = 'cachedPayments';
   } else {
     collectionName = name.toLowerCase() + 's';
   }
 
-  // Helper to convert mongoose query to simple match function
-  const matchQuery = (item: any, query: any): boolean => {
+  const matchesSubQuery = (item: any, query: any): boolean => {
     if (!query) return true;
     for (const key in query) {
       const val = query[key];
-      if (val && typeof val === 'object' && !Array.isArray(val)) {
-        // Handle nested operators or lookup objects if needed
+      if (val && typeof val === 'object' && !Array.isArray(val) && !(val instanceof RegExp)) {
+        if (val.$regex) {
+          const pattern = val.$regex instanceof RegExp ? val.$regex : new RegExp(val.$regex, val.$options || '');
+          if (!pattern.test(String(item[key] ?? ''))) return false;
+          continue;
+        }
+        continue;
+      }
+      if (key === '_id' || key === 'user' || key === 'sfId') {
+        const itemVal = item[key] ? item[key].toString() : '';
+        const queryVal = val ? val.toString() : '';
+        if (itemVal !== queryVal) return false;
+      } else if (item[key] !== val) {
+        return false;
+      }
+    }
+    return true;
+  };
+
+  // Helper to convert mongoose query to simple match function
+  const matchQuery = (item: any, query: any): boolean => {
+    if (!query) return true;
+    if (query.$or) {
+      return query.$or.some((sub: any) => matchesSubQuery(item, sub));
+    }
+    for (const key in query) {
+      const val = query[key];
+      if (val && typeof val === 'object' && !Array.isArray(val) && !(val instanceof RegExp)) {
+        if (val.$regex) {
+          const pattern = val.$regex instanceof RegExp ? val.$regex : new RegExp(val.$regex, val.$options || '');
+          if (!pattern.test(String(item[key] ?? ''))) return false;
+          continue;
+        }
         continue;
       }
       // Convert to string for easy matching of _id / user fields
@@ -101,8 +135,9 @@ const originalModel = mongoose.model.bind(mongoose);
     const wrapped = filtered.map((item: any) => createMockDocument(item, RealModel, collectionName));
 
     const chain = {
-      sort: (sortSpec: any) => chain,
+      sort: (_sortSpec: any) => chain,
       lean: () => chain,
+      populate: () => chain,
       then: (onfulfilled?: any) => Promise.resolve(wrapped).then(onfulfilled),
       catch: (onrejected?: any) => Promise.resolve(wrapped).catch(onrejected)
     };
@@ -235,20 +270,27 @@ const originalModel = mongoose.model.bind(mongoose);
 };
 
 // Helper to construct a mock document that has prototype methods like save
-function createMockDocument(data: any, ModelClass: any, collectionName: string) {
+function createMockDocument(data: any, ModelClass: any, _collectionName: string) {
   if (!data) return null;
-  const doc = new ModelClass(data);
-  Object.assign(doc, data);
-  if (data._id) {
-    doc._id = data._id;
-    doc.id = data.id || data._id.toString();
+  const normalized = { ...data };
+  if (!normalized._id) {
+    const { stableObjectId } = require('./mockHydrate');
+    normalized._id = stableObjectId(normalized.id || normalized.email || normalized.sfId || 'doc');
   }
+  const doc = new ModelClass(normalized);
+  Object.assign(doc, normalized);
+  doc._id = normalized._id;
+  doc.id = normalized.id || normalized._id.toString();
   return doc;
 }
 
 export async function connectMongoDB(): Promise<void> {
   if (!MONGO_URI) {
-    throw new Error('MONGO_URI is not defined in .env');
+    console.log('⚠️ MONGO_URI not set — using local lowdb mock database');
+    useMock = true;
+    const { ensureStableUserIds } = require('./mockHydrate');
+    ensureStableUserIds();
+    return;
   }
   try {
     console.log('🔌 Connecting to MongoDB Atlas...');
@@ -259,15 +301,36 @@ export async function connectMongoDB(): Promise<void> {
     console.log('✅ MongoDB Atlas connected successfully');
   } catch (err: any) {
     console.error('❌ MongoDB connection failed:', err.message);
-    console.log('⚠️ Falling back to local lowdb mock database!');
     
+    // Check if failure is due to a DNS querySrv error (very common when local DNS blocks SRV records)
+    if (
+      err.message.includes('querySrv ECONNREFUSED') ||
+      err.message.includes('querySrv ENODATA') ||
+      err.message.includes('querySrv SERVFAIL')
+    ) {
+      try {
+        console.log('🔄 MongoDB SRV DNS lookup failed. Switching to public DNS resolvers (8.8.8.8, 1.1.1.1) and retrying...');
+        dns.setServers(['8.8.8.8', '1.1.1.1']);
+        
+        await mongoose.connect(MONGO_URI, {
+          serverSelectionTimeoutMS: 4000
+        } as any);
+        console.log('✅ MongoDB Atlas connected successfully after switching DNS resolvers');
+        return;
+      } catch (retryErr: any) {
+        console.error('❌ MongoDB retry connection failed:', retryErr.message);
+      }
+    }
+    
+    console.log('⚠️ Falling back to local lowdb mock database!');
     useMock = true;
 
-    // Ensure 'cases' collection exists in cacheDB
     const { cacheDB } = require('./init');
+    const { ensureStableUserIds } = require('./mockHydrate');
     if (!cacheDB.has('cases').value()) {
       cacheDB.set('cases', []).write();
     }
+    ensureStableUserIds();
   }
 }
 

@@ -117,6 +117,8 @@ router.get('/:id', authenticateToken, async (req: AuthRequest, res) => {
       CustomerName: [order.CustomerFirstName, order.CustomerLastName].filter(Boolean).join(' ') || null,
       CustomerEmail: order.CustomerEmail || null,
       CustomerPhone: order.CustomerPhone || null,
+      AppliedScheme: order.AppliedScheme || '',
+      DiscountAmount: order.DiscountAmount || 0,
       items,
       timeline,
     });
@@ -132,6 +134,7 @@ router.post('/', authenticateToken, async (req: AuthRequest, res) => {
     const {
       productId, quantity, shippingCity,
       customerFirstName, customerLastName, customerEmail, customerPhone,
+      appliedSchemeId,
     } = req.body;
 
     if (!customerFirstName || !customerLastName) {
@@ -147,16 +150,36 @@ router.post('/', authenticateToken, async (req: AuthRequest, res) => {
     const dbUser = await User.findOne({ id: req.user.userId });
     if (!dbUser) return res.status(404).json({ error: 'User not found' });
 
-    // Find product
-    const product = await ProductModel.findOne({
+    // Find product (MongoDB or sfDB fallback)
+    let product = await ProductModel.findOne({
       $or: [
         { Id: productId },
         { _id: mongoose.Types.ObjectId.isValid(productId) ? productId : undefined },
       ].filter(Boolean),
     });
+    if (!product) {
+      const sfProduct = sfDB.get('products').find({ Id: productId }).value();
+      if (sfProduct) {
+        const pb = sfDB.get('pricebooks').find({ Product2Id: sfProduct.Id }).value();
+        product = { ...sfProduct, UnitPrice: pb?.UnitPrice || 0, ProductCode: sfProduct.ProductCode };
+      }
+    }
     if (!product) return res.status(400).json({ error: 'Product not found' });
 
-    const totalAmount = product.UnitPrice * quantity;
+    let totalAmount = product.UnitPrice * quantity;
+    let discountAmount = 0;
+    let appliedScheme = '';
+
+    if (appliedSchemeId) {
+      const scheme = sfDB.get('dealerSchemes').find({ Id: appliedSchemeId, IsActive__c: true }).value();
+      if (scheme) {
+        if (totalAmount >= scheme.Min_Order_Value__c && totalAmount <= (scheme.Max_Order_Value__c || Infinity)) {
+          discountAmount = totalAmount * (scheme.Discount_Percentage__c / 100);
+          totalAmount -= discountAmount;
+          appliedScheme = scheme.Scheme_Name__c || scheme.Id;
+        }
+      }
+    }
 
     // Generate local fallback order number
     const orderCount = await OrderModel.countDocuments();
@@ -176,6 +199,8 @@ router.post('/', authenticateToken, async (req: AuthRequest, res) => {
         totalAmount,
         shippingCity: shippingCity || 'N/A',
         userId: req.user.userId,
+        appliedScheme,
+        discountAmount,
         customerFirstName,
         customerLastName,
         customerEmail: customerEmail || '',
@@ -203,6 +228,8 @@ router.post('/', authenticateToken, async (req: AuthRequest, res) => {
       TotalAmount: totalAmount,
       Status: 'Pending',
       ShippingCity: shippingCity || 'N/A',
+      AppliedScheme: appliedScheme,
+      DiscountAmount: discountAmount,
       CustomerFirstName: customerFirstName,
       CustomerLastName: customerLastName,
       CustomerEmail: customerEmail || '',

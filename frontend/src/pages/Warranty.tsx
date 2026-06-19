@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import API from '../api/client';
 
 function statusBadge(s: string) {
@@ -50,7 +50,7 @@ export default function Warranty() {
   };
 
   // Load on first mount
-  useState(() => { loadWarrantyCases(); });
+  useEffect(() => { loadWarrantyCases(); }, []);
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -80,7 +80,7 @@ export default function Warranty() {
         description: form.description,
         priority: form.priority,
       });
-      setSuccessMsg('✅ Warranty claim submitted to Salesforce! The SF team will review and reach out to the customer.');
+      setSuccessMsg('Warranty claim submitted to Salesforce. The team will review and contact the customer.');
       setForm(emptyForm);
       setTimeout(() => {
         setSuccessMsg('');
@@ -98,11 +98,11 @@ export default function Warranty() {
     <div>
       <div className="page-header">
         <div className="page-header-left">
-          <h1 className="page-title">🛡️ Warranty & Service Claims</h1>
-          <p className="page-desc">Submit warranty claims to Salesforce on behalf of customers — all resolution handled by SF team</p>
+          <h1 className="page-title">Warranty & Service Claims</h1>
+          <p className="page-desc">Submit warranty claims on behalf of customers — all resolution is handled by the support team</p>
         </div>
         <button className="btn btn-primary" onClick={() => { setForm(emptyForm); setFormError(''); setSuccessMsg(''); setShowModal(true); }}>
-          🛡️ Submit Warranty Claim
+          Submit Warranty Claim
         </button>
       </div>
 
@@ -113,15 +113,11 @@ export default function Warranty() {
         borderRadius: '12px',
         padding: '14px 20px',
         marginBottom: '20px',
-        display: 'flex',
-        alignItems: 'flex-start',
-        gap: '12px',
         fontSize: '13px',
         color: 'var(--text-secondary)',
       }}>
-        <span style={{ fontSize: '20px', flexShrink: 0 }}>ℹ️</span>
         <div>
-          <strong style={{ color: 'var(--text-primary)' }}>How Warranty Claims Work:</strong> You submit the claim on behalf of your customer with their details and Order ID. The Salesforce team handles all investigation, service scheduling, and resolution. You can track the status below.
+          <strong style={{ color: 'var(--text-primary)' }}>How Warranty Claims Work:</strong> You submit the claim on behalf of your customer with their details and Order ID. The support team handles all investigation, service scheduling, and resolution. You can track the status below.
         </div>
       </div>
 
@@ -137,11 +133,11 @@ export default function Warranty() {
             <table>
               <thead>
                 <tr>
-                  <th>Case #</th>
+                  <th>Case Number</th>
                   <th>Customer</th>
                   <th>Order ID</th>
                   <th>Issue Description</th>
-                  <th>Created</th>
+                  <th>Created Date</th>
                   <th>Status</th>
                   <th>Resolution</th>
                 </tr>
@@ -172,7 +168,7 @@ export default function Warranty() {
                           {c.Resolution__c}
                         </div>
                       ) : (
-                        <span style={{ color: 'var(--text-muted)', fontSize: '12px', fontStyle: 'italic' }}>Pending</span>
+                        <span style={{ color: 'var(--text-muted)', fontSize: '12px', fontStyle: 'italic' }}>Pending review</span>
                       )}
                     </td>
                   </tr>
@@ -180,8 +176,7 @@ export default function Warranty() {
                 {cases.length === 0 && loaded && (
                   <tr>
                     <td colSpan={7} style={{ textAlign: 'center', padding: '40px', color: 'var(--text-muted)' }}>
-                      <div style={{ fontSize: '28px', marginBottom: '8px' }}>🛡️</div>
-                      No warranty claims yet. Submit a claim on behalf of a customer to get started.
+                      No warranty claims found. Submit a claim on behalf of a customer to get started.
                     </td>
                   </tr>
                 )}
@@ -196,20 +191,20 @@ export default function Warranty() {
         <div className="modal-overlay" onClick={e => e.target === e.currentTarget && setShowModal(false)}>
           <div className="modal" style={{ maxWidth: '580px' }}>
             <div className="modal-header">
-              <div className="modal-title">🛡️ Submit Warranty Claim</div>
-              <button className="btn btn-ghost btn-sm" onClick={() => setShowModal(false)}>✕</button>
+              <div className="modal-title">Submit Warranty Claim</div>
+              <button className="btn btn-ghost btn-sm" onClick={() => setShowModal(false)}>Close</button>
             </div>
             <form onSubmit={handleSubmit}>
               <div className="modal-body">
                 {successMsg && (
                   <div style={{ background: 'rgba(16,185,129,0.10)', border: '1px solid rgba(16,185,129,0.3)', borderRadius: '8px', padding: '12px 16px', marginBottom: '16px', color: 'var(--success)', fontWeight: 600, fontSize: '13px' }}>
-                    {successMsg}
+                    <span>{successMsg}</span>
                   </div>
                 )}
                 {formError && <div className="auth-error" style={{ marginBottom: '16px' }}>{formError}</div>}
 
                 <div style={{ background: 'rgba(245,158,11,0.07)', border: '1px solid rgba(245,158,11,0.2)', borderRadius: '8px', padding: '10px 14px', marginBottom: '18px', fontSize: '12px', color: 'var(--text-secondary)' }}>
-                  🛡️ Warranty claim is submitted as a <strong>Case (Type: Warranty Claim)</strong> in Salesforce. You can raise claims for any order — the SF team validates and processes it.
+                  <span>Warranty claims are submitted as support cases in Salesforce. You can raise claims for any order — the support team validates and processes it.</span>
                 </div>
 
                 <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '12px' }}>
@@ -240,20 +235,20 @@ export default function Warranty() {
                     className="form-input"
                     value={form.orderId}
                     onChange={e => setForm({ ...form, orderId: e.target.value })}
-                    placeholder="e.g. ORD-2024-0012 or SF Order record ID"
+                    placeholder="e.g. ORD-2024-0012"
                     required
                   />
                   <div style={{ fontSize: '11px', color: 'var(--text-muted)', marginTop: '4px' }}>
-                    You can raise claims for any order, including orders from other dealers
+                    You can raise claims for any valid customer order.
                   </div>
                 </div>
 
                 <div className="form-group">
                   <label className="form-label">Priority</label>
                   <select className="form-input" value={form.priority} onChange={e => setForm({ ...form, priority: e.target.value })}>
-                    <option value="High">🔴 High — Critical defect / Safety issue</option>
-                    <option value="Medium">🟡 Medium — Functional problem</option>
-                    <option value="Low">🔵 Low — Minor defect / Cosmetic issue</option>
+                    <option value="High">High — Critical defect / Safety issue</option>
+                    <option value="Medium">Medium — Functional problem</option>
+                    <option value="Low">Low — Minor defect / Cosmetic issue</option>
                   </select>
                 </div>
 
@@ -272,7 +267,7 @@ export default function Warranty() {
               <div className="modal-footer">
                 <button type="button" className="btn btn-ghost" onClick={() => setShowModal(false)}>Cancel</button>
                 <button type="submit" className="btn btn-primary" disabled={submitting || !!successMsg}>
-                  {submitting ? '⏳ Submitting Claim...' : '🛡️ Submit Warranty Claim'}
+                  {submitting ? 'Submitting Claim...' : 'Submit Warranty Claim'}
                 </button>
               </div>
             </form>

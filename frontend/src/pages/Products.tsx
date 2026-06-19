@@ -35,18 +35,18 @@ export default function Products() {
     <div>
       <div className="page-header">
         <div className="page-header-left">
-          <h1 className="page-title">🏭 Product Catalog</h1>
-          <p className="page-desc">{products.length} heavy-industry components with real-time pricing slabs and AI forecasting</p>
+          <h1 className="page-title">Product Catalog</h1>
+          <p className="page-desc">{products.length} heavy-industry components with real-time pricing slabs and demand forecasting</p>
         </div>
       </div>
 
       <div className="filter-bar" style={{ gap: '12px' }}>
-        <div className="search-box" style={{ maxWidth: '360px' }}>
-          <span>🔍</span>
+        <div className="search-box" style={{ maxWidth: '360px', paddingLeft: '12px' }}>
           <input 
             value={search} 
             onChange={e => setSearch(e.target.value)} 
             placeholder="Search by name or serial code..." 
+            style={{ paddingLeft: 0 }}
           />
         </div>
         <div style={{ display: 'flex', gap: '6px', flexWrap: 'wrap' }}>
@@ -65,7 +65,6 @@ export default function Products() {
 
       {filtered.length === 0 ? (
         <div className="empty-state">
-          <div className="empty-state-icon">🔍</div>
           <h3>No products match your criteria</h3>
           <p>Try refining your search text or switching the product family filter.</p>
         </div>
@@ -102,9 +101,9 @@ export default function Products() {
                   </div>
                   
                   <div style={{ textAlign: 'right' }}>
-                    <div style={{ fontSize: '11px', color: 'var(--text-muted)' }}>AI Forecasted Demand</div>
+                    <div style={{ fontSize: '11px', color: 'var(--text-muted)' }}>Forecasted Demand</div>
                     <div style={{ fontSize: '13px', fontWeight: 600, color: 'var(--success)' }}>
-                      📈 {p.Forecasted_Demand__c || 0} units/mo
+                      {p.Forecasted_Demand__c || 0} units/mo
                     </div>
                   </div>
                 </div>
@@ -124,8 +123,7 @@ export default function Products() {
                       gap: '6px'
                     }}
                   >
-                    <span>✨</span>
-                    <span>AI suggests restocking <strong>{p.Restock_Recommendation__c} units</strong></span>
+                    <span>Recommended restock qty: <strong>{p.Restock_Recommendation__c} units</strong></span>
                   </div>
                 )}
               </div>

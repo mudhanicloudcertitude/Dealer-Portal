@@ -4,14 +4,15 @@ import { useState } from 'react';
 import API from '../api/client';
 
 const navItems = [
-  { to: '/', label: 'Dashboard', icon: '📊', exact: true },
-  { to: '/orders', label: 'Orders', icon: '📦' },
-  { to: '/sales', label: 'Sales Pipeline', icon: '🎯' },
-  { to: '/products', label: 'Product Catalog', icon: '🏭' },
-  { to: '/schemes', label: 'Schemes & Pricing', icon: '🏷️' },
-  { to: '/warranty', label: 'Warranty & Service', icon: '🛡️' },
-  { to: '/payments', label: 'Invoices & Payments', icon: '💳' },
-  { to: '/cases', label: 'Support', icon: '🎧' },
+  { to: '/', label: 'Dashboard', exact: true },
+  { to: '/orders', label: 'Orders' },
+  { to: '/sales', label: 'Sales Pipeline' },
+  { to: '/products', label: 'Product Catalog' },
+  { to: '/inventory', label: 'Inventory' },
+  { to: '/schemes', label: 'Schemes & Pricing' },
+  { to: '/warranty', label: 'Warranty & Service' },
+  { to: '/payments', label: 'Invoices & Payments' },
+  { to: '/cases', label: 'Support' },
 ];
 
 export default function Layout() {
@@ -34,7 +35,6 @@ export default function Layout() {
 
       <aside className={`sidebar ${sidebarOpen ? 'open' : ''}`}>
         <div className="sidebar-logo">
-          <div className="sidebar-logo-icon">🏭</div>
           <div>
             <div className="sidebar-logo-text">Dealer Portal</div>
             <div className="sidebar-logo-sub">Manufacturing CRM</div>
@@ -51,7 +51,6 @@ export default function Layout() {
               className={({ isActive }) => `nav-item ${isActive ? 'active' : ''}`}
               onClick={() => setSidebarOpen(false)}
             >
-              <span style={{fontSize:'16px'}}>{item.icon}</span>
               {item.label}
             </NavLink>
           ))}
@@ -74,21 +73,26 @@ export default function Layout() {
               <div className="profile-name">{user?.name}</div>
               <div className="profile-role">Click to logout</div>
             </div>
-            <span style={{fontSize:'16px',opacity:0.5}}>→</span>
           </div>
         </div>
       </aside>
 
       <div className="main-content">
         <header className="topbar">
+          <button
+            type="button"
+            className="btn btn-sm mobile-menu-btn"
+            style={{ marginRight: '12px' }}
+            onClick={() => setSidebarOpen(true)}
+            aria-label="Open menu"
+          >
+            Menu
+          </button>
           <div style={{flex:1}}>
             <div className="topbar-title">Manufacturing Dealer Portal</div>
           </div>
           <div className="topbar-actions">
-            <button className={`sync-btn ${syncing ? 'syncing' : ''}`} onClick={triggerSync}>
-              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-                <path d="M23 4v6h-6M1 20v-6h6"/><path d="M3.51 9a9 9 0 0114.85-3.36L23 10M1 14l4.64 4.36A9 9 0 0020.49 15"/>
-              </svg>
+            <button className="btn btn-secondary btn-sm" onClick={triggerSync} disabled={syncing}>
               {syncing ? 'Syncing...' : 'Sync SF'}
             </button>
             {account && (

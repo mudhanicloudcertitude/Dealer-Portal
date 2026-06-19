@@ -65,8 +65,7 @@ router.put('/:id/cancel', authenticateToken, async (req: AuthRequest, res) => {
     if (!order.stockRestored) {
       const invItem = await InventoryModel.findById(order.inventoryItem);
       if (invItem) {
-        invItem.Stock_On_Hand__c += order.quantity;
-        invItem.Last_Audit_Date__c = new Date().toISOString().split('T')[0];
+        invItem.Quantity__c += order.quantity;
         await invItem.save();
         console.log(`[SALES] ✅ Restored ${order.quantity} units to inventory for product: ${order.productName}`);
       }

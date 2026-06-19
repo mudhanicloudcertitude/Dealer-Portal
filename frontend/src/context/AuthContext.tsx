@@ -33,7 +33,7 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
     const res = await API.post('/auth/login', { email, password });
     localStorage.setItem('dp_token', res.data.token);
     setUser(res.data.user);
-    setAccount(res.data.account);
+    setAccount(res.data.user?.account ?? res.data.account);
   };
 
   const logout = () => {

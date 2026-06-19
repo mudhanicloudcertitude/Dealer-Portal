@@ -2,9 +2,10 @@ import { Router } from 'express';
 import bcrypt from 'bcryptjs';
 import { v4 as uuidv4 } from 'uuid';
 import { sfDB, cacheDB } from '../db/init';
-import { generateToken } from '../middleware/auth';
+import { generateToken, verifyToken, authenticateToken, AuthRequest } from '../middleware/auth';
 import { User } from '../models/User';
 import { createDealerAccount, syncAccountFromSF, syncCasesFromSF } from '../services/salesforce';
+import { hydrateMockDataForAccount } from '../db/mockHydrate';
 
 
 const router = Router();
@@ -38,8 +39,22 @@ router.post('/login', async (req, res) => {
 
       console.log(`[AUTH] Realtime sync for Salesforce Invoices...`);
       await syncInvoicesFromSF(user.accountId, user._id).catch(console.error);
+
+      console.log(`[AUTH] Realtime sync for Salesforce Leads...`);
+      const { syncLeadsFromSF, syncOpportunitiesFromSF, syncSchemesFromSF } = await import('../services/salesforce');
+      await syncLeadsFromSF(user.accountId, user._id).catch(console.error);
+
+      console.log(`[AUTH] Realtime sync for Salesforce Opportunities...`);
+      await syncOpportunitiesFromSF(user.accountId, user._id).catch(console.error);
+
+      await syncSchemesFromSF().catch(console.error);
     } catch (syncError: any) {
       console.error(`[AUTH] ⚠️ Realtime Salesforce sync failed (non-fatal, using cache):`, syncError.message);
+    }
+
+    // Hydrate mock seed data for local ACC* accounts
+    if (user.accountId?.startsWith('ACC')) {
+      await hydrateMockDataForAccount(user.accountId, user._id);
     }
 
     // Get account from Salesforce mock DB
@@ -130,10 +145,11 @@ router.post('/register', async (req, res) => {
     await newUser.save();
     console.log(`[AUTH] ✅ User saved to MongoDB: ${userId}`);
 
-    const token = generateToken({ userId, accountId, role: 'dealer', email });
+    const normalizedEmail = email.toLowerCase().trim();
+    const token = generateToken({ userId, accountId, role: 'dealer', email: normalizedEmail });
     res.status(201).json({
       token,
-      user: { id: userId, name, email, role: 'dealer', account: newAccount },
+      user: { id: userId, name, email: normalizedEmail, role: 'dealer', account: newAccount },
     });
   } catch (err: any) {
     res.status(500).json({ error: 'Registration failed', details: err.message });
@@ -146,24 +162,42 @@ router.get('/me', async (req: any, res) => {
   const token = authHeader && authHeader.split(' ')[1];
   if (!token) return res.status(401).json({ error: 'No token' });
   try {
-    const jwt = require('jsonwebtoken');
-    const decoded: any = jwt.verify(token, process.env.JWT_SECRET || 'dealer-portal-secret-key-2024');
+    const decoded: any = verifyToken(token);
+    const dbUser = await User.findOne({ id: decoded.userId });
     const account = sfDB.get('accounts').find({ Id: decoded.accountId }).value();
-    const notifications = cacheDB.get('notifications').filter({ read: false }).value();
-    res.json({ user: decoded, account, unreadNotifications: notifications.length });
+    const notifications = cacheDB.get('notifications')
+      .filter({ userId: decoded.userId, read: false }).value();
+    res.json({
+      user: {
+        userId: decoded.userId,
+        id: decoded.userId,
+        name: dbUser?.name || decoded.name,
+        email: decoded.email,
+        role: decoded.role,
+        accountId: decoded.accountId,
+      },
+      account,
+      unreadNotifications: notifications.length,
+    });
   } catch {
     res.status(403).json({ error: 'Invalid token' });
   }
 });
 
 // GET /api/auth/notifications
-router.get('/notifications', (req: any, res) => {
-  const notifications = cacheDB.get('notifications').value().slice(-20).reverse();
+router.get('/notifications', authenticateToken, (req: AuthRequest, res) => {
+  const notifications = cacheDB.get('notifications')
+    .filter({ userId: req.user.userId })
+    .value()
+    .slice(-20)
+    .reverse();
   res.json(notifications);
 });
 
 // PUT /api/auth/notifications/:id/read
-router.put('/notifications/:id/read', (req, res) => {
+router.put('/notifications/:id/read', authenticateToken, (req: AuthRequest, res) => {
+  const note = cacheDB.get('notifications').find({ id: req.params.id, userId: req.user.userId }).value();
+  if (!note) return res.status(404).json({ error: 'Notification not found' });
   cacheDB.get('notifications').find({ id: req.params.id }).assign({ read: true }).write();
   res.json({ success: true });
 });

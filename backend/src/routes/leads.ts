@@ -30,8 +30,8 @@ router.post('/', authenticateToken, async (req: AuthRequest, res) => {
 
     const { contactName, phone, email, companyName, notes } = req.body;
 
-    if (!contactName || !phone) {
-      return res.status(400).json({ error: 'Customer name and phone are required.' });
+    if (!contactName || !phone || !companyName) {
+      return res.status(400).json({ error: 'Customer name, phone, and company name are required.' });
     }
 
     // Source is ALWAYS 'Dealer Portal' — not configurable by the dealer
@@ -65,7 +65,7 @@ router.post('/', authenticateToken, async (req: AuthRequest, res) => {
 
     res.status(201).json(lead);
   } catch (err: any) {
-    res.status(500).json({ error: 'Failed to create lead', details: err.message });
+    res.status(500).json({ error: err.message || 'Failed to create lead', details: err.message });
   }
 });
 

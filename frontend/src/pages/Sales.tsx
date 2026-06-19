@@ -75,10 +75,8 @@ function dealStageBadge(stage: string) {
   return <span className={`badge ${m[stage] || 'badge-muted'}`}>{stage}</span>;
 }
 
-
 type ToastType = 'error' | 'success' | 'info' | 'warning';
 interface ToastItem { id: number; type: ToastType; title: string; msg: string; }
-const toastIcons: Record<ToastType, string> = { error: '🚫', warning: '⚠️', success: '✅', info: 'ℹ️' };
 export let showToast: (type: ToastType, title: string, msg: string) => void = () => {};
 
 function ToastContainer({ toasts, onRemove }: { toasts: ToastItem[]; onRemove: (id: number) => void }) {
@@ -86,7 +84,6 @@ function ToastContainer({ toasts, onRemove }: { toasts: ToastItem[]; onRemove: (
     <div style={{ position: 'fixed', bottom: 24, right: 24, zIndex: 9999, display: 'flex', flexDirection: 'column', gap: 10 }}>
       {toasts.map(t => (
         <div key={t.id} onClick={() => onRemove(t.id)} style={{ display: 'flex', gap: 12, padding: '12px 16px', background: 'var(--bg-card)', border: '1px solid var(--border)', borderRadius: 8, boxShadow: '0 4px 12px rgba(0,0,0,0.15)', cursor: 'pointer', minWidth: 280, maxWidth: 360 }}>
-          <div>{toastIcons[t.type]}</div>
           <div>
             <div style={{ fontWeight: 700, fontSize: 13 }}>{t.title}</div>
             <div style={{ fontSize: 12, color: 'var(--text-secondary)', marginTop: 2 }}>{t.msg}</div>
@@ -110,14 +107,13 @@ function CreateLeadModal({ onClose, onSave }: { onClose: () => void; onSave: () 
   const [error, setError] = useState('');
 
   const save = async () => {
-    if (!form.contactName || !form.phone) {
-      setError('Contact name and phone are required.'); return;
+    if (!form.contactName || !form.phone || !form.companyName) {
+      setError('Customer name, phone, and company name are required.'); return;
     }
     setSaving(true); setError('');
     try {
-      // Source is always "Dealer Portal" — set on backend, not user input
       await API.post('/leads', { ...form, source: 'Dealer Portal' });
-      showToast('success', 'Lead Submitted ✅', `Lead for "${form.contactName}" created in Salesforce.`);
+      showToast('success', 'Lead Submitted', `Lead for "${form.contactName}" created in Salesforce.`);
       onSave();
     } catch (e: any) {
       setError(e.response?.data?.error || 'Failed to create lead.');
@@ -131,7 +127,7 @@ function CreateLeadModal({ onClose, onSave }: { onClose: () => void; onSave: () 
       <div className="modal" style={{ maxWidth: 560 }} onClick={e => e.stopPropagation()}>
         <div className="modal-header">
           <div>
-            <div className="modal-title">👤 Submit New Lead</div>
+            <div className="modal-title">Submit New Lead</div>
             <div style={{ fontSize: 12, color: 'var(--text-muted)', marginTop: 2 }}>
               Lead will be created in Salesforce with Source: <strong>Dealer Portal</strong>
             </div>
@@ -147,7 +143,7 @@ function CreateLeadModal({ onClose, onSave }: { onClose: () => void; onSave: () 
               <input className="form-input" placeholder="e.g. Ravi Kumar" value={form.contactName} onChange={e => f('contactName', e.target.value)} />
             </div>
             <div className="form-group">
-              <label className="form-label">Company / Business</label>
+              <label className="form-label">Company / Business <span style={{ color: 'var(--danger)' }}>*</span></label>
               <input className="form-input" placeholder="e.g. Sunrise Electronics" value={form.companyName} onChange={e => f('companyName', e.target.value)} />
             </div>
           </div>
@@ -171,7 +167,7 @@ function CreateLeadModal({ onClose, onSave }: { onClose: () => void; onSave: () 
         <div className="modal-footer">
           <button className="btn btn-ghost" onClick={onClose}>Cancel</button>
           <button className="btn btn-primary" onClick={save} disabled={saving}>
-            {saving ? '⏳ Submitting to Salesforce...' : '🚀 Submit Lead'}
+            {saving ? 'Submitting to Salesforce...' : 'Submit Lead'}
           </button>
         </div>
       </div>
@@ -181,7 +177,6 @@ function CreateLeadModal({ onClose, onSave }: { onClose: () => void; onSave: () 
 
 // ─── Lead Detail Panel (read-only, status tracking only) ──────────────────────
 function LeadDetailPanel({ lead, onClose }: { lead: Lead; onClose: () => void }) {
-  // Find position in simplified pipeline
   const pipelineSteps = ['Submitted', 'Contacted', 'Qualified', 'Resolved'];
   const statusToStep: Record<string, number> = {
     'New': 0, 'Open - Not Contacted': 0,
@@ -198,7 +193,7 @@ function LeadDetailPanel({ lead, onClose }: { lead: Lead; onClose: () => void })
       <div className="detail-panel">
         <div className="detail-panel-header">
           <div>
-            <div style={{ fontSize: 16, fontWeight: 700 }}>👤 {lead.contactName}</div>
+            <div style={{ fontSize: 16, fontWeight: 700 }}>{lead.contactName}</div>
             <div style={{ fontSize: 12, color: 'var(--text-muted)', marginTop: 2 }}>{lead.companyName || '—'}</div>
           </div>
           <button className="btn btn-ghost btn-sm" onClick={onClose}>✕</button>
@@ -232,12 +227,16 @@ function LeadDetailPanel({ lead, onClose }: { lead: Lead; onClose: () => void })
             </div>
             <div className="detail-field">
               <div className="detail-field-label">Phone</div>
-              <div className="detail-field-value">📞 {lead.phone}</div>
+              <div className="detail-field-value">
+                <span>{lead.phone}</span>
+              </div>
             </div>
             {lead.email && (
               <div className="detail-field">
                 <div className="detail-field-label">Email</div>
-                <div className="detail-field-value">✉️ {lead.email}</div>
+                <div className="detail-field-value">
+                  <span>{lead.email}</span>
+                </div>
               </div>
             )}
             {lead.companyName && (
@@ -254,10 +253,11 @@ function LeadDetailPanel({ lead, onClose }: { lead: Lead; onClose: () => void })
             )}
             <div className="detail-field">
               <div className="detail-field-label">Submitted</div>
-              <div className="detail-field-value">{fmtDate(lead.createdAt)}</div>
+              <div className="detail-field-value">
+                <span>{fmtDate(lead.createdAt)}</span>
+              </div>
             </div>
           </div>
-
 
         </div>
       </div>
@@ -279,7 +279,7 @@ function DealDetailPanel({ deal, onClose }: { deal: Deal; onClose: () => void })
       <div className="detail-panel">
         <div className="detail-panel-header">
           <div>
-            <div style={{ fontSize: 15, fontWeight: 700 }}>💼 {name}</div>
+            <div style={{ fontSize: 15, fontWeight: 700 }}>{name}</div>
             <div style={{ fontSize: 12, color: 'var(--text-muted)', marginTop: 2 }}>{deal.companyName || '—'}</div>
           </div>
           <button className="btn btn-ghost btn-sm" onClick={onClose}>✕</button>
@@ -291,12 +291,12 @@ function DealDetailPanel({ deal, onClose }: { deal: Deal; onClose: () => void })
             {dealStageBadge(stage)}
             {isClosed && stage === 'Closed Won' && (
               <div style={{ background: 'rgba(16,185,129,0.08)', border: '1px solid rgba(16,185,129,0.2)', borderRadius: 8, padding: '10px 14px', marginTop: 10, fontSize: 13, fontWeight: 600, color: 'var(--success)' }}>
-                🏆 Deal Won!
+                Deal Won
               </div>
             )}
             {isClosed && stage === 'Closed Lost' && (
               <div style={{ background: 'rgba(239,68,68,0.07)', border: '1px solid rgba(239,68,68,0.2)', borderRadius: 8, padding: '10px 14px', marginTop: 10, fontSize: 13, fontWeight: 600, color: 'var(--danger)' }}>
-                ❌ Deal Lost
+                Deal Lost
               </div>
             )}
           </div>
@@ -308,7 +308,7 @@ function DealDetailPanel({ deal, onClose }: { deal: Deal; onClose: () => void })
               <div style={{ fontSize: 28, fontWeight: 800, color: 'var(--accent-light)' }}>{fmt(amount)}</div>
               {deal.productName && (
                 <div style={{ fontSize: 12, color: 'var(--text-muted)', marginTop: 4 }}>
-                  📦 {deal.productName} {deal.quantity ? `× ${deal.quantity}` : ''}
+                  Product: {deal.productName} {deal.quantity ? `× ${deal.quantity}` : ''}
                 </div>
               )}
               {deal.probability !== undefined && deal.probability > 0 && (
@@ -328,19 +328,23 @@ function DealDetailPanel({ deal, onClose }: { deal: Deal; onClose: () => void })
             {deal.contactName && (
               <div className="detail-field">
                 <div className="detail-field-label">Contact</div>
-                <div className="detail-field-value">👤 {deal.contactName}</div>
+                <div className="detail-field-value">{deal.contactName}</div>
               </div>
             )}
             {closeDate && (
               <div className="detail-field">
                 <div className="detail-field-label">Expected Close</div>
-                <div className="detail-field-value">📅 {fmtDate(closeDate)}</div>
+                <div className="detail-field-value">
+                  <span>{fmtDate(closeDate)}</span>
+                </div>
               </div>
             )}
             {deal.wonAt && (
               <div className="detail-field">
                 <div className="detail-field-label">Won On</div>
-                <div className="detail-field-value" style={{ color: 'var(--success)' }}>🏆 {fmtDate(deal.wonAt)}</div>
+                <div className="detail-field-value" style={{ color: 'var(--success)' }}>
+                  <span>{fmtDate(deal.wonAt)}</span>
+                </div>
               </div>
             )}
             {deal.lostReason && (
@@ -356,7 +360,6 @@ function DealDetailPanel({ deal, onClose }: { deal: Deal; onClose: () => void })
               </div>
             )}
           </div>
-
 
         </div>
       </div>
@@ -434,32 +437,29 @@ export default function Sales() {
     <div>
       <div className="page-header">
         <div className="page-header-left">
-          <h1 className="page-title">🎯 Sales Pipeline</h1>
+          <h1 className="page-title">Sales Pipeline</h1>
           <div className="page-desc">Submit leads to Salesforce and track your deals</div>
         </div>
         {activeTab === 'leads' && (
           <button className="btn btn-primary" onClick={() => setShowCreateLead(true)}>
-            ➕ Submit New Lead
+            Submit New Lead
           </button>
         )}
       </div>
 
       {/* Metrics */}
       <div className="metrics-grid" style={{ gridTemplateColumns: 'repeat(3, 1fr)', marginBottom: 20 }}>
-        <div className="metric-card accent">
-          <div className="metric-icon accent">👥</div>
+        <div className="metric-card accent" style={{ padding: '24px' }}>
           <div className="metric-value">{leads.length}</div>
           <div className="metric-label">Total Leads Submitted</div>
           <div className="metric-change">{openLeads} currently active</div>
         </div>
-        <div className="metric-card info">
-          <div className="metric-icon info">💼</div>
+        <div className="metric-card info" style={{ padding: '24px' }}>
           <div className="metric-value">{openDeals}</div>
           <div className="metric-label">Active Deals</div>
           <div className="metric-change">{wonDeals} closed won</div>
         </div>
-        <div className="metric-card success">
-          <div className="metric-icon success">🏆</div>
+        <div className="metric-card success" style={{ padding: '24px' }}>
           <div className="metric-value">{fmt(deals.filter(d => (d.StageName || d.stage) === 'Closed Won').reduce((s, d) => s + (d.Amount || d.expectedValue || 0), 0))}</div>
           <div className="metric-label">Total Won Value</div>
         </div>
@@ -468,10 +468,10 @@ export default function Sales() {
       {/* Tabs */}
       <div className="tabs">
         <div className={`tab ${activeTab === 'leads' ? 'active' : ''}`} onClick={() => { setActiveTab('leads'); setSearch(''); }}>
-          👥 Leads ({leads.length})
+          Leads ({leads.length})
         </div>
         <div className={`tab ${activeTab === 'deals' ? 'active' : ''}`} onClick={() => { setActiveTab('deals'); setSearch(''); }}>
-          💼 Deals ({deals.length})
+          Deals ({deals.length})
         </div>
       </div>
 
@@ -483,9 +483,8 @@ export default function Sales() {
           {activeTab === 'leads' && (
             <div>
               <div className="filter-bar">
-                <div className="search-box">
-                  <span>🔍</span>
-                  <input placeholder="Search by name, company or phone..." value={search} onChange={e => setSearch(e.target.value)} />
+                <div className="search-box" style={{ paddingLeft: '12px' }}>
+                  <input placeholder="Search by name, company or phone..." value={search} onChange={e => setSearch(e.target.value)} style={{ paddingLeft: 0 }} />
                 </div>
                 <div style={{ display: 'flex', gap: 4, flexWrap: 'wrap' }}>
                   {(['All', 'New', 'Open - Not Contacted', 'Working - Contacted', 'Closed - Converted', 'Closed - Not Converted'] as const).map(f => (
@@ -498,11 +497,12 @@ export default function Sales() {
 
               {filteredLeads.length === 0 ? (
                 <div className="empty-state">
-                  <div className="empty-state-icon">👥</div>
                   <h3>{leads.length === 0 ? 'No leads submitted yet' : 'No leads match your search'}</h3>
                   <p>{leads.length === 0 ? 'Submit a lead for a prospective customer to Salesforce' : 'Try adjusting your search or filters'}</p>
                   {leads.length === 0 && (
-                    <button className="btn btn-primary" onClick={() => setShowCreateLead(true)}>➕ Submit First Lead</button>
+                    <button className="btn btn-primary" onClick={() => setShowCreateLead(true)} style={{ margin: '12px auto 0' }}>
+                      Submit First Lead
+                    </button>
                   )}
                 </div>
               ) : (
@@ -531,7 +531,7 @@ export default function Sales() {
                             <td>{leadStatusBadge(l.status)}</td>
                             <td style={{ fontSize: 12, color: 'var(--text-muted)' }}>{fmtDate(l.createdAt)}</td>
                             <td onClick={e => e.stopPropagation()}>
-                              <button className="btn btn-ghost btn-sm" onClick={() => setSelectedLead(l)}>View →</button>
+                              <button className="btn btn-ghost btn-sm" onClick={() => setSelectedLead(l)}>View</button>
                             </td>
                           </tr>
                         ))}
@@ -548,9 +548,8 @@ export default function Sales() {
             <div>
 
               <div className="filter-bar">
-                <div className="search-box">
-                  <span>🔍</span>
-                  <input placeholder="Search deals by name or company..." value={search} onChange={e => setSearch(e.target.value)} />
+                <div className="search-box" style={{ paddingLeft: '12px' }}>
+                  <input placeholder="Search deals by name or company..." value={search} onChange={e => setSearch(e.target.value)} style={{ paddingLeft: 0 }} />
                 </div>
                 <div style={{ display: 'flex', gap: 4, flexWrap: 'wrap' }}>
                   <button className={`btn btn-sm ${dealStageFilter === 'All' ? 'btn-primary' : 'btn-ghost'}`} onClick={() => setDealStageFilter('All')}>All</button>
@@ -564,7 +563,6 @@ export default function Sales() {
 
               {filteredDeals.length === 0 ? (
                 <div className="empty-state">
-                  <div className="empty-state-icon">💼</div>
                   <h3>{deals.length === 0 ? 'No deals yet' : 'No deals match your search'}</h3>
                   <p>{deals.length === 0 ? 'Deals will appear here once your Dealer Account is linked to Opportunities in Salesforce' : 'Try adjusting your search or stage filter'}</p>
                 </div>
@@ -624,7 +622,7 @@ export default function Sales() {
                                 ) : <span style={{ color: 'var(--text-muted)', fontSize: 12 }}>—</span>}
                               </td>
                               <td onClick={e => e.stopPropagation()}>
-                                <button className="btn btn-ghost btn-sm" onClick={() => setSelectedDeal(d)}>View →</button>
+                                <button className="btn btn-ghost btn-sm" onClick={() => setSelectedDeal(d)}>View</button>
                               </td>
                             </tr>
                           );

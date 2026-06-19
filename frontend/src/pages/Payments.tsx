@@ -32,11 +32,11 @@ function InvoiceRow({ inv, onDownload }: { inv: any; onDownload: (inv: any) => v
       <div style={{ display: 'flex', alignItems: 'flex-start', justifyContent: 'space-between', gap: '12px', flexWrap: 'wrap' }}>
         <div>
           <div style={{ fontWeight: 700, fontSize: '15px', color: 'var(--text-primary)', fontFamily: 'monospace' }}>
-            📄 {inv.Invoice_Number__c || inv.Name || 'N/A'}
+            {inv.Invoice_Number__c || inv.Name || 'N/A'}
           </div>
           {inv.OrderId__c && (
             <div style={{ fontSize: '12px', color: 'var(--text-muted)', marginTop: '3px' }}>
-              🔗 Order: <span style={{ fontFamily: 'monospace', color: 'var(--accent-light)' }}>{inv.OrderId__c}</span>
+              Order Reference: <span style={{ fontFamily: 'monospace', color: 'var(--accent-light)' }}>{inv.OrderId__c}</span>
             </div>
           )}
         </div>
@@ -49,7 +49,7 @@ function InvoiceRow({ inv, onDownload }: { inv: any; onDownload: (inv: any) => v
             onClick={() => onDownload(inv)}
             style={{ display: 'flex', alignItems: 'center', gap: '6px' }}
           >
-            ⬇ Download Invoice
+            Download Invoice
           </button>
         </div>
       </div>
@@ -75,7 +75,7 @@ function InvoiceRow({ inv, onDownload }: { inv: any; onDownload: (inv: any) => v
         {inv.CustomerName && (
           <div>
             <div style={{ fontSize: '10px', color: 'var(--text-muted)', textTransform: 'uppercase', letterSpacing: '0.05em', marginBottom: '3px' }}>Customer</div>
-            <div style={{ fontWeight: 600, fontSize: '13px' }}>👤 {inv.CustomerName}</div>
+            <div style={{ fontWeight: 600, fontSize: '13px' }}>{inv.CustomerName}</div>
           </div>
         )}
       </div>
@@ -83,7 +83,7 @@ function InvoiceRow({ inv, onDownload }: { inv: any; onDownload: (inv: any) => v
       {/* Tracking status bar */}
       {inv.Tracking_Status__c && (
         <div style={{ background: 'rgba(99,102,241,0.06)', border: '1px solid rgba(99,102,241,0.15)', borderRadius: '8px', padding: '8px 12px', fontSize: '12px', color: 'var(--text-secondary)' }}>
-          🚚 <strong>Tracking:</strong> {inv.Tracking_Status__c}
+          <strong>Tracking:</strong> {inv.Tracking_Status__c}
         </div>
       )}
     </div>
@@ -124,17 +124,19 @@ export default function Payments() {
   const handleDownload = async (inv: any) => {
     const id = inv.Id || inv.id;
     try {
-      const response = await API.get(`/payments/${id}/download`, { responseType: 'blob' });
-      const url = window.URL.createObjectURL(new Blob([response.data], { type: 'application/pdf' }));
+      const response = await API.get(`/payments/${id}/download`);
+      const invoice = response.data?.invoice || inv;
+      const invoiceHtml = generateInvoiceHtml(invoice);
+      const blob = new Blob([invoiceHtml], { type: 'text/html' });
+      const url = window.URL.createObjectURL(blob);
       const link = document.createElement('a');
       link.href = url;
-      link.download = `Invoice_${inv.Invoice_Number__c || id}.pdf`;
+      link.download = `Invoice_${invoice.Invoice_Number__c || id}.html`;
       document.body.appendChild(link);
       link.click();
       link.remove();
       window.URL.revokeObjectURL(url);
     } catch (err: any) {
-      // Fallback: generate a printable HTML receipt
       const invoiceHtml = generateInvoiceHtml(inv);
       const blob = new Blob([invoiceHtml], { type: 'text/html' });
       const url = window.URL.createObjectURL(blob);
@@ -172,7 +174,7 @@ export default function Payments() {
 <body>
   <div class="header">
     <div>
-      <div class="logo">🏭 Dealer Portal</div>
+      <div class="logo">Dealer Portal</div>
       <div class="logo-sub">Manufacturing CRM</div>
     </div>
     <div style="text-align:right">
@@ -194,7 +196,7 @@ export default function Payments() {
     <div class="amount-value">₹${(inv.Amount__c || 0).toLocaleString('en-IN')}</div>
   </div>
 
-  ${inv.Tracking_Status__c ? `<div style="background:#f0f9ff;border:1px solid #bae6fd;border-radius:8px;padding:12px 16px;font-size:13px;color:#0369a1;margin-bottom:20px">🚚 <strong>Tracking Status:</strong> ${inv.Tracking_Status__c}</div>` : ''}
+  ${inv.Tracking_Status__c ? `<div style="background:#f0f9ff;border:1px solid #bae6fd;border-radius:8px;padding:12px 16px;font-size:13px;color:#0369a1;margin-bottom:20px"><strong>Tracking Status:</strong> ${inv.Tracking_Status__c}</div>` : ''}
 
   <div class="footer">
     Generated from Dealer Portal · ${new Date().toLocaleDateString('en-IN', { day: 'numeric', month: 'long', year: 'numeric' })}
@@ -207,7 +209,7 @@ export default function Payments() {
     <div>
       <div className="page-header">
         <div className="page-header-left">
-          <h1 className="page-title">💳 Invoices & Payments</h1>
+          <h1 className="page-title">Invoices & Payments</h1>
           <p className="page-desc">Search customer invoices by name or Order ID and track payment status</p>
         </div>
       </div>
@@ -215,9 +217,9 @@ export default function Payments() {
       {/* Search Card */}
       <div className="card" style={{ marginBottom: '24px' }}>
         <div style={{ padding: '24px' }}>
-          <div style={{ fontSize: '14px', fontWeight: 700, color: 'var(--text-primary)', marginBottom: '16px', display: 'flex', alignItems: 'center', gap: '8px' }}>
-            🔍 Search Invoices
-            <span style={{ fontSize: '11px', color: 'var(--text-muted)', fontWeight: 400 }}>Enter customer name and/or Order ID</span>
+          <div style={{ fontSize: '14px', fontWeight: 700, color: 'var(--text-primary)', marginBottom: '16px' }}>
+            <span>Search Invoices</span>
+            <span style={{ fontSize: '11px', color: 'var(--text-muted)', fontWeight: 400, marginLeft: '8px' }}>Enter customer name and/or Order ID</span>
           </div>
           <form onSubmit={handleSearch}>
             <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '14px', marginBottom: '14px' }}>
@@ -244,7 +246,7 @@ export default function Payments() {
               <div className="auth-error" style={{ marginBottom: '12px' }}>{searchError}</div>
             )}
             <button type="submit" className="btn btn-primary" disabled={searching}>
-              {searching ? '⏳ Searching Salesforce...' : '🔍 Search Invoices'}
+              {searching ? 'Searching Salesforce...' : 'Search Invoices'}
             </button>
           </form>
         </div>
@@ -270,7 +272,6 @@ export default function Payments() {
 
           {results.length === 0 ? (
             <div className="card" style={{ padding: '48px', textAlign: 'center' }}>
-              <div style={{ fontSize: '36px', marginBottom: '12px' }}>📭</div>
               <div style={{ fontWeight: 600, marginBottom: '6px' }}>No invoices found</div>
               <div style={{ fontSize: '13px', color: 'var(--text-muted)' }}>
                 No Salesforce invoices match this customer name or Order ID. Please verify the details and try again.
@@ -292,7 +293,6 @@ export default function Payments() {
 
       {!hasSearched && (
         <div className="card" style={{ padding: '60px', textAlign: 'center' }}>
-          <div style={{ fontSize: '48px', marginBottom: '16px' }}>💳</div>
           <div style={{ fontWeight: 700, fontSize: '16px', marginBottom: '8px' }}>Search for Customer Invoices</div>
           <div style={{ fontSize: '13px', color: 'var(--text-muted)', maxWidth: '380px', margin: '0 auto' }}>
             Enter a customer name or Order ID above to look up invoices from Salesforce and download them.

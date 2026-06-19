@@ -18,7 +18,6 @@ router.get('/', authenticateToken, async (req: AuthRequest, res) => {
     const schemes = sfDB.get('dealerSchemes').filter((s: any) => {
       if (!s.IsActive__c) return false;
       if (s.End_Date__c && s.End_Date__c < today) return false;
-      if (s.Applicable_Tier__c && s.Applicable_Tier__c !== account?.Tier__c) return false;
       return true;
     }).value();
     res.json(schemes);

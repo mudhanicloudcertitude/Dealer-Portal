@@ -276,8 +276,10 @@ export async function syncAccountFromSF(sfAccountId: string): Promise<any> {
 export async function syncCasesFromSF(sfAccountId: string, mongoUserId: any): Promise<void> {
   console.log(`\n[SF] 🔄 syncCasesFromSF() triggered for Account ID: ${sfAccountId}`);
   
-  if (!sfAccountId) {
-    console.warn(`[SF] ⚠️ Cannot sync cases: Missing Account ID`);
+  if (!sfAccountId || sfAccountId.startsWith('ACC')) {
+    console.log(`[SF] ℹ️ Using mock cases for Account ID: ${sfAccountId}`);
+    const { hydrateMockDataForAccount } = require('../db/mockHydrate');
+    await hydrateMockDataForAccount(sfAccountId, mongoUserId);
     return;
   }
 
@@ -338,6 +340,11 @@ export async function createSFCase(data: {
   customerPhone?: string | null;
   orderId?: string | null;
 }): Promise<{ id: string; caseNumber?: string }> {
+  if (data.accountId?.startsWith('ACC')) {
+    const id = `MOCK_CASE_${Date.now()}`;
+    return { id, caseNumber: `CS-MOCK-${String(Date.now()).slice(-6)}` };
+  }
+
   const conn = await getSFConnection();
 
   // Build enriched description including customer context
@@ -479,13 +486,87 @@ export async function syncProductsFromSF(): Promise<any[]> {
   }
 }
 
+// ─── syncInventoryFromSF ──────────────────────────────────────────────────────
+// Syncs Dealer_Inventory__c records from Salesforce using the new object structure.
+// SOQL: SELECT Id, Inventory__r.Product__c, Inventory__r.Product__r.Name, Quantity__c, Dealer__c
+//       FROM Dealer_Inventory__c WHERE Dealer__c = '<sfAccountId>'
+export async function syncInventoryFromSF(sfAccountId: string, mongoUserId: any): Promise<any[]> {
+  console.log(`\n[SF] 🔄 syncInventoryFromSF() triggered for Account: ${sfAccountId}`);
+
+  if (!sfAccountId || sfAccountId.startsWith('ACC')) {
+    console.log(`[SF] ℹ️ Skipping real-time inventory sync for mock Account ID: ${sfAccountId}`);
+    const { InventoryModel } = require('../models/Inventory');
+    return await InventoryModel.find({ user: mongoUserId });
+  }
+
+  try {
+    const conn = await getSFConnection();
+
+    const soql = `SELECT Id, Inventory__r.Product__c, Inventory__r.Product__r.Name, Quantity__c, Dealer__c, Amount__c
+                  FROM Dealer_Inventory__c
+                  WHERE Dealer__c = '${sfAccountId}'
+                  ORDER BY Inventory__r.Product__r.Name ASC`;
+
+    console.log(`[SF] 🔍 SOQL: ${soql.trim()}`);
+    const result = await conn.query<any>(soql);
+    console.log(`[SF] ✅ Retrieved ${result.records.length} Dealer_Inventory__c records`);
+
+    const { InventoryModel } = require('../models/Inventory');
+    const { ProductModel } = require('../models/Product');
+    const synced: any[] = [];
+
+    for (const record of result.records) {
+      const product2Id: string = record.Inventory__r?.Product__c || '';
+      const productName: string = record.Inventory__r?.Product__r?.Name || 'Unknown Product';
+      const quantity: number = Number(record.Quantity__c) || 0;
+      const amount: number = Number(record.Amount__c) || 0;
+
+      // Find or resolve local MongoDB Product
+      let localProduct = product2Id ? await ProductModel.findOne({ Id: product2Id }) : null;
+
+      if (!localProduct) {
+        console.warn(`[SF] ⚠️ No local product found for Product2Id: ${product2Id} — skipping record`);
+        continue;
+      }
+
+      const doc = await InventoryModel.findOneAndUpdate(
+        { user: mongoUserId, Product: localProduct._id },
+        {
+          user: mongoUserId,
+          accountId: sfAccountId,
+          sfId: record.Id,
+          Product: localProduct._id,
+          Product2Id: product2Id,
+          Product_Name__c: productName,
+          Quantity__c: quantity,
+          Amount__c: amount,
+        },
+        { upsert: true, new: true }
+      );
+
+      synced.push(doc);
+      console.log(`[SF] 💾 Upserted inventory record: ${productName} → ${quantity} units, Amount: ${amount}`);
+    }
+
+    console.log(`[SF] 🔄 syncInventoryFromSF() completed. Synced ${synced.length} records.`);
+    return synced;
+  } catch (err: any) {
+    console.error(`[SF] ❌ syncInventoryFromSF() failed, falling back to local: ${err.message}`);
+    const { InventoryModel } = require('../models/Inventory');
+    return await InventoryModel.find({ user: mongoUserId });
+  }
+}
+
 // ─── syncOrdersFromSF ────────────────────────────────────────────────────────
 // Syncs custom Dealer_Order__c records from Salesforce for a given Account.
 export async function syncOrdersFromSF(sfAccountId: string, mongoUserId: any): Promise<any[]> {
   console.log(`\n[SF] 🔄 syncOrdersFromSF() triggered for Account ID: ${sfAccountId}`);
   if (!sfAccountId || sfAccountId.startsWith('ACC')) {
-    console.log(`[SF] ℹ️ Skipping real-time sync for mock Account ID: ${sfAccountId}`);
-    return [];
+    console.log(`[SF] ℹ️ Using mock data for Account ID: ${sfAccountId}`);
+    const { hydrateMockDataForAccount } = require('../db/mockHydrate');
+    await hydrateMockDataForAccount(sfAccountId, mongoUserId);
+    const { OrderModel } = require('../models/Order');
+    return await OrderModel.find({ user: mongoUserId });
   }
 
   try {
@@ -673,7 +754,7 @@ export async function syncSchemesFromSF(): Promise<any[]> {
     const conn = await getSFConnection();
     console.log('[SF] 🔍 Fetching Dealer Schemes from Salesforce...');
     const result = await conn.query<any>(
-      `SELECT Id, Name, Discount_Percentage__c, Min_Order_Value__c, IsActive__c, End_Date__c 
+      `SELECT Id, Name, Discount_Percentage__c, Min_Order_Value__c, Max_Order_Value__c, CreatedDate, IsActive__c, End_Date__c 
        FROM Dealer_Scheme__c 
        ORDER BY Min_Order_Value__c ASC`
     );
@@ -685,10 +766,10 @@ export async function syncSchemesFromSF(): Promise<any[]> {
       Scheme_Name__c: r.Name, // Map standard Name field to Scheme_Name__c for portal compatibility
       Discount_Percentage__c: Number(r.Discount_Percentage__c) || 0,
       Min_Order_Value__c: Number(r.Min_Order_Value__c) || 0,
-      Max_Order_Value__c: 10000000, // Standard uncapped max
+      Max_Order_Value__c: r.Max_Order_Value__c !== null && r.Max_Order_Value__c !== undefined ? Number(r.Max_Order_Value__c) : 999999999,
       IsActive__c: r.IsActive__c ?? true,
       End_Date__c: r.End_Date__c || null,
-      Start_Date__c: new Date().toISOString().split('T')[0] // default to today if not provided
+      Start_Date__c: r.CreatedDate ? r.CreatedDate.split('T')[0] : new Date().toISOString().split('T')[0]
     }));
 
     const { sfDB } = require('../db/init');
@@ -770,7 +851,7 @@ export async function paySFInvoice(sfInvoiceId: string, bankDetails: string): Pr
   // 1. Update Invoice in Salesforce
   await conn.sobject('Dealer_Invoice__c').update({
     Id: sfInvoiceId,
-    Payment_Status__c: 'Completed',
+    Payment_Status__c: 'Paid',
     Payment_Date__c: today,
     Bank_Details__c: bankDetails
   });
@@ -807,6 +888,29 @@ export async function searchSFInvoices(data: {
   orderId: string;
 }): Promise<any[]> {
   console.log(`[SF] 🔍 searchSFInvoices() — name: "${data.customerName}", orderId: "${data.orderId}"`);
+
+  if (data.accountId?.startsWith('ACC')) {
+    const { sfDB } = require('../db/init');
+    let payments = sfDB.get('dealerPayments').filter({ Dealer__c: data.accountId }).value() || [];
+    if (data.orderId) {
+      const q = data.orderId.toLowerCase();
+      payments = payments.filter((p: any) =>
+        (p.OrderId__c || '').toLowerCase().includes(q) ||
+        (p.Invoice_Number__c || '').toLowerCase().includes(q)
+      );
+    }
+    return payments.map((p: any) => ({
+      Id: p.Id,
+      Invoice_Number__c: p.Invoice_Number__c,
+      OrderId__c: p.OrderId__c,
+      Amount__c: Number(p.Amount__c) || 0,
+      Due_Date__c: p.Due_Date__c,
+      Payment_Date__c: p.Payment_Date__c,
+      Payment_Status__c: p.Payment_Status__c || 'Pending',
+      CustomerName: null,
+      Tracking_Status__c: null,
+    }));
+  }
 
   try {
     const conn = await getSFConnection();
@@ -939,7 +1043,9 @@ export async function syncLeadsFromSF(sfAccountId: string, mongoUserId: any): Pr
 export async function syncOpportunitiesFromSF(sfAccountId: string, mongoUserId: any): Promise<any[]> {
   console.log(`\n[SF] 🔄 syncOpportunitiesFromSF() triggered for Account: ${sfAccountId}`);
   if (!sfAccountId || sfAccountId.startsWith('ACC')) {
-    console.log(`[SF] ℹ️ Skipping real-time sync for mock Account ID: ${sfAccountId}`);
+    console.log(`[SF] ℹ️ Using mock opportunities for Account ID: ${sfAccountId}`);
+    const { hydrateMockDataForAccount } = require('../db/mockHydrate');
+    await hydrateMockDataForAccount(sfAccountId, mongoUserId);
     const { OpportunityModel } = require('../models/Opportunity');
     return await OpportunityModel.find({ user: mongoUserId }).sort({ createdAt: -1 });
   }

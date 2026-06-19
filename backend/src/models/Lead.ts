@@ -28,7 +28,7 @@ const LeadSchema = new Schema<ILead>({
   companyName: { type: String, required: true },
   source: {
     type: String,
-    enum: ['Walk-in', 'Referral', 'Social Media', 'Exhibition', 'Cold Call', 'Other'],
+    enum: ['Walk-in', 'Referral', 'Social Media', 'Exhibition', 'Cold Call', 'Dealer Portal', 'Other'],
     required: true,
   },
   status: {

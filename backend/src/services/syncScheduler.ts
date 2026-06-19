@@ -65,7 +65,11 @@ export function runSync(): { success: boolean; changes: number; timestamp: strin
     log.push(`  ✓ Synced ${sfOpps.length} opportunities`);
 
     // Check low inventory and create notifications
-    const lowStockItems = sfInventory.filter((item: any) => item.Stock_On_Hand__c < item.Min_Stock_Level__c);
+    const lowStockItems = sfInventory.filter((item: any) => {
+      const qty = item.Quantity__c !== undefined ? item.Quantity__c : item.Stock_On_Hand__c;
+      const threshold = item.Min_Stock_Level__c !== undefined ? item.Min_Stock_Level__c : 10;
+      return (qty || 0) < threshold;
+    });
     if (lowStockItems.length > 0) {
       const notification = {
         id: `NOTIF-${Date.now()}`,

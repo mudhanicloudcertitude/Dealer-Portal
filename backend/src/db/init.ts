@@ -2,6 +2,7 @@ import low from 'lowdb';
 import FileSync from 'lowdb/adapters/FileSync';
 import path from 'path';
 import fs from 'fs';
+import { stableObjectId } from './mockHydrate';
 
 // Ensure data directory exists
 const dataDir = path.join(__dirname, '../../data');
@@ -105,20 +106,20 @@ function seedSalesforceData() {
 
   // Seed Dealer Inventory
   const dealerInventory = [
-    { Id: 'INV001', Dealer__c: 'ACC001', Product2Id: 'P001', Product_Name__c: 'Industrial Pump X200', Stock_On_Hand__c: 15, Min_Stock_Level__c: 10, Last_Audit_Date__c: '2024-02-28' },
-    { Id: 'INV002', Dealer__c: 'ACC001', Product2Id: 'P002', Product_Name__c: 'Hydraulic Motor HM500', Stock_On_Hand__c: 8, Min_Stock_Level__c: 5, Last_Audit_Date__c: '2024-02-28' },
-    { Id: 'INV003', Dealer__c: 'ACC001', Product2Id: 'P003', Product_Name__c: 'Control Valve CV100', Stock_On_Hand__c: 42, Min_Stock_Level__c: 20, Last_Audit_Date__c: '2024-02-28' },
-    { Id: 'INV004', Dealer__c: 'ACC001', Product2Id: 'P004', Product_Name__c: 'Pressure Gauge PG50', Stock_On_Hand__c: 4, Min_Stock_Level__c: 15, Last_Audit_Date__c: '2024-02-28' },
-    { Id: 'INV005', Dealer__c: 'ACC001', Product2Id: 'P005', Product_Name__c: 'Filtration Unit FU300', Stock_On_Hand__c: 11, Min_Stock_Level__c: 8, Last_Audit_Date__c: '2024-02-28' },
-    { Id: 'INV006', Dealer__c: 'ACC001', Product2Id: 'P006', Product_Name__c: 'Compressor CP750', Stock_On_Hand__c: 3, Min_Stock_Level__c: 5, Last_Audit_Date__c: '2024-02-28' },
+    { Id: 'INV001', Dealer__c: 'ACC001', Product2Id: 'P001', Product_Name__c: 'Industrial Pump X200', Stock_On_Hand__c: 15, Quantity__c: 15, Amount__c: 675000, Min_Stock_Level__c: 10, Last_Audit_Date__c: '2024-02-28' },
+    { Id: 'INV002', Dealer__c: 'ACC001', Product2Id: 'P002', Product_Name__c: 'Hydraulic Motor HM500', Stock_On_Hand__c: 8, Quantity__c: 8, Amount__c: 624000, Min_Stock_Level__c: 5, Last_Audit_Date__c: '2024-02-28' },
+    { Id: 'INV003', Dealer__c: 'ACC001', Product2Id: 'P003', Product_Name__c: 'Control Valve CV100', Stock_On_Hand__c: 42, Quantity__c: 42, Amount__c: 504000, Min_Stock_Level__c: 20, Last_Audit_Date__c: '2024-02-28' },
+    { Id: 'INV004', Dealer__c: 'ACC001', Product2Id: 'P004', Product_Name__c: 'Pressure Gauge PG50', Stock_On_Hand__c: 4, Quantity__c: 4, Amount__c: 14000, Min_Stock_Level__c: 15, Last_Audit_Date__c: '2024-02-28' },
+    { Id: 'INV005', Dealer__c: 'ACC001', Product2Id: 'P005', Product_Name__c: 'Filtration Unit FU300', Stock_On_Hand__c: 11, Quantity__c: 11, Amount__c: 308000, Min_Stock_Level__c: 8, Last_Audit_Date__c: '2024-02-28' },
+    { Id: 'INV006', Dealer__c: 'ACC001', Product2Id: 'P006', Product_Name__c: 'Compressor CP750', Stock_On_Hand__c: 3, Quantity__c: 3, Amount__c: 375000, Min_Stock_Level__c: 5, Last_Audit_Date__c: '2024-02-28' },
   ];
 
   // Seed Dealer Schemes
   const dealerSchemes = [
-    { Id: 'SCH001', Scheme_Name__c: 'Q1 2024 Volume Bonus', Discount_Percentage__c: 5, Min_Order_Value__c: 100000, Max_Order_Value__c: 500000, Start_Date__c: '2024-01-01', End_Date__c: '2024-03-31', IsActive__c: true, Type__c: 'Volume Discount' },
-    { Id: 'SCH002', Scheme_Name__c: 'Pumps & Motors Special', Discount_Percentage__c: 8, Min_Order_Value__c: 200000, Max_Order_Value__c: 1000000, Start_Date__c: '2024-02-01', End_Date__c: '2024-04-30', IsActive__c: true, Type__c: 'Product Category', Applicable_Category__c: 'Pumps' },
-    { Id: 'SCH003', Scheme_Name__c: 'Gold Dealer Incentive', Discount_Percentage__c: 3, Min_Order_Value__c: 50000, Max_Order_Value__c: 999999999, Start_Date__c: '2024-01-01', End_Date__c: '2024-12-31', IsActive__c: true, Type__c: 'Tier Loyalty', Applicable_Tier__c: 'Gold' },
-    { Id: 'SCH004', Scheme_Name__c: 'Mega Order Discount', Discount_Percentage__c: 12, Min_Order_Value__c: 500000, Max_Order_Value__c: 999999999, Start_Date__c: '2024-03-01', End_Date__c: '2024-05-31', IsActive__c: true, Type__c: 'Volume Discount' },
+    { Id: 'SCH001', Scheme_Name__c: 'Q1 2024 Volume Bonus', Discount_Percentage__c: 5, Min_Order_Value__c: 100000, Max_Order_Value__c: 500000, Start_Date__c: '2024-01-01', End_Date__c: '2024-03-31', IsActive__c: true },
+    { Id: 'SCH002', Scheme_Name__c: 'Pumps & Motors Special', Discount_Percentage__c: 8, Min_Order_Value__c: 200000, Max_Order_Value__c: 1000000, Start_Date__c: '2024-02-01', End_Date__c: '2024-04-30', IsActive__c: true, Applicable_Category__c: 'Pumps' },
+    { Id: 'SCH003', Scheme_Name__c: 'Gold Dealer Incentive', Discount_Percentage__c: 3, Min_Order_Value__c: 50000, Max_Order_Value__c: 999999999, Start_Date__c: '2024-01-01', End_Date__c: '2024-12-31', IsActive__c: true },
+    { Id: 'SCH004', Scheme_Name__c: 'Mega Order Discount', Discount_Percentage__c: 12, Min_Order_Value__c: 500000, Max_Order_Value__c: 999999999, Start_Date__c: '2024-03-01', End_Date__c: '2024-05-31', IsActive__c: true },
   ];
 
   // Seed Warranty Registrations
@@ -161,18 +162,22 @@ function seedSalesforceData() {
   sfDB.set('cases', cases).write();
   sfDB.set('opportunities', opportunities).write();
 
-  // Create default dealer user
+  // Create default dealer user (skip if already exists)
   const bcrypt = require('bcryptjs');
-  const defaultUser = {
-    id: 'USR001',
-    email: 'dealer@sunrise.com',
-    password: bcrypt.hashSync('dealer123', 10),
-    accountId: 'ACC001',
-    role: 'dealer',
-    name: 'Raj Sharma',
-    createdAt: new Date().toISOString(),
-  };
-  cacheDB.get('users').push(defaultUser).write();
+  const existingUser = cacheDB.get('users').find({ email: 'dealer@sunrise.com' }).value();
+  if (!existingUser) {
+    const defaultUser = {
+      _id: stableObjectId('USR001'),
+      id: 'USR001',
+      email: 'dealer@sunrise.com',
+      password: bcrypt.hashSync('dealer123', 10),
+      accountId: 'ACC001',
+      role: 'dealer',
+      name: 'Raj Sharma',
+      createdAt: new Date().toISOString(),
+    };
+    cacheDB.get('users').push(defaultUser).write();
+  }
 
   console.log('✅ Seed data written to Mock Salesforce Database');
   console.log('   Default Login: dealer@sunrise.com / dealer123');

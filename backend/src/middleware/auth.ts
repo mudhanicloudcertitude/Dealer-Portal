@@ -1,7 +1,8 @@
 import { Request, Response, NextFunction } from 'express';
-import jwt from 'jsonwebtoken';
+import jwt, { SignOptions } from 'jsonwebtoken';
 
-const JWT_SECRET = 'dealer-portal-secret-key-2024';
+const JWT_SECRET = process.env.JWT_SECRET || 'dealer-portal-secret-key-2024';
+const JWT_EXPIRES_IN = (process.env.JWT_EXPIRES_IN || '8h') as SignOptions['expiresIn'];
 
 export interface AuthRequest extends Request {
   user?: any;
@@ -21,5 +22,9 @@ export function authenticateToken(req: AuthRequest, res: Response, next: NextFun
 }
 
 export function generateToken(payload: object) {
-  return jwt.sign(payload, JWT_SECRET, { expiresIn: '8h' });
+  return jwt.sign(payload, JWT_SECRET, { expiresIn: JWT_EXPIRES_IN });
+}
+
+export function verifyToken(token: string) {
+  return jwt.verify(token, JWT_SECRET);
 }

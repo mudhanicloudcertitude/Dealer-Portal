@@ -32,7 +32,6 @@ export default function Login() {
       <div className="auth-bg" />
       <div className="auth-card">
         <div className="auth-logo">
-          <div className="auth-logo-icon">🏭</div>
           <div>
             <div style={{ fontSize: '22px', fontWeight: 800, color: 'var(--text-primary)' }}>Dealer Portal</div>
             <div style={{ fontSize: '12px', color: 'var(--text-muted)' }}>Manufacturing CRM</div>
@@ -45,7 +44,7 @@ export default function Login() {
         <div className="auth-divider" style={{ margin: '20px 0 16px' }} />
 
         <div className="demo-creds">
-          🔑 Demo: <strong>dealer@sunrise.com</strong> / <strong>dealer123</strong>
+          Demo: <strong>dealer@sunrise.com</strong> / <strong>dealer123</strong>
           &nbsp;&nbsp;
           <button 
             type="button" 
@@ -87,7 +86,7 @@ export default function Login() {
             style={{ marginTop: '8px', justifyContent: 'center' }} 
             disabled={loading}
           >
-            {loading ? '⏳ Signing in...' : '🚀 Sign In'}
+            {loading ? 'Signing in...' : 'Sign In'}
           </button>
         </form>
 

@@ -29,8 +29,12 @@ router.get('/:id', authenticateToken, async (req: AuthRequest, res) => {
   try {
     const { ProductModel } = await import('../models/Product');
     const product = await ProductModel.findOne({ Id: req.params.id });
-    if (!product) return res.status(404).json({ error: 'Product not found' });
-    res.json(product);
+    if (product) return res.json(product);
+
+    const sfProduct = sfDB.get('products').find({ Id: req.params.id }).value();
+    if (!sfProduct) return res.status(404).json({ error: 'Product not found' });
+    const pb = sfDB.get('pricebooks').find({ Product2Id: sfProduct.Id }).value();
+    res.json({ ...sfProduct, UnitPrice: pb?.UnitPrice, ListPrice: pb?.ListPrice });
   } catch (err: any) {
     res.status(500).json({ error: 'Failed to fetch product', details: err.message });
   }

@@ -15,7 +15,9 @@ router.get('/', authenticateToken, async (req: AuthRequest, res) => {
 
     const cases = await CaseModel.find({ user: dbUser._id, accountId: req.user.accountId }).sort({ CreatedDate: -1 }).lean();
 
-    const mapped = cases.map(c => ({
+    const mapped = cases
+      .filter((c: any) => !(c.Subject || '').includes('[Warranty]'))
+      .map(c => ({
       Id: c.sfId || (c as any)._id.toString(),
       CaseNumber: c.CaseNumber,
       Subject: c.Subject,
@@ -77,8 +79,11 @@ router.post('/', authenticateToken, async (req: AuthRequest, res) => {
       }
       console.log(`[CASES] ✅ Case created in Salesforce with ID: ${sfId}, CaseNumber: ${finalCaseNumber}`);
     } catch (sfErr: any) {
-      console.error(`[CASES] ❌ Salesforce Case creation failed:`, sfErr.message);
-      return res.status(500).json({ error: 'Salesforce Case creation failed', details: sfErr.message });
+      console.error(`[CASES] ❌ Salesforce Case creation failed (storing locally):`, sfErr.message);
+    }
+
+    if (!sfId) {
+      sfId = `LOCAL_CASE_${Date.now()}`;
     }
 
     const newCase = new CaseModel({

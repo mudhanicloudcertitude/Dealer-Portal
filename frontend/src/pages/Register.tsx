@@ -26,8 +26,8 @@ export default function Register() {
       localStorage.setItem('dp_token', res.data.token);
       window.location.href = '/';
     } catch (err: any) { 
-      setError(err.message); 
-    } finally { 
+      setError(err.response?.data?.error || 'Registration failed'); 
+    } finally {
       setLoading(false); 
     }
   };
@@ -37,7 +37,6 @@ export default function Register() {
       <div className="auth-bg" />
       <div className="auth-card" style={{ maxWidth: 480 }}>
         <div className="auth-logo">
-          <div className="auth-logo-icon">🏭</div>
           <div>
             <div style={{ fontSize: '20px', fontWeight: 800, color: 'var(--text-primary)' }}>Dealer Registration</div>
             <div style={{ fontSize: '11px', color: 'var(--text-muted)' }}>Onboard your dealership profile</div>
@@ -128,7 +127,7 @@ export default function Register() {
             style={{ justifyContent: 'center', marginTop: '8px' }} 
             disabled={loading}
           >
-            {loading ? '⏳ Registering...' : '✅ Register Dealership'}
+            {loading ? 'Registering...' : 'Register Dealership'}
           </button>
         </form>
         <div className="auth-footer">
