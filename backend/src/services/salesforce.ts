@@ -936,7 +936,7 @@ export async function searchSFInvoices(data: {
     }
 
     const whereClause = conditions.join(' AND ');
-    const soql = `SELECT Id, Name, Account__c, Order__c, Amount__c, Due_Date__c, Payment_Date__c, Payment_Status__c, Customer_First_Name__c, Customer_Last_Name__c, Tracking_Status__c FROM Dealer_Invoice__c WHERE ${whereClause} ORDER BY CreatedDate DESC LIMIT 50`;
+    const soql = `SELECT Id, Name, Account__c, Order__c, Order__r.Name, Amount__c, Due_Date__c, Payment_Date__c, Payment_Status__c, Customer_First_Name__c, Customer_Last_Name__c, Tracking_Status__c FROM Dealer_Invoice__c WHERE ${whereClause} ORDER BY CreatedDate DESC LIMIT 50`;
 
     console.log(`[SF] 🔍 SOQL: ${soql}`);
     const result = await conn.query<any>(soql);
@@ -950,7 +950,7 @@ export async function searchSFInvoices(data: {
       return {
         Id: r.Id,
         Invoice_Number__c: r.Name,
-        OrderId__c: r.Order__c,
+        OrderId__c: (r.Order__r && r.Order__r.Name) ? r.Order__r.Name : r.Order__c,
         Amount__c: Number(r.Amount__c) || 0,
         Due_Date__c: r.Due_Date__c,
         Payment_Date__c: r.Payment_Date__c,
@@ -969,12 +969,12 @@ export async function searchSFInvoices(data: {
         conditions.push(`Order__r.Name LIKE '%${data.orderId.replace(/'/g, "\\'")}%'`);
       }
       const result = await conn.query<any>(
-        `SELECT Id, Name, Account__c, Order__c, Amount__c, Due_Date__c, Payment_Date__c, Payment_Status__c FROM Dealer_Invoice__c WHERE ${conditions.join(' AND ')} ORDER BY CreatedDate DESC LIMIT 50`
+        `SELECT Id, Name, Account__c, Order__c, Order__r.Name, Amount__c, Due_Date__c, Payment_Date__c, Payment_Status__c FROM Dealer_Invoice__c WHERE ${conditions.join(' AND ')} ORDER BY CreatedDate DESC LIMIT 50`
       );
       return result.records.map((r: any) => ({
         Id: r.Id,
         Invoice_Number__c: r.Name,
-        OrderId__c: r.Order__c,
+        OrderId__c: (r.Order__r && r.Order__r.Name) ? r.Order__r.Name : r.Order__c,
         Amount__c: Number(r.Amount__c) || 0,
         Due_Date__c: r.Due_Date__c,
         Payment_Date__c: r.Payment_Date__c,
