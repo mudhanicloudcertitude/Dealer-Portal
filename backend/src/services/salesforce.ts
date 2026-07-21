@@ -936,7 +936,7 @@ export async function searchSFInvoices(data: {
     }
 
     const whereClause = conditions.join(' AND ');
-    const soql = `SELECT Id, Name, Account__c, Order__c, Order__r.Name, Amount__c, Due_Date__c, Payment_Date__c, Payment_Status__c, Customer_First_Name__c, Customer_Last_Name__c, Tracking_Status__c FROM Dealer_Invoice__c WHERE ${whereClause} ORDER BY CreatedDate DESC LIMIT 50`;
+    const soql = `SELECT Id, Name, Account__c, Order__c, Order__r.Name, Amount__c, Due_Date__c, Payment_Date__c, Payment_Status__c, Order__r.Customer_First_Name__c, Order__r.Customer_Last_Name__c, Tracking_Status__c FROM Dealer_Invoice__c WHERE ${whereClause} ORDER BY CreatedDate DESC LIMIT 50`;
 
     console.log(`[SF] 🔍 SOQL: ${soql}`);
     const result = await conn.query<any>(soql);
