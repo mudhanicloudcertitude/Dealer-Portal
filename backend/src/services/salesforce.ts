@@ -921,10 +921,9 @@ export async function searchSFInvoices(data: {
 
     if (data.customerName) {
       const escaped = data.customerName.replace(/'/g, "\\'");
-      // Try matching in Customer_First_Name__c, Customer_Last_Name__c, or Name
+      // Match on Customer_First_Name__c or Customer_Last_Name__c
       orParts.push(`Customer_First_Name__c LIKE '%${escaped}%'`);
       orParts.push(`Customer_Last_Name__c LIKE '%${escaped}%'`);
-      orParts.push(`Name LIKE '%${escaped}%'`);
     }
     if (data.orderId) {
       const escaped = data.orderId.replace(/'/g, "\\'");
