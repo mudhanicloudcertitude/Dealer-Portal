@@ -921,13 +921,13 @@ export async function searchSFInvoices(data: {
 
     if (data.customerName) {
       const escaped = data.customerName.replace(/'/g, "\\'");
-      // Try matching in Customer_Name__c or Name
-      orParts.push(`Customer_Name__c LIKE '%${escaped}%'`);
+      // Try matching in Customer_First_Name__c, Customer_Last_Name__c, or Name
+      orParts.push(`Customer_First_Name__c LIKE '%${escaped}%'`);
+      orParts.push(`Customer_Last_Name__c LIKE '%${escaped}%'`);
       orParts.push(`Name LIKE '%${escaped}%'`);
     }
     if (data.orderId) {
       const escaped = data.orderId.replace(/'/g, "\\'");
-      orParts.push(`Order__c = '${escaped}'`);
       orParts.push(`Order__r.Name LIKE '%${escaped}%'`);
     }
 
@@ -936,23 +936,29 @@ export async function searchSFInvoices(data: {
     }
 
     const whereClause = conditions.join(' AND ');
-    const soql = `SELECT Id, Name, Account__c, Order__c, Amount__c, Due_Date__c, Payment_Date__c, Payment_Status__c, Customer_Name__c, Tracking_Status__c FROM Dealer_Invoice__c WHERE ${whereClause} ORDER BY CreatedDate DESC LIMIT 50`;
+    const soql = `SELECT Id, Name, Account__c, Order__c, Amount__c, Due_Date__c, Payment_Date__c, Payment_Status__c, Customer_First_Name__c, Customer_Last_Name__c, Tracking_Status__c FROM Dealer_Invoice__c WHERE ${whereClause} ORDER BY CreatedDate DESC LIMIT 50`;
 
     console.log(`[SF] 🔍 SOQL: ${soql}`);
     const result = await conn.query<any>(soql);
     console.log(`[SF] ✅ Found ${result.records.length} invoices`);
 
-    return result.records.map((r: any) => ({
-      Id: r.Id,
-      Invoice_Number__c: r.Name,
-      OrderId__c: r.Order__c,
-      Amount__c: Number(r.Amount__c) || 0,
-      Due_Date__c: r.Due_Date__c,
-      Payment_Date__c: r.Payment_Date__c,
-      Payment_Status__c: r.Payment_Status__c || 'Pending',
-      CustomerName: r.Customer_Name__c || null,
-      Tracking_Status__c: r.Tracking_Status__c || null,
-    }));
+    return result.records.map((r: any) => {
+      let cName = null;
+      if (r.Customer_First_Name__c || r.Customer_Last_Name__c) {
+        cName = `${r.Customer_First_Name__c || ''} ${r.Customer_Last_Name__c || ''}`.trim();
+      }
+      return {
+        Id: r.Id,
+        Invoice_Number__c: r.Name,
+        OrderId__c: r.Order__c,
+        Amount__c: Number(r.Amount__c) || 0,
+        Due_Date__c: r.Due_Date__c,
+        Payment_Date__c: r.Payment_Date__c,
+        Payment_Status__c: r.Payment_Status__c || 'Pending',
+        CustomerName: cName,
+        Tracking_Status__c: r.Tracking_Status__c || null,
+      };
+    });
   } catch (err: any) {
     // If the custom field doesn't exist, retry with a simpler query
     console.warn(`[SF] ⚠️ searchSFInvoices full query failed: ${err.message}`);
@@ -960,7 +966,7 @@ export async function searchSFInvoices(data: {
       const conn = await getSFConnection();
       const conditions: string[] = [`Account__c = '${data.accountId}'`];
       if (data.orderId) {
-        conditions.push(`Order__c = '${data.orderId.replace(/'/g, "\\'")}'`);
+        conditions.push(`Order__r.Name LIKE '%${data.orderId.replace(/'/g, "\\'")}%'`);
       }
       const result = await conn.query<any>(
         `SELECT Id, Name, Account__c, Order__c, Amount__c, Due_Date__c, Payment_Date__c, Payment_Status__c FROM Dealer_Invoice__c WHERE ${conditions.join(' AND ')} ORDER BY CreatedDate DESC LIMIT 50`
