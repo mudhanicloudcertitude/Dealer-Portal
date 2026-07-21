@@ -89,10 +89,10 @@ export async function getSFConnection(): Promise<Connection> {
 // Creates a Dealer Account in Salesforce.
 // Maps: MongoDB UserId → UserId__c custom field on Account.
 export async function createDealerAccount(data: {
-  name  : string;
-  phone : string;
-  city  : string;
-  state : string;
+  name: string;
+  phone: string;
+  city: string;
+  state: string;
   userId: string; // MongoDB User ID → stored in SF custom field UserId__c
 }): Promise<string> {
 
@@ -132,11 +132,11 @@ export async function createDealerAccount(data: {
 
   // ── Step 3: Build Account payload ──
   const payload: Record<string, any> = {
-    Name           : data.name,
-    Phone          : data.phone,
-    Dealer_City__c : data.city,
+    Name: data.name,
+    Phone: data.phone,
+    Dealer_City__c: data.city,
     Dealer_State__c: data.state,
-    UserId__c      : data.userId,  // MongoDB User ID → Salesforce custom field
+    UserId__c: data.userId,  // MongoDB User ID → Salesforce custom field
   };
   if (recordTypeId) payload.RecordTypeId = recordTypeId;
 
@@ -176,7 +176,7 @@ export async function createDealerAccount(data: {
 // Fetches the latest Account details from real Salesforce and updates the local db cache.
 export async function syncAccountFromSF(sfAccountId: string): Promise<any> {
   console.log(`\n[SF] 🔄 syncAccountFromSF() triggered for Account ID: ${sfAccountId}`);
-  
+
   if (!sfAccountId || sfAccountId.startsWith('ACC')) {
     console.log(`[SF] ℹ️ Skipping real-time sync for mock Account ID: ${sfAccountId}`);
     return null;
@@ -184,7 +184,7 @@ export async function syncAccountFromSF(sfAccountId: string): Promise<any> {
 
   try {
     const conn = await getSFConnection();
-    
+
     // Attempt to query standard fields and common custom fields
     const possibleFields = [
       'Id',
@@ -202,7 +202,7 @@ export async function syncAccountFromSF(sfAccountId: string): Promise<any> {
     ];
 
     let record: any = null;
-    
+
     try {
       const fieldsToQuery = possibleFields.join(', ');
       console.log(`[SF] 🔍 Executing SOQL: SELECT ${fieldsToQuery} FROM Account WHERE Id = '${sfAccountId}' LIMIT 1`);
@@ -214,11 +214,11 @@ export async function syncAccountFromSF(sfAccountId: string): Promise<any> {
       }
     } catch (err: any) {
       console.warn(`[SF] ⚠️ SOQL with custom fields failed: ${err.message}`);
-      
+
       // Fallback: Query only standard fields + UserId__c
       const fallbackFields = ['Id', 'Name', 'Phone', 'Dealer_City__c', 'Dealer_State__c', 'UserId__c'];
       console.log(`[SF] 🔄 Trying fallback SOQL with standard fields: ${fallbackFields.join(', ')}`);
-      
+
       const result = await conn.query<any>(
         `SELECT ${fallbackFields.join(', ')} FROM Account WHERE Id = '${sfAccountId}' LIMIT 1`
       );
@@ -275,7 +275,7 @@ export async function syncAccountFromSF(sfAccountId: string): Promise<any> {
 // Syncs Salesforce Cases for a specific Account to MongoDB.
 export async function syncCasesFromSF(sfAccountId: string, mongoUserId: any): Promise<void> {
   console.log(`\n[SF] 🔄 syncCasesFromSF() triggered for Account ID: ${sfAccountId}`);
-  
+
   if (!sfAccountId || sfAccountId.startsWith('ACC')) {
     console.log(`[SF] ℹ️ Using mock cases for Account ID: ${sfAccountId}`);
     const { hydrateMockDataForAccount } = require('../db/mockHydrate');
@@ -285,7 +285,7 @@ export async function syncCasesFromSF(sfAccountId: string, mongoUserId: any): Pr
 
   try {
     const conn = await getSFConnection();
-    
+
     console.log(`[SF] 🔍 Fetching Cases from Salesforce for Account ID: ${sfAccountId}...`);
     const result = await conn.query<any>(
       `SELECT Id, CaseNumber, Subject, Status, Priority, Description, CreatedDate, LastModifiedDate, Resolution_Details__c 
@@ -412,7 +412,7 @@ export async function syncProductsFromSF(): Promise<any[]> {
   console.log('\n[SF] 🔄 syncProductsFromSF() triggered');
   try {
     const conn = await getSFConnection();
-    
+
     let records: any[] = [];
     try {
       console.log('[SF] 🔍 Executing SOQL for PricebookEntry with Pricebook2.IsStandard = true...');
@@ -571,7 +571,7 @@ export async function syncOrdersFromSF(sfAccountId: string, mongoUserId: any): P
 
   try {
     const conn = await getSFConnection();
-    
+
     console.log(`[SF] 🔍 Fetching Dealer Orders from Salesforce for Account ID: ${sfAccountId}...`);
     const result = await conn.query<any>(
       `SELECT Id, Name, Account__c, Product__c, Product__r.Name, Product__r.ProductCode, 
@@ -592,7 +592,7 @@ export async function syncOrdersFromSF(sfAccountId: string, mongoUserId: any): P
     for (const record of result.records) {
       // Find local product reference
       const localProduct = await ProductModel.findOne({ Id: record.Product__c });
-      
+
       const createdDateStr = record.CreatedDate ? record.CreatedDate.split('T')[0] : new Date().toISOString().split('T')[0];
       const deliveryDateStr = record.Delivery_Date__c || null;
 
@@ -664,7 +664,7 @@ export async function syncOrdersFromSF(sfAccountId: string, mongoUserId: any): P
       plainObj.DiscountAmount = plainObj.DiscountAmount || 0;
       return plainObj;
     });
-    
+
     // Merge or set in cacheDB
     cacheDB.set('cachedOrders', enrichedCachedOrders).write();
     console.log(`[SF] 💾 Synced and cached ${enrichedCachedOrders.length} orders in local lowdb`);
@@ -735,7 +735,7 @@ export async function createSFOrder(data: {
 export async function cancelSFOrder(sfOrderId: string): Promise<void> {
   console.log(`[SF] 🚀 Cancelling Dealer Order in Salesforce: ${sfOrderId}`);
   const conn = await getSFConnection();
-  
+
   const result = await conn.sobject('Dealer_Order__c').update({
     Id: sfOrderId,
     Status__c: 'Cancelled'
@@ -758,9 +758,9 @@ export async function syncSchemesFromSF(): Promise<any[]> {
        FROM Dealer_Scheme__c 
        ORDER BY Min_Order_Value__c ASC`
     );
-    
+
     console.log(`[SF] ✅ Retrieved ${result.records.length} Dealer Schemes from Salesforce`);
-    
+
     const mappedSchemes = result.records.map((r: any) => ({
       Id: r.Id,
       Scheme_Name__c: r.Name, // Map standard Name field to Scheme_Name__c for portal compatibility
@@ -775,7 +775,7 @@ export async function syncSchemesFromSF(): Promise<any[]> {
     const { sfDB } = require('../db/init');
     sfDB.set('dealerSchemes', mappedSchemes).write();
     console.log(`[SF] 💾 Cached ${mappedSchemes.length} schemes in lowdb`);
-    
+
     return mappedSchemes;
   } catch (err: any) {
     console.warn(`[SF] ⚠️ syncSchemesFromSF() query failed, falling back to cached schemes: ${err.message}`);
@@ -868,7 +868,7 @@ export async function paySFInvoice(sfInvoiceId: string, bankDetails: string): Pr
       const account = await conn.sobject('Account').retrieve(accountId);
       const currentOutstanding = Number((account as any).Outstanding_Amount__c) || 0;
       const nextOutstanding = Math.max(0, currentOutstanding - amount);
-      
+
       await conn.sobject('Account').update({
         Id: accountId,
         Outstanding_Amount__c: nextOutstanding
@@ -921,12 +921,13 @@ export async function searchSFInvoices(data: {
 
     if (data.customerName) {
       const escaped = data.customerName.replace(/'/g, "\\'");
-      // Match on Customer_First_Name__c or Customer_Last_Name__c
-      orParts.push(`Customer_First_Name__c LIKE '%${escaped}%'`);
-      orParts.push(`Customer_Last_Name__c LIKE '%${escaped}%'`);
+      // Customer_First_Name__c and Customer_Last_Name__c are direct fields on Dealer_Invoice__c
+      orParts.push(`Order__r.Customer_First_Name__c LIKE '%${escaped}%'`);
+      orParts.push(`Order__r.Customer_Last_Name__c LIKE '%${escaped}%'`);
     }
     if (data.orderId) {
       const escaped = data.orderId.replace(/'/g, "\\'");
+      // Order__r is the relationship name for the Order__c lookup (confirmed via SF describe)
       orParts.push(`Order__r.Name LIKE '%${escaped}%'`);
     }
 
@@ -1123,7 +1124,7 @@ export async function createSFLead(data: {
   notes: string;
 }): Promise<string> {
   console.log('[SF] 🚀 Submitting Lead to Salesforce live...');
-  
+
   if (data.sfAccountId.startsWith('ACC')) {
     console.log('[SF] ℹ️ Using mock Account ID, skipping live Salesforce submission');
     return 'MOCK_LEAD_' + Date.now();
