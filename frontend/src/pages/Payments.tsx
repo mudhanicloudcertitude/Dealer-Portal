@@ -155,7 +155,7 @@ export default function Payments() {
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <title>Invoice ${inv.Invoice_Number__c || inv.Id}</title>
+  <title>Invoice ${inv.Invoice_Number__c || 'Document'}</title>
   <style>
     body { font-family: 'Segoe UI', Arial, sans-serif; background: #fff; color: #1e293b; padding: 40px; max-width: 720px; margin: auto; }
     .header { display: flex; justify-content: space-between; align-items: flex-start; padding-bottom: 24px; border-bottom: 2px solid #e2e8f0; margin-bottom: 28px; }
@@ -179,7 +179,7 @@ export default function Payments() {
     </div>
     <div style="text-align:right">
       <div class="inv-num">INVOICE</div>
-      <div style="font-size:14px;color:#64748b;margin-top:4px;">${inv.Invoice_Number__c || inv.Id}</div>
+      <div style="font-size:14px;color:#64748b;margin-top:4px;">${inv.Invoice_Number__c || 'N/A'}</div>
       <div style="margin-top:6px"><span class="status">${inv.Payment_Status__c || 'Pending'}</span></div>
     </div>
   </div>

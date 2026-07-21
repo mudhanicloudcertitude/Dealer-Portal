@@ -61,10 +61,6 @@ export default function Layout() {
             <div style={{padding:'10px 12px',marginBottom:'8px'}}>
               <div style={{fontSize:'11px',color:'var(--text-muted)',marginBottom:'4px'}}>DEALER ACCOUNT</div>
               <div style={{fontSize:'13px',fontWeight:600}}>{account.Name}</div>
-              <div style={{display:'flex',alignItems:'center',gap:'6px',marginTop:'4px'}}>
-                <span className={`badge ${account.Tier__c === 'Gold' ? 'badge-warning' : account.Tier__c === 'Silver' ? 'badge-muted' : 'badge-info'}`}>{account.Tier__c}</span>
-                <span className={`badge ${account.Status__c === 'Active' ? 'badge-success' : 'badge-danger'}`}>{account.Status__c}</span>
-              </div>
             </div>
           )}
           <div className="sidebar-profile" onClick={logout}>

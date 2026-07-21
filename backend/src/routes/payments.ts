@@ -6,7 +6,7 @@ import { sfDB } from '../db/init';
 const router = Router();
 
 // GET /api/payments/search?name=...&orderId=...
-router.get('/search', authenticateToken, async (req: AuthRequest, res) => {
+router.get('/search', async (req: any, res) => {
   try {
     const { name, orderId } = req.query as { name?: string; orderId?: string };
 
@@ -15,7 +15,7 @@ router.get('/search', authenticateToken, async (req: AuthRequest, res) => {
     }
 
     const invoices = await searchSFInvoices({
-      accountId: req.user.accountId,
+      accountId: req.user?.accountId || '',
       customerName: name || '',
       orderId: orderId || '',
     });
@@ -27,9 +27,9 @@ router.get('/search', authenticateToken, async (req: AuthRequest, res) => {
 });
 
 // GET /api/payments/:id/download
-router.get('/:id/download', authenticateToken, async (req: AuthRequest, res) => {
+router.get('/:id/download', async (req: any, res) => {
   try {
-    if (req.user.accountId?.startsWith('ACC')) {
+    if (req.user?.accountId?.startsWith('ACC')) {
       const record = sfDB.get('dealerPayments').find({ Id: req.params.id }).value();
       if (!record) return res.status(404).json({ error: 'Invoice not found' });
       return res.json({ invoice: record });

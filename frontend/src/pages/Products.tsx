@@ -36,7 +36,7 @@ export default function Products() {
       <div className="page-header">
         <div className="page-header-left">
           <h1 className="page-title">Product Catalog</h1>
-          <p className="page-desc">{products.length} heavy-industry components with real-time pricing slabs and demand forecasting</p>
+          <p className="page-desc">{products.length} heavy-industry components with real-time pricing slabs</p>
         </div>
       </div>
 
@@ -99,33 +99,8 @@ export default function Products() {
                       </div>
                     )}
                   </div>
-                  
-                  <div style={{ textAlign: 'right' }}>
-                    <div style={{ fontSize: '11px', color: 'var(--text-muted)' }}>Forecasted Demand</div>
-                    <div style={{ fontSize: '13px', fontWeight: 600, color: 'var(--success)' }}>
-                      {p.Forecasted_Demand__c || 0} units/mo
-                    </div>
-                  </div>
                 </div>
 
-                {p.Restock_Recommendation__c && (
-                  <div 
-                    style={{ 
-                      marginTop: '12px', 
-                      padding: '8px 12px', 
-                      background: 'rgba(99,102,241,0.06)', 
-                      border: '1px solid rgba(99,102,241,0.15)', 
-                      borderRadius: '8px', 
-                      fontSize: '11.5px', 
-                      color: 'var(--text-secondary)',
-                      display: 'flex',
-                      alignItems: 'center',
-                      gap: '6px'
-                    }}
-                  >
-                    <span>Recommended restock qty: <strong>{p.Restock_Recommendation__c} units</strong></span>
-                  </div>
-                )}
               </div>
             </div>
           ))}

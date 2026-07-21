@@ -165,7 +165,6 @@ export default function Cases() {
                 <tr key={c.Id}>
                   <td>
                     <div style={{ fontWeight: 700, color: 'var(--accent-light)', fontFamily: 'monospace' }}>{c.CaseNumber}</div>
-                    <div style={{ fontSize: '10px', color: 'var(--text-muted)' }}>{c.Id?.slice(0, 12)}...</div>
                   </td>
                   <td>
                     <div style={{ fontWeight: 600 }}>{c.CustomerName || '—'}</div>
