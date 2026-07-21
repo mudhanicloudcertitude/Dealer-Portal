@@ -6,7 +6,7 @@ import { sfDB } from '../db/init';
 const router = Router();
 
 // GET /api/payments/search?name=...&orderId=...
-router.get('/search', async (req: any, res) => {
+router.get('/search', authenticateToken, async (req: AuthRequest, res: any) => {
   try {
     const { name, orderId } = req.query as { name?: string; orderId?: string };
 
@@ -27,7 +27,7 @@ router.get('/search', async (req: any, res) => {
 });
 
 // GET /api/payments/:id/download
-router.get('/:id/download', async (req: any, res) => {
+router.get('/:id/download', authenticateToken, async (req: AuthRequest, res: any) => {
   try {
     if (req.user?.accountId?.startsWith('ACC')) {
       const record = sfDB.get('dealerPayments').find({ Id: req.params.id }).value();
